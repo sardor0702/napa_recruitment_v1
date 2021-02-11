@@ -1,8 +1,18 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+
+
+class UserManager():
+    def create_user(self, **kwargs):
+        raise Exception("create user")
+
+
+    def create_superuser(self, **kwargs):
+        raise Exception("create super user")
 
 
 class User(AbstractUser):
+    objects = UserManager()
     full_name = models.CharField(max_length=255)
     username = models.CharField(max_length=30, help_text="Пожалуйста, укажите ваше имя пользователя", unique=True)
     email = models.EmailField(max_length=255, unique=True)
