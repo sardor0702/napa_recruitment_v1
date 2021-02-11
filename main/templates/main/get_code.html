@@ -1,0 +1,37 @@
+{% extends '../layouts/layout_sign_in.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid d-flex p-0">
+		<div class="container-fluid d-none d-sm-none d-md-block" id="left">
+			<div class="row p-0">
+				<div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-2 offset-lg-1">
+					<img src="{% static 'main/img/napa.svg' %}" style="height: 45vh">
+				</div>
+				<div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-1">
+					<img src="{% static 'main/img/recruitment.svg' %}" style="height: 100vh">
+				</div>
+				<div class="col-xxl-6 col-xl-6 col-lg-5 col-md-4 offset-lg-2 img-vektor">
+					<img src="{% static 'main/img/vector.svg' %}">
+				</div>
+			</div><!-- End of row -->
+		</div><!-- End of #left -->
+		
+		<div class="container-fluid m-0" id="right">
+			<div class="row d-flex justify-content-center align-items-center">
+				<div class="col-10 col-md-8 col-lg-6 ">
+					<h1 class="d-block d-sm-block d-md-none title-name mb-0">NAPA</h1>
+					<h1 class="d-block d-sm-block d-md-none title-name">Recruitment</h1>
+					<hr class="d-block d-sm-block d-md-none ">
+					<form class="form-example mt-3"> 
+						<label class="text-01 mb-4">Введите код подтверждения</label>
+						<div class="form-group">
+							<label class="text-02">Код подтверждения</label>
+							<input type="text" class="form-control bg-light " placeholder="">
+						</div>
+						<button type="submit" class="btn btn-danger mt-4 px-5 py-2 rounded-15">Восстановить пароль</button>
+					</form>
+				</div>
+			</div><!-- End of row -->
+		</div><!-- End of container-fluid -->
+	</div><!-- End of container-fluid -->
+{% endblock %}

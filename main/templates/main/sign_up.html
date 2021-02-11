@@ -1,0 +1,74 @@
+{% extends '../layouts/layout_sign_in.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid d-flex p-0 ">
+        <div class="container-fluid d-none d-sm-none d-md-block" id="left">
+            <div class="row p-0">
+                <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-2 offset-lg-1">
+                    <img src="{% static 'main/img/napa.svg' %}" style="height: 45vh">
+                </div>
+                <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-1">
+                    <img src="{% static 'main/img/recruitment.svg' %}" style="height: 100vh">
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-5 col-md-4 offset-lg-2 img-vektor">
+                    <img src="{% static 'main/img/vector.svg' %}">
+                </div>
+            </div><!-- End of row -->
+        </div><!-- End of #left -->
+
+        <div class="container-fluid m-0" id="right-1">
+            <div class="row py-4 px-5 my-3 d-none d-md-block">
+                <div class="col text-right font-size-12">
+                    <span>Нет аккаунта? </span><a href="{% url 'main_login' %}" class="text-danger">Войти</a>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center h-75">
+                <div class="col-10 col-md-8 col-lg-6 pt-5 pt-md-0">
+                    <h1 class="d-block d-sm-block d-md-none title-name">NAPA</h1>
+                    <h1 class="d-block d-sm-block d-md-none title-name">Recruitment</h1>
+                    <hr class="d-block d-sm-block d-md-none ">
+                    {% if form.errors %}
+                        {{ form.errors }}
+                    {% endif %}
+                    <form class="form-example mt-3" action="{% url 'main_registration' %}" method="post">
+                        {% csrf_token %}
+                        <label class="text-01 mb-4">Регистрация</label>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="text-02">Телефон</label>
+                            <input type="text" class="form-control bg-light " placeholder="+998971234567" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="validationCustom01" class="text-02">Логин</label>
+                            <input type="text" class="form-control bg-light" id="validationCustom01" name="username"
+                                   required>
+                        </div>
+                        <div class="form-group m-0 p-0 d-flex justify-between " id="texts">
+                            <div class="col-6 p-0"><label for="exampleInputPassword1" class="text-02">Пароль</label>
+                            </div>
+                            <div></div>
+                            <div class="col-6 p-0 text-right"><a href="{% url 'forgot_password' %}" class="">Забыли
+                                пароль?</a></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control bg-light" id="exampleInputPassword1"
+                                   name="password1">
+                        </div>
+                        <div class="form-group">
+                            <div class="col-6 p-0"><label for="exampleInputPassword2" class="text-02">Подтвердить Пароль</label>
+                            </div>
+                            <input type="password" class="form-control bg-light" id="exampleInputPassword1"
+                                   name="password2">
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="submit" class="btn btn-danger px-4 px-sm-5 py-2 rounded-15 mr-2">Создать
+                                аккаунт
+                            </button>
+                            <a href="{% url 'main_login' %}" class="d-block d-md-none">Войти</a>
+                        </div>
+                    </form><!-- End of form-example -->
+                </div><!-- End of col-10 -->
+            </div><!-- End of row -->
+        </div><!-- End of container-fluid -->
+    </div><!-- End of container-fluid -->
+{% endblock %}

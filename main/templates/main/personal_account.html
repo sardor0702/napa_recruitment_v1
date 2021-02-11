@@ -1,0 +1,64 @@
+{% extends '../layouts/layout.html' %}
+{% load static %}
+{% block content %}
+    <!-- section-content -->
+	<div class="container-xl section-content my-110 px-4 pb-5">
+		<div class="row mx-0 mb-md-5">
+			<div class="col-12">
+				<h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">Личный кабинет</h1>
+				<h2 class="d-block d-md-none font-size-28">Личный кабинет</h2>
+
+				<h4 class="mb-5 pt-3 d-none d-sm-none d-md-block font-size-20">Персональная информация</h4>
+				<h5 class="mb-5 pt-4 d-block d-md-none font-size-20">Персональная информация</h5>
+				<div class="row mb-4">
+					<div class="col-md-2 mb-5 mb-lg-0">
+						<img src="{% static 'main/img/photo.svg' %}">
+					</div>
+					<div class="col-12 col-md-8 offset-md-2 d-flex justify-content-center">
+						<div class="row mx-0">
+							<div class="col-md-6 px-0">
+								<p class="font-weight-bold mb-0 mb-md-4 text-break">Наименование компании</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="mb-4">CONTENT</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="font-weight-bold mb-0 mb-md-4 text-break">Ф.И.О. ответственного лица</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="mb-4 text-break">Семеренко Александр Вячеславович</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="font-weight-bold mb-0 mb-md-4">Деятельность компании</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="mb-4 text-break">Разработка веб сайтов</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="font-weight-bold mb-0 mb-md-4">Телефон</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="mb-4">+ 998904521457</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="font-weight-bold mb-0 mb-md-4">Мобильный</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="mb-4">+ 998904567189</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="font-weight-bold mb-0 mb-md-4">Почтa</p>
+							</div>
+							<div class="col-md-6 px-0">
+								<p class="mb-4 text-break">web_designstudio.com</p>
+							</div>
+							<div class="col px-0">
+								<a type="button"href="{% url 'main_personal_acc_changing_info' %}" class="btn btn-danger rounded-15 px-4">Изменить</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- End of col-12 -->
+		</div><!-- End of row -->
+	</div><!-- End of section-content -->
+{% endblock %}
