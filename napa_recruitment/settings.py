@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'user',
     'student',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'napa_recruitment.pagination.CustomPagination',
     'PAGE_SIZE': 20
 }
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
