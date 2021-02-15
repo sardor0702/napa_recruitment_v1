@@ -3,6 +3,8 @@ from . import views
 from .forms import RegisterForm, LoginForms
 from django.contrib.auth import authenticate, login as dj_login, logout
 from django.contrib.auth.decorators import login_required
+from user.models import User
+
 
 
 def home(request):
@@ -38,6 +40,11 @@ def login_checkin(request):
     return render(request, 'main/personal_account.html', context=context)
 
 
+def logout_check(request):
+    logout(request)
+    return redirect("main_login")
+
+
 def register(request):
     context = {
         'form': RegisterForm,
@@ -56,3 +63,25 @@ def register_post(request):
 
 def forgot_password(request):
     return render(request, 'main/forgot_password.html', {'title': 'Forgot password'})
+
+
+def update(request, id):
+    try:
+        u = User.objects.get(id=id)
+    except User.DoesNotExist:
+        return redirect('main_checkin')
+
+    if request.method == 'POST':
+        u.company_name = request.POST.get('company_name')
+        u.full_name = request.POST.get('full_name')
+        u.activity_company = request.POST.get('activity_company')
+        u.phone = request.POST.get('phone')
+        u.mobil_phone = request.POST.get('mobil_phone')
+        u.email = request.POST.get('email')
+        u.save()
+        return redirect('main_checkin')
+    return render(request, 'main/personal_account_changing_info.html', {
+        'u': u
+    })
+
+

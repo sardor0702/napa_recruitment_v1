@@ -54,3 +54,8 @@ class User(AbstractUser):
     @property
     def full_name(self):
         return "{} {}".format(self.last_name, self.first_name)
+
+
+# user = User.objects.all()
+# for i in user:
+#     i.

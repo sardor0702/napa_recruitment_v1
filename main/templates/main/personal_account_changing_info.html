@@ -24,27 +24,27 @@
 				<div class="col-12 col-md-6">
 					<div class="form-group mb-md-0">
 						<label for="validationDefault01">Наименование компании</label>
-						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" required>
+						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" name="company_name" value="{{ u.company_name }}">
 					</div>
 					<div class="form-group mb-md-0">
 						<label for="validationDefault01">Ф.И.О. ответственного лица</label>
-						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" required>
+						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" name="full_name" value="{{ u.full_name }}">
 					</div>
 					<div class="form-group mb-md-0">
 						<label for="validationCustom01" class="text-02">Деятельность компании</label>
-						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationCustom01" required>
+						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationCustom01" name="activity_company" value="{{ u.activity_company }}">
 					</div>
 					<div class="form-group mb-md-0">
 						<label for="exampleInputEmail1" class="text-02">Рабочий номер</label>
-						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4">
+						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" name="phone" value="{{ u.phone }}">
 					</div>
 					<div class="form-group mb-md-0">
 						<label for="exampleInputEmail1" class="text-02">Мобильный номер</label>
-						<input type="text" class="form-control bg-light  rounded-15 py-4 mb-4">
+						<input type="text" class="form-control bg-light  rounded-15 py-4 mb-4" name="mobil_phone" value="{{ u.mobil_phone }}">
 					</div>
 					<div class="form-group mb-md-0">
 						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control bg-light rounded-15 py-4 mb-4" id="exampleInputEmail1" aria-describedby="emailHelp">
+						<input type="email" class="form-control bg-light rounded-15 py-4 mb-4" id="exampleInputEmail1" name="email" value="{{ u.email }}" >
 					</div>
 				</div>
 				<div class="col-12 col-md-6">
