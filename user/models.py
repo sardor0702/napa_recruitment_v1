@@ -15,7 +15,6 @@ class UserManager(BaseUserManager):
 
         user.save()
 
-
     def create_user(self, *args, **kwargs):
         kwargs.setdefault('is_staff', False)
         kwargs.setdefault('is_superuser', False)
@@ -35,6 +34,9 @@ class UserManager(BaseUserManager):
         # print(args, kwargs)
 
         return self.__create_user(*args, **kwargs)
+
+    def get_by_natural_key(self, username):
+        return User.objects.get(username=username)
 
 
 class User(AbstractUser):

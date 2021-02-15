@@ -3,6 +3,7 @@
 <div class="scroll-up-btn">
 {#    <i class="fas fa-angle-up"></i>#}
     <i class="bi-chevron-up mb-5"></i>
+{#    <img src="{% static 'main/img/up-arrow.svg' %}" alt="" style="width: 30px; height: 30px; color: #fff;">#}
 </div>
 
 <!-- navbar -->
@@ -39,12 +40,12 @@
                 <ul class="navbar-nav flex-row d-flex justify-content-around ml-0 ml-md-5">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link text-secondary" href="{% url 'main_favorites' %}">
+                        <a class="nav-link text-secondary" href="#">
                             <img src="{% static 'main/img/star.svg' %}">
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-secondary" href="{% url 'main_personal_account' %}">
+                        <a class="nav-link text-secondary" href="#">
                             <img src="{% static 'main/img/personall account.svg' %}">
                         </a>
                     </li>
