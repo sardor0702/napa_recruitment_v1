@@ -24,3 +24,18 @@ class LoginForms(forms.Form):
     # class Meta:
     #     model = User
     #     fields = ('username', 'password')
+
+
+# class UserForm(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         fields = [
+#             'company_name',
+#             'full_name',
+#             'activity_company',
+#             'phone',
+#             'mobil_phone',
+#             'email'
+#         ]
+
+

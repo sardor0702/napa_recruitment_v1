@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from user.models import User
 
 
-
 def home(request):
     context = {}
     return render(request, 'main/home_page.html', context)
@@ -67,21 +66,34 @@ def forgot_password(request):
 
 def update(request, id):
     try:
-        u = User.objects.get(id=id)
+        user = User.objects.get(id=id)
     except User.DoesNotExist:
         return redirect('main_checkin')
 
     if request.method == 'POST':
-        u.company_name = request.POST.get('company_name')
-        u.full_name = request.POST.get('full_name')
-        u.activity_company = request.POST.get('activity_company')
-        u.phone = request.POST.get('phone')
-        u.mobil_phone = request.POST.get('mobil_phone')
-        u.email = request.POST.get('email')
-        u.save()
+        user.company_name = request.POST.get('company_name')
+        name = request.POST.get('full_name').strip()
+        user.first_name, user.last_name = name.split()
+        user.activity_company = request.POST.get('activity_company')
+        user.phone = request.POST.get('phone')
+        user.mobil_phone = request.POST.get('mobil_phone')
+        user.email = request.POST.get('email')
+        user.save()
         return redirect('main_checkin')
     return render(request, 'main/personal_account_changing_info.html', {
-        'u': u
+        'user': user
     })
+
+# def user_info_update(request):
+#     form = UserForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         form = UserForm()
+#
+#     context = {
+#         'form': form
+#     }
+#     return render(request, "main/personal_account.html", context=context)
+
 
 
