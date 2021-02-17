@@ -580,6 +580,9 @@ html{
     margin-bottom: 50px !important;
   }
 
+  .ft-12{
+    font-size: 12px !important;
+  }
 }
 
 /* Sing up page responsive media query */
