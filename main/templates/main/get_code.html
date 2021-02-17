@@ -1,5 +1,7 @@
 {% extends '../layouts/layout_sign_in.html' %}
 {% load static %}
+{% load i18n %}
+{% load i18n %}
 {% block content %}
     <div class="container-fluid d-flex p-0">
 		<div class="container-fluid d-none d-sm-none d-md-block" id="left">
@@ -19,8 +21,8 @@
 		<div class="container-fluid m-0" id="right">
 			<div class="row d-flex justify-content-center align-items-center">
 				<div class="col-10 col-md-8 col-lg-6 ">
-					<h1 class="d-block d-sm-block d-md-none title-name mb-0">{% trans 'NAPA' %}</h1>
-					<h1 class="d-block d-sm-block d-md-none title-name">{% trans 'Recruitment' %}</h1>
+					<h1 class="d-block d-sm-block d-md-none title-name mb-0">NAPA</h1>
+					<h1 class="d-block d-sm-block d-md-none title-name">Recruitment</h1>
 					<hr class="d-block d-sm-block d-md-none ">
 					<form class="form-example mt-3"> 
 						<label class="text-01 mb-4">{% trans 'Введите код подтверждения' %}</label>

@@ -1,22 +1,23 @@
 {% extends '../layouts/layout.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
     <!-- section-content -->
 	<div class="container-xl section-content my-110 px-4 pb-5">
 		<div class="row mx-0">
 			<div class="col-12">
-				<h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">Личный кабинет</h1>
-				<h2 class="d-block d-md-none font-size-28">Личный кабинет</h2>
+				<h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">{% trans 'Личный кабинет' %}</h1>
+				<h2 class="d-block d-md-none font-size-28">{% trans 'Личный кабинет' %}</h2>
 
-				<h4 class="pt-3 d-none d-sm-none d-md-block font-size-20">Персональная информация</h4>
-				<h5 class="pt-4 d-block d-md-none font-size-20">Персональная информация</h5>
+				<h4 class="pt-3 d-none d-sm-none d-md-block font-size-20">{% trans 'Персональная информация' %}</h4>
+				<h5 class="pt-4 d-block d-md-none font-size-20">{% trans 'Персональная информация' %}</h5>
 			</div>
 		</div>
 		<div class="row align-items-center mx-0 my-4 py-3">
 			<form class="col-12 d-flex flex-column flex-sm-row align-items-center">
 				<img src="{% static 'main/img/ellipse3.png' %}" class="mr-4">
-				<button class="btn btn-danger font-size-14 rounded-15 px-4 px-sm-4 px-md-2 px-lg-4 py-2 my-3 my-sm-0 mr-2">Загрузить фотографию</button>
-				<button class="btn btn-light rounded-15 px-3 mb-3 py-2 mb-sm-0 font-size-14">Удалить</button>
+				<button class="btn btn-danger font-size-14 rounded-15 px-4 px-sm-4 px-md-2 px-lg-4 py-2 my-3 my-sm-0 mr-2">{% trans 'Загрузить фотографию' %}</button>
+				<button class="btn btn-light rounded-15 px-3 mb-3 py-2 mb-sm-0 font-size-14">{% trans 'Удалить' %}</button>
 			</form>
 		</div>
 		<form action="{% if user %}{% url 'main_update' user.id %}{% endif %}" method="post">
@@ -24,23 +25,23 @@
 			<div class="row mx-0 mb-5">
 				<div class="col-12 col-md-6">
 					<div class="form-group mb-md-0">
-						<label for="validationDefault01">Наименование компании</label>
+						<label for="validationDefault01">{% trans 'Наименование компании' %}</label>
 						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" name="company_name" value="{{ user.company_name }}">
 					</div>
 					<div class="form-group mb-md-0">
-						<label for="validationDefault01">Ф.И.О. ответственного лица</label>
+						<label for="validationDefault01">{% trans 'Ф.И.О. ответственного лица' %}</label>
 						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" name="full_name" value="{{ user.full_name }}">
 					</div>
 					<div class="form-group mb-md-0">
-						<label for="validationCustom01" class="text-02">Деятельность компании</label>
+						<label for="validationCustom01" class="text-02">{% trans 'Деятельность компании' %}</label>
 						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationCustom01" name="activity_company" value="{{ user.activity_company }}">
 					</div>
 					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1" class="text-02">Рабочий номер</label>
+						<label for="exampleInputEmail1" class="text-02">{% trans 'Рабочий номер' %}</label>
 						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" name="phone" value="{{ user.phone }}">
 					</div>
 					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1" class="text-02">Мобильный номер</label>
+						<label for="exampleInputEmail1" class="text-02">{% trans 'Мобильный номер' %}</label>
 						<input type="text" class="form-control bg-light  rounded-15 py-4 mb-4" name="mobil_phone" value="{{ user.mobil_phone }}">
 					</div>
 					<div class="form-group mb-md-0">
@@ -61,7 +62,7 @@
 			</div><!-- End of row -->
 			<div class="row mx-0">
 				<div class="col-12 d-flex justify-content-center justify-content-md-start">
-					<button class="btn btn-danger rounded-15 px-5 py-3" type="submit">Сохранить</button>
+					<button class="btn btn-danger rounded-15 px-5 py-3" type="submit">{% trans 'Сохранить' %}</button>
 				</div>
 			</div>
 		</form>

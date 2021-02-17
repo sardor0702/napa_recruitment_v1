@@ -1,6 +1,7 @@
 {% extends '../layouts/layout_sign_in.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block content %}
     <div class="container-fluid d-flex p-0 ">
         <div class="container-fluid d-none d-sm-none d-md-block" id="left">
@@ -20,7 +21,7 @@
         <div class="container-fluid m-0" id="right-1">
             <div class="row py-4 px-5 my-3 d-none d-md-block">
                 <div class="col text-right font-size-12">
-                    <span>Нет аккаунта? </span><a href="{% url 'main_login' %}" class="text-danger">Войти</a>
+                    <span>{% trans 'Нет аккаунта' %}? </span><a href="{% url 'main_login' %}" class="text-danger">{% trans 'Войти' %}</a>
                 </div>
             </div>
             <div class="row d-flex justify-content-center align-items-center h-75">
@@ -32,7 +33,7 @@
                         {% csrf_token %}
                         {{ form | crispy }}
                         <button type="submit" class="btn btn-danger px-4 px-sm-5 py-2 rounded-15 mr-2">
-                            Создать аккаунт
+                            {% trans 'Создать аккаунт' %}
                         </button>
                     </form>
 
