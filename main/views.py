@@ -4,11 +4,12 @@ from .forms import RegisterForm, LoginForms
 from django.contrib.auth import authenticate, login as dj_login, logout
 from django.contrib.auth.decorators import login_required
 from user.models import User
-
+from django.utils.translation import gettext_lazy as _
+from napa_recruitment.settings import LANGUAGES
 
 def home(request):
-    context = {}
-    return render(request, 'main/home_page.html', context)
+
+    return render(request, 'main/home_page.html')
 
 
 def login(request):
@@ -94,6 +95,3 @@ def update(request, id):
 #         'form': form
 #     }
 #     return render(request, "main/personal_account.html", context=context)
-
-
-

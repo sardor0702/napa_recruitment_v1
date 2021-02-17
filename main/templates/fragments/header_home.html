@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LC %}
 
 <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
@@ -21,19 +23,19 @@
                 <div class="offset"></div>
                 <ul class="navbar-nav pt-5 pt-md-0">
                     <li class="nav-item ml-0 ml-sm-0">
-                        <a class="nav-link text-secondary menu-btn" href="#home">Главная</a>
+                        <a class="nav-link text-secondary menu-btn" href="#home">{% trans 'Главная' %}</a>
                     </li>
                     <li class="nav-item ml-0 ml-sm-0 ml-md-5">
-                        <a class="nav-link text-secondary menu-btn" href="#o-nas">О нас</a>
+                        <a class="nav-link text-secondary menu-btn" href="#o-nas">{% trans 'О нас' %}</a>
                     </li>
                     <li class="nav-item ml-0 ml-sm-0 ml-md-5">
-                        <a class="nav-link text-secondary menu-btn" href="#students">Наши студенты</a>
+                        <a class="nav-link text-secondary menu-btn" href="#students">{% trans 'Наши студенты' %}</a>
                     </li>
                     <li class="nav-item mx-0 mx-sm-0 ml-md-5">
-                        <a class="nav-link text-secondary" href="#partners">Партнеры</a>
+                        <a class="nav-link text-secondary" href="#partners">{% trans 'Партнеры' %}</a>
                     </li>
                     <li class="nav-item invisible">
-                        <a class="nav-link text-secondary menu-btn" href="#">Партнеры</a>
+                        <a class="nav-link text-secondary menu-btn" href="#">{% trans 'Партнеры' %}</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav flex-row d-flex justify-content-around ml-0 ml-md-5">
@@ -63,10 +65,16 @@
                         </li>
                     {% endif %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown09" data-toggle="dropdown">UZ</a>
+                        <a class="nav-link dropdown-toggle text-uppercase" id="dropdown09" data-toggle="dropdown">{{ LC }}</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#uz"><span class="flag-icon flag-icon-uz"> </span> Uz</a>
-                            <a class="dropdown-item" href="#ru"><span class="flag-icon flag-icon-ru"> </span> Ru</a>
+                        {% for lan in settings.LANGUAGES %}
+                            {% if lan.1 == 'uz'%}
+                                <a class="dropdown-item" href="/{{ lan.0 }}/"><span class="flag-icon flag-icon-uz"> </span> {{ lan.1 }}</a>
+                            {% else %}
+                                <a class="dropdown-item" href="/{{ lan.0 }}/"><span class="flag-icon flag-icon-ru"> </span> {{ lan.1 }}</a>
+                            {% endif %}
+
+                        {% endfor %}
                         </div>
                     </li>
                 </ul>

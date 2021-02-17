@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware'
 ]
 
 ROOT_URLCONF = 'napa_recruitment.urls'
@@ -75,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django_settings_export.settings_export'
             ],
         },
     },
@@ -113,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'uz-UZ'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'Asia/Tashkent'
 
@@ -157,3 +159,12 @@ REST_FRAMEWORK = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LANGUAGES = [
+    ('ru', "ru"),
+    ('uz', "uz")
+]
+
+SETTINGS_EXPORT = [
+    'LANGUAGES'
+]
