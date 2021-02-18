@@ -61,11 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-<<<<<<< HEAD
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-=======
     'django.middleware.locale.LocaleMiddleware'
->>>>>>> 56a628b36c825bf243655400569390352e1394e5
 ]
 
 ROOT_URLCONF = 'napa_recruitment.urls'
@@ -81,11 +78,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-<<<<<<< HEAD
                 'napa_recruitment.globals.title',
-=======
                 'django_settings_export.settings_export'
->>>>>>> 56a628b36c825bf243655400569390352e1394e5
             ],
         },
     },
@@ -124,11 +118,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-<<<<<<< HEAD
 LANGUAGE_CODE = 'ru-RU'
-=======
+
 LANGUAGE_CODE = 'ru'
->>>>>>> 56a628b36c825bf243655400569390352e1394e5
+
 
 TIME_ZONE = 'Asia/Tashkent'
 
@@ -153,34 +146,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 
-# # REST
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES':[
-#         'rest_framework.authentication.TokenAuthentication'
-#     ],
-#     'DEFAULT_RENDERER_CLASSES': [
-#         'rest_framework.renderers.JSONRenderer',
-#         'rest_framework.renderers.TemplateHTMLRenderer',
-#     ],
-#     'DEFAULT_PARSER_CLASSES': [
-#         'rest_framework.parsers.JSONParser',
-#         'rest_framework.parsers.FormParser',
-#         'rest_framework.parsers.MultiPartParser',
-#     ],
-#     'EXCEPTION_HANDLER': 'napa_recruitment.exception.handler',
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.IsAuthenticated',
-#     ],
-#     'DEFAULT_PAGINATION_CLASS': 'napa_recruitment.pagination.CustomPagination',
-#     'PAGE_SIZE': 20
-# }
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-<<<<<<< HEAD
+
 INTERNAL_IPS = [
-    '127.0.0.1',
-=======
+    '127.0.0.1'
+]
+
 LANGUAGES = [
     ('ru', "ru"),
     ('uz', "uz")
@@ -188,5 +160,4 @@ LANGUAGES = [
 
 SETTINGS_EXPORT = [
     'LANGUAGES'
->>>>>>> 56a628b36c825bf243655400569390352e1394e5
 ]
