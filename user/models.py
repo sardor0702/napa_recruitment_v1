@@ -59,4 +59,3 @@ class User(AbstractUser):
 
 # user = User.objects.all()
 # for i in user:
-#     i.

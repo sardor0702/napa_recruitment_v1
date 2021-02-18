@@ -40,15 +40,16 @@ class UserRegistration(View):
 
 def user_login(request):
     request.title = "Авторизоваться"
+
     form = LoginForm()
     if request.POST:
         form = LoginForm(data=request.POST)
         if form.is_valid():
-            user = authenticate(username=form.cleaned_data["username"], passwprd=form.cleaned_data["password"])
+            user = authenticate(username=form.cleaned_data["username"], password=form.cleaned_data["password"])
             if user is not None:
                 login(request, user)
-                messages.add_message("Добро пожаловать !!!  {}".format(user.full_name))
-                return redirect('main:personal_account')
+                messages.success(request, "Добро пожаловать !!!  {}".format(user.username))
+                return redirect('main:main_home')
 
             form.add_error('password', "Имя пользователя и пароль неверны !")
     return render(request, 'main/sign_in.html', {
