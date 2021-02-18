@@ -7,7 +7,7 @@ from user.models import User
 
 
 # class RegistrationForm(forms.ModelForm):
-#     phone = forms.CharField(max_length=14, required=True, validators=[PhoneValidator()], placeholder="998991234567")
+#     phone = forms.CharField(max_length=14, required=True, validators=[PhoneValidator()])
 #     password = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
 #                                validators=[MinLengthValidator(6)])
 #     confirm = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
@@ -18,15 +18,15 @@ from user.models import User
 #         fields = ('phone', 'username', 'password', 'confirm')
 
 
-class LoginForm(forms.ModelForm):
+class LoginForm(forms.Form):
 
-    username = forms.CharField(max_length=20, required=True,  validators=[UnicodeUsernameValidator()])
+    username = forms.CharField(max_length=20, required=True)
     password = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
                                validators=[MinLengthValidator(6)])
 
-    class Meta:
-        model = User
-        fields = ('username', 'password')
+    # class Meta:
+    #     model = User
+    #     fields = ('username', 'password')
 
 
 class RegistrationForm(forms.Form):
