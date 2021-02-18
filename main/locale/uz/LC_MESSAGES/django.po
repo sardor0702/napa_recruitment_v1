@@ -1,0 +1,337 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-17 17:35+0500\n"
+"PO-Revision-Date: 2021-02-17 18:00+0500\n"
+"Language: uz\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.3\n"
+
+#: main/templates/fragments/header_all.html:21
+#: main/templates/fragments/header_home.html:26
+msgid "Главная"
+msgstr "Bosh sahifa"
+
+#: main/templates/fragments/header_all.html:24
+#: main/templates/fragments/header_home.html:29
+msgid "О нас"
+msgstr "Biz haqimizda"
+
+#: main/templates/fragments/header_all.html:27
+#: main/templates/fragments/header_home.html:32
+msgid "Наши студенты"
+msgstr "Bizning talabalar"
+
+#: main/templates/fragments/header_all.html:30
+#: main/templates/fragments/header_all.html:33
+#: main/templates/fragments/header_home.html:35
+#: main/templates/fragments/header_home.html:38
+msgid "Партнеры"
+msgstr "Hamkorlar"
+
+#: main/templates/main/favorites.html:8 main/templates/main/favorites1.html:8
+#: main/templates/main/favorites2.html:8
+msgid "Избранные сотрудники"
+msgstr "Tanlangan xodimlar"
+
+#: main/templates/main/favorites.html:82 main/templates/main/favorites.html:166
+#: main/templates/main/favorites1.html:82
+#: main/templates/main/personal_account.html:64
+msgid "Изменить"
+msgstr "Tahrirlash"
+
+#: main/templates/main/favorites.html:91 main/templates/main/favorites1.html:91
+#: main/templates/main/favorites2.html:91
+msgid "Мои заявки"
+msgstr "Mening arizalarim"
+
+#: main/templates/main/favorites1.html:166
+#: main/templates/main/favorites2.html:166
+#: main/templates/main/personal_account_changing_info.html:65
+msgid "Сохранить"
+msgstr "Saqlash"
+
+#: main/templates/main/favorites1.html:181
+#: main/templates/main/favorites2.html:181
+msgid "Вы уверены, что хотите удалить сотрудника из списка заявок"
+msgstr "Xodimni arizalar ro'yxatidan olib tashlashga aminmisiz"
+
+#: main/templates/main/favorites1.html:185
+#: main/templates/main/favorites2.html:185
+#: main/templates/main/personal_account_changing_info.html:20
+msgid "Удалить"
+msgstr "O'chirish"
+
+#: main/templates/main/favorites1.html:186
+#: main/templates/main/favorites2.html:186
+msgid "Оставить"
+msgstr "Qoldirish"
+
+#: main/templates/main/forgot_password.html:23
+msgid "NAPA"
+msgstr "NAPA"
+
+#: main/templates/main/forgot_password.html:24
+msgid "Recruitment"
+msgstr "Recruitment"
+
+#: main/templates/main/forgot_password.html:27
+msgid "Забыли пароль?"
+msgstr "Parolni unitdingizmi?"
+
+#: main/templates/main/forgot_password.html:29
+msgid ""
+"Введите номер телефона который вы вводили при регистрации и мы вышлем вам "
+"письмо с инструкцией."
+msgstr ""
+"Ro'yxatdan o'tish paytida kiritilgan telefon raqamingizni kiriting va biz "
+"sizga ko'rsatmalar bilan elektron pochta xabarini yuboramiz."
+
+#: main/templates/main/forgot_password.html:32
+#: main/templates/main/personal_account.html:46
+msgid "Телефон"
+msgstr "Telefon"
+
+#: main/templates/main/forgot_password.html:35
+#: main/templates/main/get_code.html:32
+msgid "Восстановить пароль"
+msgstr "Parolni tiklash"
+
+#: main/templates/main/get_code.html:27
+msgid "Введите код подтверждения"
+msgstr "Tasdiqlovchi kodni kiriting"
+
+#: main/templates/main/get_code.html:29
+msgid "Код подтверждения"
+msgstr "Tasdiqlash kodi"
+
+#: main/templates/main/home_page.html:11
+msgid "Найдите подходящего сотрудника среди наших выпускников"
+msgstr "Bitiruvchilarimiz orasidan kerakli xodimni toping"
+
+#: main/templates/main/home_page.html:18
+msgid "Введите ключевые слова, пример: HTML"
+msgstr "Kalit so'zlarni kiriting, misol: HTML"
+
+#: main/templates/main/home_page.html:21
+msgid "Искать"
+msgstr "Qidirish"
+
+#: main/templates/main/home_page.html:38
+msgid "O NAPA Recruitment"
+msgstr "O NAPA Recruitment"
+
+#: main/templates/main/home_page.html:40
+msgid ""
+"Мы компания по предоставлению рекрутинговых услуг. Мы не просто занимаемся "
+"поиском качественных, квалифицированных специалистов, мы их обучаем и "
+"воспитываем в течении одного года в нашей IТ Академии (Bobir Akilhanov Tech "
+"Academy)."
+msgstr ""
+"Biz  rekruting boyicha hizmat korsatish kompaniyamiz. Biz nafaqat yuqori "
+"sifatli, malakali mutaxassislarni izlamoqdamiz, balki ularni bir yil ichida "
+"IT akademiyamizda (Bobir Akilkhanov nomidagi tech akademiyasi) o'qitamiz va "
+"tarbiyalaymiz."
+
+#: main/templates/main/home_page.html:43
+msgid "Мы ищем и находим для вас лучших специалистов!"
+msgstr "Siz uchun eng yaxshi mutaxassislarni qidiramiz va topamiz!"
+
+#: main/templates/main/home_page.html:54
+msgid "Доступные должности"
+msgstr "Mavjud o'rinlar"
+
+#: main/templates/main/home_page.html:60
+msgid "Back-End разработчик"
+msgstr "Back-End dasturchisi"
+
+#: main/templates/main/home_page.html:64
+msgid "Front-End разработчик"
+msgstr "Front-End dasturchisi"
+
+#: main/templates/main/home_page.html:68
+msgid "HR-менеджер"
+msgstr "Kadrlar menejeri"
+
+#: main/templates/main/home_page.html:72
+msgid "Digital-маркетолог"
+msgstr "Raqamli sotuvchi"
+
+#: main/templates/main/home_page.html:81
+msgid "О наших студентах"
+msgstr "Bizning o'quvchilarimiz haqida"
+
+#: main/templates/main/home_page.html:83
+#, python-format
+msgid ""
+"Наши студенты - начинающие специалисты в сфере IT (Python, PHP, Java, SMM, "
+"HR-менеджер) окончившие Bobir Akilhanov Tech Academy. Выпускники прошли "
+"специализированное годовое обучение в рамках международных стандартов. "
+"Программа обучения состоит из 70%% практики и 30%% теории, а так же 3 месяца "
+"работы с реальными проектами."
+msgstr ""
+"Bizning talabalarimiz Bobir Akilkhanov  tech akademiyasini tamomlagan IT-"
+"mutaxassislar (Python, PHP, Java, SMM, HR menejer)dir. Bitiruvchilar xalqaro "
+"standartlar doirasida ixtisoslashtirilgan bir yillik o'qishni tamomlaydilar. "
+"O'quv dasturi 70% amaliyot va 30% nazariyadan, shuningdek 3 oylik real "
+"loyihalar bilan ishlashdan iborat."
+
+#: main/templates/main/home_page.html:119
+msgid "Наши партнеры"
+msgstr "Hamkorlarimiz"
+
+#: main/templates/main/personal_account.html:10
+#: main/templates/main/personal_account.html:11
+#: main/templates/main/personal_account_changing_info.html:9
+#: main/templates/main/personal_account_changing_info.html:10
+msgid "Личный кабинет"
+msgstr "Shaxsiy kabinet"
+
+#: main/templates/main/personal_account.html:13
+#: main/templates/main/personal_account.html:14
+#: main/templates/main/personal_account_changing_info.html:12
+#: main/templates/main/personal_account_changing_info.html:13
+msgid "Персональная информация"
+msgstr "Shaxsiy ma'lumot"
+
+#: main/templates/main/personal_account.html:22
+#: main/templates/main/personal_account_changing_info.html:28
+msgid "Наименование компании"
+msgstr "Kopmaniya nomi"
+
+#: main/templates/main/personal_account.html:26
+#: main/templates/main/personal_account.html:34
+#: main/templates/main/personal_account.html:42
+#: main/templates/main/personal_account.html:49
+#: main/templates/main/personal_account.html:55
+#: main/templates/main/personal_account.html:61
+msgid "Нет данных"
+msgstr "Ma'lumot yo'q"
+
+#: main/templates/main/personal_account.html:30
+#: main/templates/main/personal_account_changing_info.html:32
+msgid "Ф.И.О. ответственного лица"
+msgstr "F.I.Sh to'liq ma'lumot"
+
+#: main/templates/main/personal_account.html:38
+#: main/templates/main/personal_account_changing_info.html:36
+msgid "Деятельность компании"
+msgstr "Kompaniya faoliyati"
+
+#: main/templates/main/personal_account.html:52
+msgid "Мобильный"
+msgstr "Mobil"
+
+#: main/templates/main/personal_account.html:58
+msgid "Почтa"
+msgstr "Pochta"
+
+#: main/templates/main/personal_account_changing_info.html:19
+msgid "Загрузить фотографию"
+msgstr "Suratni yuklash"
+
+#: main/templates/main/personal_account_changing_info.html:40
+msgid "Рабочий номер"
+msgstr "Ish raqami"
+
+#: main/templates/main/personal_account_changing_info.html:44
+msgid "Мобильный номер"
+msgstr "Mobil telefon raqami"
+
+#: main/templates/main/searching.html:9 main/templates/main/searching.html:13
+msgid "Фильтр"
+msgstr "Filtr"
+
+#: main/templates/main/searching.html:65
+msgid "Маркетинг"
+msgstr "Marketing"
+
+#: main/templates/main/searching.html:68
+msgid "Полный рабочий день"
+msgstr "To'liq ish kuni"
+
+#: main/templates/main/searching.html:72
+msgid "Неполный рабочий день"
+msgstr "Yarim kunlik ish"
+
+#: main/templates/main/searching.html:76
+msgid "Фриланс"
+msgstr "Frilans"
+
+#: main/templates/main/searching.html:80
+msgid "Работа в офисе"
+msgstr "Ofis ishi"
+
+#: main/templates/main/searching.html:84
+msgid "Удаленная работа"
+msgstr "Masofadan turib ishlash"
+
+#: main/templates/main/searching.html:99 main/templates/main/searching.html:133
+msgid "Имя Фамилия"
+msgstr "Isim Familiya"
+
+#: main/templates/main/searching.html:100
+msgid "разработчик"
+msgstr "dasturchi"
+
+#: main/templates/main/searching.html:116
+#: main/templates/main/searching.html:150
+#: main/templates/main/student_card.html:16
+msgid "Навыки"
+msgstr "Ko'nikmalar"
+
+#: main/templates/main/searching.html:123
+#: main/templates/main/searching.html:157
+msgid "Подробнее"
+msgstr "Batafsil ma'lumot"
+
+#: main/templates/main/searching.html:134
+msgid "Front-end разработчик"
+msgstr "Front-end dasturchi"
+
+#: main/templates/main/sign_in.html:25
+msgid "Нет аккаунта?"
+msgstr "Hisobingiz yo'qmi?"
+
+#: main/templates/main/sign_in.html:25 main/templates/main/sign_in.html:51
+msgid "Зарегистрируйтесь"
+msgstr "Hozir ro'yxatdan o'ting"
+
+#: main/templates/main/sign_in.html:34
+msgid "Войти в акканут"
+msgstr "Hisobingizga kiring"
+
+#: main/templates/main/sign_in.html:50 main/templates/main/sign_up.html:24
+msgid "Войти"
+msgstr "Kirish"
+
+#: main/templates/main/sign_up.html:24
+msgid "Нет аккаунта"
+msgstr "Hisob yo'q"
+
+#: main/templates/main/sign_up.html:36
+msgid "Создать аккаунт"
+msgstr "Hisob ochish"
+
+#: main/templates/main/student_card.html:17
+msgid "Возраст"
+msgstr "Yosh"
+
+#: main/templates/main/student_card.html:18
+msgid "Обо мне"
+msgstr "Men haqimda"
+
+#: main/templates/main/student_card.html:23
+msgid "Нанять сотрудника"
+msgstr "Xodimni yollash"
