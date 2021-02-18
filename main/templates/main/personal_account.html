@@ -1,15 +1,17 @@
 {% extends '../layouts/layout.html' %}
 {% load static %}
+{% load i18n %}
+
 {% block content %}
     <!-- section-content -->
     <div class="container-xl section-content my-110 px-4 pb-5">
         <div class="row mx-0 mb-md-5">
             <div class="col-12">
-                <h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">Личный кабинет</h1>
-                <h2 class="d-block d-md-none font-size-28">Личный кабинет</h2>
+                <h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">{% trans 'Личный кабинет' %}</h1>
+                <h2 class="d-block d-md-none font-size-28">{% trans 'Личный кабинет' %}</h2>
 
-                <h4 class="mb-5 pt-3 d-none d-sm-none d-md-block font-size-20">Персональная информация</h4>
-                <h5 class="mb-5 pt-4 d-block d-md-none font-size-20">Персональная информация</h5>
+                <h4 class="mb-5 pt-3 d-none d-sm-none d-md-block font-size-20">{% trans 'Персональная информация' %}</h4>
+                <h5 class="mb-5 pt-4 d-block d-md-none font-size-20">{% trans 'Персональная информация' %}</h5>
                 <div class="row mb-4">
                     <div class="col-md-2 mb-5 mb-lg-0">
                         <img src="{% static 'main/img/photo.svg' %}">
@@ -17,49 +19,49 @@
                     <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-center">
                         <div class="row mx-0">
                             <div class="col-md-6 px-0">
-                                <p class="font-weight-bold mb-0 mb-md-4 text-break">Наименование компании</p>
+                                <p class="font-weight-bold mb-0 mb-md-4 text-break">{% trans 'Наименование компании' %}</p>
                             </div>
                             <div class="col-md-6 px-0">
                                 <p class="mb-4">
-                                    {{ user.company_name|default:'Нет данных' }}
+                                    {{ user.company_name|default:_('Нет данных') }}
                                 </p>
                             </div>
                             <div class="col-md-6 px-0">
-                                <p class="font-weight-bold mb-0 mb-md-4 text-break">Ф.И.О. ответственного лица</p>
+                                <p class="font-weight-bold mb-0 mb-md-4 text-break">{% trans 'Ф.И.О. ответственного лица'%}</p>
                             </div>
                             <div class="col-md-6 px-0">
                                 <p class="mb-4 text-break">
-                                    {{ user.get_full_name|default:'Нет данных' }}
+                                    {{ user.get_full_name|default:_('Нет данных') }}
                                 </p>
                             </div>
                             <div class="col-md-6 px-0">
-                                <p class="font-weight-bold mb-0 mb-md-4">Деятельность компании</p>
+                                <p class="font-weight-bold mb-0 mb-md-4">{% trans 'Деятельность компании' %}</p>
                             </div>
                             <div class="col-md-6 px-0">
                                 <p class="mb-4 text-break">
-                                    {{ user.activity_company|default:'Нет данных' }}
+                                    {{ user.activity_company|default:_('Нет данных') }}
                                 </p>
                             </div>
                             <div class="col-md-6 px-0">
-                                <p class="font-weight-bold mb-0 mb-md-4">Телефон</p>
+                                <p class="font-weight-bold mb-0 mb-md-4">{% trans 'Телефон' %}</p>
                             </div>
                             <div class="col-md-6 px-0">
-                                <p class="mb-4">{{ user.phone|default:'Нет данных' }}</p>
+                                <p class="mb-4">{{ user.phone|default:_('Нет данных') }}</p>
                             </div>
                             <div class="col-md-6 px-0">
-                                <p class="font-weight-bold mb-0 mb-md-4">Мобильный</p>
+                                <p class="font-weight-bold mb-0 mb-md-4">{% trans 'Мобильный' %}</p>
                             </div>
                             <div class="col-md-6 px-0">
-                                <p class="mb-4">{{ user.mobil_phone|default:'Нет данных' }}</p>
+                                <p class="mb-4">{{ user.mobil_phone|default:_('Нет данных') }}</p>
                             </div>
                             <div class="col-md-6 px-0">
-                                <p class="font-weight-bold mb-0 mb-md-4">Почтa</p>
+                                <p class="font-weight-bold mb-0 mb-md-4">{% trans 'Почтa' %}</p>
                             </div>
                             <div class="col-md-6 px-0">
-                                <p class="mb-4 text-break">{{ user.email|default:'Нет данных' }}</p>
+                                <p class="mb-4 text-break">{{ user.email|default:_('Нет данных') }}</p>
                             </div>
                             <div class="col px-0">
-                                <a type="button" href="{% url 'main_update' user.id %}" class="btn btn-danger rounded-15 px-4">Изменить</a>
+                                <a type="button" href="{% url 'main_update' user.id %}" class="btn btn-danger rounded-15 px-4">{% trans 'Изменить' %}</a>
                             </div>
                         </div>
                     </div>

@@ -16,14 +16,31 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+<<<<<<< HEAD
 import debug_toolbar
+=======
+from django.conf.urls.i18n import i18n_patterns
+>>>>>>> 56a628b36c825bf243655400569390352e1394e5
 
 urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('user/', include('user.urls', namespace='user')),
-    path('', include('main.urls'))
+=======
+    # path('api/', include([
+    #     path('user/', include('user.urls'))
+    # ])),
+    # path('', include('main.urls'))
 ]
+
+urlpatterns += i18n_patterns(
+    path('api/', include([
+        path('user/', include('user.urls'))
+    ])),
+>>>>>>> 56a628b36c825bf243655400569390352e1394e5
+    path('', include('main.urls'))
+)
 
 # urlpatterns = [
 #     path('admin/', admin.site.urls),

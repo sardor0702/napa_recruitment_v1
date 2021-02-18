@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang=" ">
 <head>
@@ -19,7 +20,7 @@
 </head>
 <body>
     <div class="">
-        {% if request.path == '/' %}
+        {% if request.path == '/uz/' or request.path == '/ru/' %}
             {% include 'fragments/header_home.html' %}
         {% else %}
             {% include 'fragments/header_all.html' %}

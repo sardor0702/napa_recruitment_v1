@@ -4,11 +4,20 @@ from . import views
 from django.contrib.auth import authenticate, login as dj_login, logout
 from django.contrib.auth.decorators import login_required
 from user.models import User
+<<<<<<< HEAD
 from django.views.generic import TemplateView
 
 
 class Home(TemplateView):
     template_name = "main/home_page.html"
+=======
+from django.utils.translation import gettext_lazy as _
+from napa_recruitment.settings import LANGUAGES
+
+def home(request):
+
+    return render(request, 'main/home_page.html')
+>>>>>>> 56a628b36c825bf243655400569390352e1394e5
 
     # def get_context_data(self, **kwargs):
     #     self.request.title = "hiha"
@@ -102,6 +111,3 @@ class Home(TemplateView):
 #         'form': form
 #     }
 #     return render(request, "main/personal_account.html", context=context)
-
-
-
