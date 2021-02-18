@@ -2,7 +2,7 @@
 
 <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
-{#    <i class="bi-chevron-up mb-5"></i>#}
+{#    <i class="bi bi-caret-up-fill mb-5"></i>#}
 </div>
 
 <!-- navbar -->
@@ -51,13 +51,13 @@
                     {% endif %}
                     {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link text-secondary" href="{% url 'logout' %}">
+                            <a class="nav-link text-secondary" href="#">
                                 <img src="{% static 'main/img/sign_in.svg' %}">
                             </a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link text-secondary" href="{% url 'main_login' %}">
+                            <a class="nav-link text-secondary" href="{% url 'user:login' %}">
                                 <img src="{% static 'main/img/sign_in.svg' %}">
                             </a>
                         </li>

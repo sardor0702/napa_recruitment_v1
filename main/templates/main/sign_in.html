@@ -20,7 +20,7 @@
 		<div class="container-fluid m-0" id="right-1">
 			<div class="row py-4 px-5 my-3 d-none d-md-block">
 				<div class="col text-right font-size-12">
-					<span>Нет аккаунта? </span><a href="{% url 'main_registration' %}" class="text-danger">Зарегистрируйтесь</a>
+					<span>Нет аккаунта? </span><a href="{% url 'user:registration' %}" class="text-danger">Зарегистрируйтесь</a>
 				</div>
 			</div>
 			<div class="row h-75 d-flex justify-content-center align-items-center">
@@ -28,7 +28,7 @@
 					<h1 class="d-block d-sm-block d-md-none title-name mb-0">NAPA</h1>
 					<h1 class="d-block d-sm-block d-md-none title-name">Recruitment</h1>
 					<hr class="d-block d-sm-block d-md-none ">
-					<form class="form-example mt-3" action="{% url 'main_login' %}" method="post">
+					<form class="form-example mt-3" action="{% url 'user:login' %}" method="post">
 						<label class="text-01 mb-4">Войти в акканут</label>
                         {% csrf_token %}
                         {{ form | crispy }}

@@ -41,7 +41,3 @@ $(".favourite-icon-1").click(function(){
 		clicked = false;
 	}
 });
-
-$(":input").inputmask();
-
-$("#phone").inputmask({"mask": "(999) 999-9999"});
