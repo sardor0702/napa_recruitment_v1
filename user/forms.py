@@ -1,21 +1,9 @@
 from django import forms
 from napa_recruitment.validators import PhoneValidator
-from django.core.validators import MinLengthValidator
+from django.core.validators import MinLengthValidator, EmailValidator
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.core.exceptions import ValidationError
 from user.models import User
-
-
-# class RegistrationForm(forms.ModelForm):
-#     phone = forms.CharField(max_length=14, required=True, validators=[PhoneValidator()])
-#     password = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
-#                                validators=[MinLengthValidator(6)])
-#     confirm = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
-#                               validators=[MinLengthValidator(6)])
-#
-#     class Meta:
-#         model = User
-#         fields = ('phone', 'username', 'password', 'confirm')
 
 
 class LoginForm(forms.Form):
@@ -23,10 +11,6 @@ class LoginForm(forms.Form):
     username = forms.CharField(max_length=20, required=True)
     password = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
                                validators=[MinLengthValidator(6)])
-
-    # class Meta:
-    #     model = User
-    #     fields = ('username', 'password')
 
 
 class RegistrationForm(forms.Form):
@@ -56,3 +40,26 @@ class RegistrationForm(forms.Form):
                 raise ValidationError("Parollar bir xil emas")
 
         return self.cleaned_data['confirm']
+
+
+class EditForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = [
+            'company_name',
+            'first_name',
+            'last_name',
+            'activity_company',
+            'phone',
+            'mobil_phone',
+            'email',
+        ]
+
+    # company_name = forms.CharField(max_length=80, required=True)
+    # first_name = forms.CharField(max_length=30, required=True)
+    # last_name = forms.CharField(max_length=40, required=True)
+    # activity_company = forms.CharField(max_length=80)
+    # phone = forms.CharField(max_length=16, validators=[PhoneValidator()], required=True)
+    # mobil_phone = forms.CharField(max_length=16, validators=[PhoneValidator()])
+    # email = forms.EmailField(max_length=100, validators=[EmailValidator()])

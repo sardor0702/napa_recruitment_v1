@@ -1,5 +1,6 @@
 {% extends '../layouts/layout.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block content %}
     <!-- section-content -->
 	<div class="container-xl section-content my-110 px-4 pb-5">
@@ -19,45 +20,14 @@
 				<button class="btn btn-light rounded-15 px-3 mb-3 py-2 mb-sm-0 font-size-14">Удалить</button>
 			</form>
 		</div>
-		<form action="{% if user %}{% url 'main_update' user.id %}{% endif %}" method="post">
+		<form action="{% url 'user:info_save' %}" method="post">
         {% csrf_token %}
 			<div class="row mx-0 mb-5">
 				<div class="col-12 col-md-6">
-					<div class="form-group mb-md-0">
-						<label for="validationDefault01">Наименование компании</label>
-						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" name="company_name" value="{{ user.company_name }}">
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="validationDefault01">Ф.И.О. ответственного лица</label>
-						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" name="full_name" value="{{ user.full_name }}">
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="validationCustom01" class="text-02">Деятельность компании</label>
-						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationCustom01" name="activity_company" value="{{ user.activity_company }}">
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1" class="text-02">Рабочий номер</label>
-						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" name="phone" value="{{ user.phone }}">
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1" class="text-02">Мобильный номер</label>
-						<input type="text" class="form-control bg-light  rounded-15 py-4 mb-4" name="mobil_phone" value="{{ user.mobil_phone }}">
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control bg-light rounded-15 py-4 mb-4" id="exampleInputEmail1" name="email" value="{{ user.email }}" >
-					</div>
+                    {% csrf_token %}
+                    {{ form | crispy }}
 				</div>
-{#				<div class="col-12 col-md-6">#}
-{#					<div class="form-group mb-md-0 ">#}
-{#						<label for="validationDefault02">Старый пароль</label>#}
-{#						<input type="password" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault02" value="" required>#}
-{#					</div>#}
-{#					<div class="form-group mb-4 mb-md-0">#}
-{#						<label for="validationDefault02">Новый пароль</label>#}
-{#						<input type="password" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault02" value="" required>#}
-{#					</div>#}
-{#				</div>#}
+
 			</div><!-- End of row -->
 			<div class="row mx-0">
 				<div class="col-12 d-flex justify-content-center justify-content-md-start">

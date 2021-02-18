@@ -59,7 +59,7 @@
                                 <p class="mb-4 text-break">{{ user.email|default:'Нет данных' }}</p>
                             </div>
                             <div class="col px-0">
-                                <a type="button" href="{% url 'main_update' user.id %}" class="btn btn-danger rounded-15 px-4">Изменить</a>
+                                <a type="button" href="{% url 'user:info' user.id %}" class="btn btn-danger rounded-15 px-4">Изменить</a>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 from django.db import models
 from main.models import FilterValues
 
+
 class Student(models.Model):
     filters = models.ManyToManyField(FilterValues)
     first_name = models.CharField(max_length=50)

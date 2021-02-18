@@ -24,8 +24,3 @@ urlpatterns = [
     path('user/', include('user.urls', namespace='user')),
     path('', include('main.urls'))
 ]
-
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('', include('main.urls'))
-# ]

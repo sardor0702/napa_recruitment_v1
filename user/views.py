@@ -3,12 +3,13 @@ from .serializers import UserSerializer, RegistrationSerializer
 # from napa_recruitment.responses import ResponseSuccess, ResponseFile
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, EditForm
 from .models import User
 from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST, require_GET
 
 
 class UserRegistration(View):
@@ -49,7 +50,7 @@ def user_login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, "Добро пожаловать !!!  {}".format(user.username))
-                return redirect('main:main_home')
+                return redirect('user:personal_account')
 
             form.add_error('password', "Имя пользователя и пароль неверны !")
     return render(request, 'main/sign_in.html', {
@@ -58,26 +59,45 @@ def user_login(request):
 
 
 @login_required
+def login_checkin(request):
+    request.title = "Персональный аккаунт"
+    form = LoginForm(data=request.user)  #user ma'lumotlarini jo'natvoman
+    return render(request, 'main/personal_account.html', {
+        'form': form
+    })
+
+
+@login_required
 def user_logout(request):
     logout(request)
-    return redirect("main:sign_in")
+    return redirect("main:main_home")
 
-# class UserRegistration(View):
-#     def setup(self, request):
-#
-#     def get(self, request):
-#
-#         return render(request, 'main/sign_up.html')
-#
-# class Me(APIView):
-#     def get(self, request):
-#         return ResponseSuccess(UserSerializer(data=request.user).data)
-#
-#
-# class Registration(APIView):
-#     def post(self, request):
-#         data = RegistrationSerializer(data=request.data)
-#         if not data.is_valid():
-#             return ResponseFile(data.data)
-#
-#         return ResponseSuccess("ok")
+
+@require_GET
+@login_required
+def user_info(request, id):
+    request.title = "Личный кабинет"
+    try:
+        user = User.objects.get(id=id)
+    except User.DoesNotExist:
+        return redirect('personal_account')
+
+    return render(request, "main/personal_account_changing_info.html",
+                  {
+                      'form': EditForm(instance=request.user),
+                      'user': user
+                  })
+
+
+@require_POST
+@login_required
+def user_info_post(request):
+    form = EditForm(data=request.POST, instance=request.user)
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Сохранено")
+        return redirect('user:personal_account')
+
+    return render(request, "main/personal_account_changing_info.html", {
+        'form': form
+    })
