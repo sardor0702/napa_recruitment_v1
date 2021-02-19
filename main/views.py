@@ -10,6 +10,12 @@ from django.views.generic import TemplateView
 class Home(TemplateView):
     template_name = "main/home_page.html"
 
+
+def favorites(request):
+    return render(request, 'main/favorites.html')
+
+
+
     # def get_context_data(self, **kwargs):
     #     self.request.title = "hiha"
     #     return super().get_context_data(**kwargs)

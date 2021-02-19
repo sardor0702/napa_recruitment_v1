@@ -553,6 +553,49 @@ html{
   pointer-events: auto;
 }
 
+.forgot_password:hover{
+    color: #DF3888 !important;
+}
+
+/* input type file */
+
+.image-preview{
+			width: 120px;
+			min-height: 120px;
+			border: 2px solid #ddd;
+			margin-right: 15px;
+			border-radius: 50% !important;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: bold;
+			color: #ccc;
+			font-size: 10px;
+		}
+
+		.image-preview__image{
+			display: none;
+			width: 100%;
+			height: 120px;
+			border-radius: 50% !important;
+		}
+		.image-preview__default-text > img{
+			width: 100%;
+			height: 120px;
+			border-radius: 50% !important;
+		}
+
+		input[type="file"]{
+			display: none;
+		}
+
+		.inputTextLabel{
+			color: white;
+			background-color: #DF3888;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 
 /* responsive media query start */
 

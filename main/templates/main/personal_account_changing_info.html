@@ -13,25 +13,66 @@
 				<h5 class="pt-4 d-block d-md-none font-size-20">Персональная информация</h5>
 			</div>
 		</div>
-		<div class="row align-items-center mx-0 my-4 py-3">
-			<form class="col-12 d-flex flex-column flex-sm-row align-items-center">
-				<img src="{% static 'main/img/ellipse3.png' %}" class="mr-4">
-				<button class="btn btn-danger font-size-14 rounded-15 px-4 px-sm-4 px-md-2 px-lg-4 py-2 my-3 my-sm-0 mr-2">Загрузить фотографию</button>
-				<button class="btn btn-light rounded-15 px-3 mb-3 py-2 mb-sm-0 font-size-14">Удалить</button>
-			</form>
-		</div>
 		<form action="{% url 'user:info_save' %}" method="post">
         {% csrf_token %}
+            <div class="row mx-0 my-4 py-3">
+                <div class="col-12 d-flex flex-column flex-sm-row align-items-center" enctype="multipart/form-data">
+                    <div class="image-preview" id="imagePreview">
+						<img src="" alt="Image Preview" class="image-preview__image">
+						<span class="image-preview__default-text"><img src="{% static 'main/img/profile.svg' %}" alt=""></span>
+					</div>
+{#					<input type="file" name="inpFile" id="inpFile">#}
+                    {{ form.avatar|as_crispy_field }}
+					<label for="inpFile" class="inputTextLabel btn btn-danger font-size-14 rounded-15 px-4 px-sm-4 px-md-2 px-lg-4 py-2 my-3 my-sm-0 mr-2">Загрузить фотографию</label>
+{#					<button class="btn btn-light rounded-15 px-3 mb-3 py-2 mb-sm-0 font-size-14">Удалить</button>#}
+                </div>
+		    </div>
 			<div class="row mx-0 mb-5">
 				<div class="col-12 col-md-6">
                     {% csrf_token %}
-                    {{ form | crispy }}
+                    {{ form.errors }}
+{#                    {{ form | crispy }}#}
+                    <div class="form-group mb-md-0">
+						<label for="validationDefault01">Наименование компании <span style="color:#ff0000">*</span></label>
+                        {{ form.company_name|as_crispy_field }}
+{#						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" required>#}
+					</div>
+					<div class="form-group mb-md-0">
+						<label for="validationDefault01">Имя <span style="color:#ff0000">*</span></label>
+                        {{ form.first_name|as_crispy_field }}
+{#						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" required>#}
+					</div>
+					<div class="form-group mb-md-0">
+						<label for="validationDefault01">Фамилия <span style="color:#ff0000">*</span></label>
+                        {{ form.last_name|as_crispy_field }}
+{#						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" required>#}
+					</div>
+					<div class="form-group mb-md-0">
+						<label for="validationCustom01" class="text-02">Деятельность компании</label>
+                        {{ form.activity_company|as_crispy_field }}
+{#						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationCustom01" required>#}
+					</div>
+					<div class="form-group mb-md-0">
+						<label for="exampleInputEmail1" class="text-02">Рабочий номер <span style="color:#ff0000">*</span></label>
+                        {{ form.phone|as_crispy_field }}
+{#						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4">#}
+					</div>
+					<div class="form-group mb-md-0">
+						<label for="exampleInputEmail1" class="text-02">Мобильный номер</label>
+                        {{ form.mobil_phone|as_crispy_field }}
+{#						<input type="text" class="form-control bg-light  rounded-15 py-4 mb-4">#}
+					</div>
+					<div class="form-group mb-md-0">
+						<label for="exampleInputEmail1">Email address</label>
+                        {{ form.email|as_crispy_field }}
+{#						<input type="email" class="form-control bg-light rounded-15 py-4 mb-4" id="exampleInputEmail1" aria-describedby="emailHelp">#}
+					</div>
 				</div>
 
 			</div><!-- End of row -->
 			<div class="row mx-0">
 				<div class="col-12 d-flex justify-content-center justify-content-md-start">
-					<button class="btn btn-danger rounded-15 px-5 py-3" type="submit">Сохранить</button>
+					<button class="btn btn-danger rounded-15 px-4 py-2" type="submit">Сохранить</button>
 				</div>
 			</div>
 		</form>

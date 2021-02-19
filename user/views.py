@@ -53,6 +53,10 @@ def user_login(request):
                 return redirect('user:personal_account')
 
             form.add_error('password', "Имя пользователя и пароль неверны !")
+        return render(request, 'main/sign_in.html', {
+                'form': form,
+                'content': 1
+        })
     return render(request, 'main/sign_in.html', {
         'form': form
     })
