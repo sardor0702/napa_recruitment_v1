@@ -42,7 +42,8 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     objects = UserManager()
     password = models.CharField(max_length=100, help_text="Пожалуйста, укажите свой пароль")
-    phone = models.CharField(max_length=15, unique=True, help_text="Пожалуйста, предоставьте свой телефон")
+    phone = models.CharField(max_length=15, unique=True,
+                             validators=[PhoneValidator()],  help_text="Пожалуйста, предоставьте свой телефон")
     mobil_phone = models.CharField(max_length=16)
     avatar = models.ImageField(upload_to='avatars')
     company_name = models.CharField(max_length=255)
@@ -58,4 +59,3 @@ class User(AbstractUser):
 
 # user = User.objects.all()
 # for i in user:
-#     i.
