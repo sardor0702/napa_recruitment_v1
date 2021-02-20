@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang=" ">
 <head>
@@ -16,9 +17,8 @@
     <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 </head>
-</head>
 <body>
-        {% if request.path == '/' %}
+        {% if request.path == '/uz/' or request.path == '/ru/' %}
             {% include 'fragments/header_home.html' %}
         {% else %}
             {% include 'fragments/header_all.html' %}

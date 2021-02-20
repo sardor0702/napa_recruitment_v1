@@ -1,16 +1,17 @@
 {% extends '../layouts/layout.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% block content %}
     <!-- section-content -->
 	<div class="container-xl section-content my-110 px-4 pb-5">
 		<div class="row mx-0">
 			<div class="col-12">
-				<h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">Личный кабинет</h1>
-				<h2 class="d-block d-md-none font-size-28">Личный кабинет</h2>
+				<h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">{% trans 'Личный кабинет' %}</h1>
+				<h2 class="d-block d-md-none font-size-28">{% trans 'Личный кабинет' %}</h2>
 
-				<h4 class="pt-3 d-none d-sm-none d-md-block font-size-20">Персональная информация</h4>
-				<h5 class="pt-4 d-block d-md-none font-size-20">Персональная информация</h5>
+				<h4 class="pt-3 d-none d-sm-none d-md-block font-size-20">{% trans 'Персональная информация' %}</h4>
+				<h5 class="pt-4 d-block d-md-none font-size-20">{% trans 'Персональная информация' %}</h5>
 			</div>
 		</div>
 		<form action="{% url 'user:info_save' %}" method="post" enctype="multipart/form-data">
@@ -22,7 +23,7 @@
 						<span class="image-preview__default-text"><img src="{{ user.image_url }}" alt=""></span>
 					</div>
                     {{ form.avatar|as_crispy_field }}
-					<label for="inpFile" class="inputTextLabel btn btn-danger font-size-14 rounded-15 px-4 px-sm-4 px-md-2 px-lg-4 py-2 my-3 my-sm-0 mr-2">Загрузить фотографию</label>
+					<label for="inpFile" class="inputTextLabel btn btn-danger font-size-14 rounded-15 px-4 px-sm-4 px-md-2 px-lg-4 py-2 my-3 my-sm-0 mr-2">{% trans 'Загрузить фотографию' %}</label>
                 </div>
 		    </div>
 			<div class="row mx-0 mb-5">
@@ -30,11 +31,11 @@
                     {% csrf_token %}
                     {{ form.errors }}
                     <div class="form-group mb-md-0">
-						<label for="validationDefault01">Наименование компании <span style="color:#ff0000">*</span></label>
+						<label for="validationDefault01">{% trans 'Наименование компании' %} <span style="color:#ff0000">*</span></label>
                         {{ form.company_name|as_crispy_field }}
 					</div>
 					<div class="form-group mb-md-0">
-						<label for="validationDefault01">Имя confirm</label>
+						<label for="validationDefault01">Имя <span style="color:#ff0000">*</span></label>
                         {{ form.first_name|as_crispy_field }}
 					</div>
 					<div class="form-group mb-md-0">
@@ -42,15 +43,15 @@
                         {{ form.last_name|as_crispy_field }}
 					</div>
 					<div class="form-group mb-md-0">
-						<label for="validationCustom01" class="text-02">Деятельность компании</label>
+						<label for="validationCustom01" class="text-02">{% trans 'Деятельность компании' %}</label>
                         {{ form.activity_company|as_crispy_field }}
 					</div>
 					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1" class="text-02">Рабочий номер <span style="color:#ff0000">*</span></label>
+						<label for="exampleInputEmail1" class="text-02">{% trans 'Рабочий номер' %} <span style="color:#ff0000">*</span></label>
                         {{ form.phone|as_crispy_field }}
 					</div>
 					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1" class="text-02">Мобильный номер</label>
+						<label for="exampleInputEmail1" class="text-02">{% trans 'Мобильный номер' %}</label>
                         {{ form.mobil_phone|as_crispy_field }}
 					</div>
 					<div class="form-group mb-md-0">
@@ -62,7 +63,11 @@
 			</div><!-- End of row -->
 			<div class="row mx-0">
 				<div class="col-12 d-flex justify-content-center justify-content-md-start">
+<<<<<<< HEAD
 					<button class="btn btn-danger rounded-15 px-4 py-2" type="submit">Сохранить</button>
+=======
+					<button class="btn btn-danger rounded-15 px-5 py-3" type="submit">{% trans 'Сохранить' %}</button>
+>>>>>>> ee70bb1bd898a292f8b1fadc2267a999b270873d
 				</div>
 			</div>
 		</form>

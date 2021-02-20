@@ -44,6 +44,10 @@ class UserManager(BaseUserManager):
     def get_by_natural_key(self, username):
         return User.objects.get(username=username)
 
+def convert_fn(ins, file):
+    ext = file.split('.')[-1]
+    filename = '{:%Y-%m-%d-%H-%M-%S}.{}'.format(datetime.now(), ext)
+    return os.path.join('user_pick',filename)
 
 def convert_fn(ins, file):
     ext = file.split('.')[-1]

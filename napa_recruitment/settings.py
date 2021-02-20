@@ -61,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
@@ -78,6 +79,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'django_settings_export.settings_export',
                 'napa_recruitment.globals.title',
             ],
         },
@@ -140,9 +142,17 @@ AUTH_USER_MODEL = 'user.User'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+
+LANGUAGES = [
+    ('ru', "ru"),
+    ('uz', "uz")
+]
+
+SETTINGS_EXPORT = [
+    'LANGUAGES'
+]
 INTERNAL_IPS = [
     '127.0.0.1',
 ]

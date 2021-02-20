@@ -606,6 +606,35 @@ html{
 
 /* responsive media query start */
 
+@media(max-width: 360px){
+  .font-size-28{
+    font-family: Noto Sans, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .font-size-12{
+    font-family: Noto Sans, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  .font-size-20{
+    font-family: Open Sans, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .my-110{
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+  }
+
+  .ft-12{
+    font-size: 12px !important;
+  }
+}
+
 /* Sing up page responsive media query */
 
 @media(max-width: 767.98px){

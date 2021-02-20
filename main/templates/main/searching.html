@@ -1,15 +1,16 @@
 {% extends '../layouts/layout.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
     <div class="container-xl my-110 mb-60">
 		<!-- Filter -->
 		<div class="row mx-4 text-left">
 			<div class="col-lx-3 col-lg-3 col-md-3">
-				<span class="filter d-none d-md-block">Фильтр</span>
+				<span class="filter d-none d-md-block">{% trans 'Фильтр' %}</span>
 
 				<p class="d-block d-md-none d-flex justify-content-center ">
 					<button class="btn btn-danger filter px-5 rounded-15" type="button" data-toggle="collapse" data-target="#collapseExample_0">
-						Фильтр
+						{% trans 'Фильтр' %}
 					</button>
 				</p>
 
@@ -61,26 +62,26 @@
 					</div>
 					<span class="py-2">SMM</span>
 					<br>
-					<span class="d-block mb-4 py-2">Маркетинг</span>
+					<span class="d-block mb-4 py-2">{% trans 'Маркетинг' %}</span>
 					<div class="form-check mb-1 d-flex align-items-center" >
 						<input class="form-check-input" type="checkbox" id="item1" value="">
-						<label class="form-check-label pl-2 pt-1" for="item1">Полный рабочий день</label>
+						<label class="form-check-label pl-2 pt-1" for="item1">{% trans 'Полный рабочий день' %}</label>
 					</div>
 					<div class="form-check mb-1 d-flex align-items-center">
 						<input class="form-check-input" type="checkbox" id="iten2" value="">
-						<label class="form-check-label pl-2 pt-1" for="item2">Неполный рабочий день</label>
+						<label class="form-check-label pl-2 pt-1" for="item2">{% trans 'Неполный рабочий день' %}</label>
 					</div>
 					<div class="form-check mb-1 d-flex align-items-center mb-4">
 						<input class="form-check-input" type="checkbox" id="item3" value="">
-						<label class="form-check-label pl-2 pt-1" for="item3">Фриланс</label>
+						<label class="form-check-label pl-2 pt-1" for="item3">{% trans 'Фриланс' %}</label>
 					</div>
 					<div class="form-check mb-1 d-flex align-items-center" >
 						<input class="form-check-input" type="checkbox" id="item4" value="">
-						<label class="form-check-label pl-2 pt-1" for="item4">Работа в офисе</label>
+						<label class="form-check-label pl-2 pt-1" for="item4">{% trans 'Работа в офисе' %}</label>
 					</div>
 					<div class="form-check mb-1 d-flex align-items-center">
 						<input class="form-check-input" type="checkbox" id="iten4" value="">
-						<label class="form-check-label pl-2 pt-1" for="item4">Удаленная работа</label>
+						<label class="form-check-label pl-2 pt-1" for="item4">{% trans 'Удаленная работа' %}</label>
 					</div>
 				</div>
 			</div><!-- End of filter -->
@@ -95,8 +96,8 @@
 									<img src="{% static 'main/img/avatarka.svg' %}">
 								</div>
 								<div class="col-sm-4 col-md-6 pt-2 offset-sm-1 offset-md-2 offset-lg-1">
-									<h5 class="font-size-20">Имя Фамилия</h5>
-									<p class="text-light font-size-14">Front-end разработчик</p>
+									<h5 class="font-size-20">{% trans 'Имя Фамилия' %}</h5>
+									<p class="text-light font-size-14">Front-end {% trans 'разработчик' %}</p>
 								</div>
 							</div>
 							<div class="row px-4 px-md-3 d-flex flex-column align-items-center flex-sm-row">
@@ -112,14 +113,14 @@
 							</div>
 							<div class="row px-4 px-md-3 mt-5 mb-5 mb-md-0 d-flex flex-column align-content-center flex-sm-row justify-content-sm-between">
 								<div class="col-sm-4 mb-4 mb-md-0 text-center text-sm-left">
-									<span>Навыки</span>
+									<span>{% trans 'Навыки' %}</span>
 									<br>
 									<span class="text-light font-size-14">
 										HTML, CSS, JAVASCRIPT
 									</span>
 								</div>
 								<div class="col-sm-8 text-center text-sm-right">
-									<button class="btn btn-danger rounded-15 px-4 py-2">Подробнее</button>
+									<button class="btn btn-danger rounded-15 px-4 py-2">{% trans 'Подробнее' %}</button>
 								</div>
 							</div>
 						</div><!-- End of col -->
@@ -129,8 +130,8 @@
 									<img src="{% static 'main/img/avatarka.svg' %}">
 								</div>
 								<div class="col-sm-4 col-md-6 pt-2 offset-sm-1 offset-md-2 offset-lg-1">
-									<h5 class="font-size-20">Имя Фамилия</h5>
-									<p class="text-light font-size-14">Front-end разработчик</p>
+									<h5 class="font-size-20">{% trans 'Имя Фамилия' %}</h5>
+									<p class="text-light font-size-14">{% trans 'Front-end разработчик' %}</p>
 								</div>
 							</div>
 							<div class="row px-4 px-md-3 d-flex flex-column align-items-center flex-sm-row">
@@ -146,14 +147,14 @@
 							</div>
 							<div class="row px-4 px-md-3 mt-5 mb-5 mb-md-0 d-flex flex-column align-content-center flex-sm-row justify-content-sm-between">
 								<div class="col-sm-4 mb-4 mb-md-0 text-center text-sm-left">
-									<span>Навыки</span>
+									<span>{% trans 'Навыки' %}</span>
 									<br>
 									<span class="text-light font-size-14">
 										HTML, CSS, JAVASCRIPT
 									</span>
 								</div>
 								<div class="col-sm-8 text-center text-sm-right">
-									<button class="btn btn-danger rounded-15 px-4 py-2">Подробнее</button>
+									<button class="btn btn-danger rounded-15 px-4 py-2">{% trans 'Подробнее' %}</button>
 								</div>
 							</div>
 						</div>

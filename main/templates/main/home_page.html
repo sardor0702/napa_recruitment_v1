@@ -1,5 +1,6 @@
 {% extends '../layouts/layout.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
     <!-- header home -->
 	<div class="header-home" id="home">
@@ -7,18 +8,17 @@
 			<div class="row pt-5 pt-lg-0">
 				<div class="col-md-6 col-lg-6 col-xl-7 ml-md-3 mt-sm-5 mt-lg-0">
 					<p class="font-size-28">
-						Найдите подходящего сотрудника
-						среди наших выпускников
+						{% trans 'Найдите подходящего сотрудника среди наших выпускников' %}
 					</p>
 				</div>
 			</div><!-- End of row -->
 			<div class="row">
 				<div class="ml-md-3 col-lg-6 col-xl-6">
 					<input type="text" class="form-control rounded-15">
-					<label class="mt-1 mt-md-3 text-black font-size-12">Введите ключевые слова, пример: HTML</label>
+					<label class="mt-1 mt-md-3 text-black font-size-12">{% trans 'Введите ключевые слова, пример: HTML' %}</label>
 				</div>
 				<div class="mt-2 mt-md-0 ml-md-3 col-lg-3 col-xl-3 d-flex justify-content-center d-md-block">
-					<button class="btn btn-danger px-4 px-lg-5 rounded-15" type="submit">Искать</button>
+					<button class="btn btn-danger px-4 px-lg-5 rounded-15" type="submit">{% trans 'Искать' %}</button>
 				</div>
 				<div class="mt-5 mt-md-0 col-12 d-flex d-md-none justify-content-center">
 					<img src="{% static 'main/img/mainpage_vector_2.png' %}" class="img-fluid" alt="">
@@ -37,11 +37,10 @@
 				<div class="col-md-6 col-lg-6 d-flex flex-column justify-content-center pl-md-5">
 					<p class="font-size-28">O NAPA Recruitment</p>
 					<p>
-						Мы компания по предоставлению рекрутинговых услуг.
-						Мы не просто занимаемся поиском качественных, квалифицированных специалистов, мы их обучаем и воспитываем в течении одного года в нашей IТ Академии (Bobir Akilhanov Tech Academy).
+						{% trans 'Мы компания по предоставлению рекрутинговых услуг. Мы не просто занимаемся поиском качественных, квалифицированных специалистов, мы их обучаем и воспитываем в течении одного года в нашей IТ Академии (Bobir Akilhanov Tech Academy).' %}
 					</p>
 					<p class="open-sans-600">
-						Мы ищем и находим для вас лучших специалистов!
+						{% trans 'Мы ищем и находим для вас лучших специалистов!' %}
 					</p>
 				</div>
 			</div>
@@ -52,25 +51,25 @@
 		<div class="container-xl">
 			<div class="row pb-5 align-items-center">
 				<div class="col-lg-12 d-flex flex-lg-column align-items-lg-center justify-content-center">
-					<p class="mt-5 mt-lg-0 font-size-28">Доступные должности</p>
+					<p class="mt-5 mt-lg-0 font-size-28">{% trans 'Доступные должности' %}</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-6 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
 					<img src="{% static 'main/img/backend.svg' %}" alt="backend icon" class="img-fluid">
-					<p class="mt-4 open-sans-600">Back-End разработчик </p>
+					<p class="mt-4 open-sans-600"> {% trans 'Back-End разработчик' %}</p>
 				</div>
 				<div class="col-6 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
 					<img src="{% static 'main/img/frontend.svg' %}" alt="frontend icon" class="img-fluid">
-					<p class="mt-4 open-sans-600">Front-End разработчик </p>
+					<p class="mt-4 open-sans-600"> {% trans 'Front-End разработчик' %}</p>
 				</div>
 				<div class="mt-5 mt-md-0 col-6 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
 					<img src="{% static 'main/img/hr_manager.svg' %}" alt="hp-manager icon" class="img-fluid">
-					<p class="mt-4 open-sans-600">HR-менеджер</p>
+					<p class="mt-4 open-sans-600">{% trans 'HR-менеджер' %}</p>
 				</div>
 				<div class="mt-5 mt-md-0 col-6 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
 					<img src="{% static 'main/img/digital_marketer.svg' %}" alt="digital marketer icon" class="img-fluid">
-					<p class="mt-4 open-sans-600">Digital-маркетолог</p>
+					<p class="mt-4 open-sans-600">{% trans 'Digital-маркетолог' %}</p>
 				</div>
 			</div>
 		</div>
@@ -79,10 +78,10 @@
 	<div class="container-xl pt-5 pb-5 mb-5" id="students">
 		<div class="row">
 			<div class="col-lg-6 offset-md-1">
-				<p class="mb-sm-5 font-size-28">О наших студентах</p>
-				<p class="mb-sm-5 open-sans-400 im">
-					Наши студенты - начинающие специалисты в сфере IT (Python, PHP, Java, SMM, HR-менеджер) окончившие Bobir Akilhanov Tech Academy. Выпускники прошли специализированное годовое обучение в рамках международных стандартов. Программа обучения состоит из 70% практики и 30% теории, а так же 3 месяца работы с реальными проектами.
-				</p>
+				<p class="mb-sm-5 font-size-28">{% trans 'О наших студентах' %}</p>
+				<p class="mb-sm-5 open-sans-400 ft-12">
+					{% trans 'Наши студенты - начинающие специалисты в сфере IT (Python, PHP, Java, SMM, HR-менеджер) окончившие Bobir Akilhanov Tech Academy. Выпускники прошли специализированное годовое обучение в рамках международных стандартов. Программа обучения состоит из 70% практики и 30% теории, а так же 3 месяца работы с реальными проектами.' %}
+                </p>
 			</div>
 		</div>
 		<div class="row mt-4 mt-sm-5">
@@ -117,7 +116,7 @@
 	<div class="container-xl mb-140" id="partners">
 		<div class="row mb-5">
 			<div class="col-12 d-flex justify-content-center align-items-center">
-				<p class="font-size-28 mt-lg-3 mb-lg-0">Наши партнеры</p>
+				<p class="font-size-28 mt-lg-3 mb-lg-0">{% trans 'Наши партнеры' %}</p>
 			</div>
 		</div>
 		<div class="row mb-5 pb-5 px-md-4">
