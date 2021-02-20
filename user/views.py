@@ -3,7 +3,7 @@ from .serializers import UserSerializer, RegistrationSerializer
 # from napa_recruitment.responses import ResponseSuccess, ResponseFile
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .forms import RegistrationForm, LoginForm, EditForm
+from .forms import RegistrationForm, LoginForm, EditForm, ForgotPassword
 from .models import User
 from django import forms
 from django.contrib.auth import authenticate, login, logout
@@ -106,3 +106,20 @@ def user_info_post(request):
         'form': form
     })
 
+
+def forgot_password(request):
+    request.title = "Забыли пароль"
+    form = ForgotPassword()
+    return render(request, "main/forgot_password.html", {
+        'form': form
+    })
+
+
+@require_GET
+def get_code(request):
+    pass
+
+
+@require_POST
+def post_code(request):
+    pass

@@ -39,12 +39,17 @@
                 <ul class="navbar-nav flex-row d-flex justify-content-around ml-0 ml-md-5">
                     {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link text-secondary" href="#">
+                            <a class="nav-link text-secondary" href="{% url 'main:searching' %}">
+                                <img src="{% static 'main/img/search.svg' %}" width="15px">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" href="{% url 'main:favorites' %}">
                                 <img src="{% static 'main/img/star.svg' %}">
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-secondary" href="#">
+                            <a class="nav-link text-secondary" href="{% url 'user:personal_account' %}">
                                 <img src="{% static 'main/img/personall account.svg' %}">
                             </a>
                         </li>

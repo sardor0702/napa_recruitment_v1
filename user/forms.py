@@ -42,10 +42,6 @@ class RegistrationForm(forms.Form):
 
 
 class EditForm(forms.ModelForm):
-    # company_name = forms.CharField(max_length=50, label="Наименование компании", help_text="50 ta harifdan ko'p bo'lmaslin!!!")
-    # first_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={
-    #     "style": "background: red"
-    # }))
     avatar = forms.ImageField(widget=forms.FileInput(attrs=({"name": "inpFile", "id": "inpFile"})), label=False,
                               required=False)
     company_name = forms.CharField(max_length=50, label=False,
@@ -77,10 +73,10 @@ class EditForm(forms.ModelForm):
             'email',
         ]
 
-    # company_name = forms.CharField(max_length=80, required=True)
-    # first_name = forms.CharField(max_length=30, required=True)
-    # last_name = forms.CharField(max_length=40, required=True)
-    # activity_company = forms.CharField(max_length=80)
-    # phone = forms.CharField(max_length=16, validators=[PhoneValidator()], required=True)
-    # mobil_phone = forms.CharField(max_length=16, validators=[PhoneValidator()])
-    # email = forms.EmailField(max_length=100, validators=[EmailValidator()])
+
+class ForgotPassword(forms.Form):
+    phone = forms.CharField(max_length=16, label=False,
+                            widget=forms.TextInput(attrs=({"class": "rounded-15", 'placeholder': '998971234567'})), validators=[PhoneValidator()],
+                            required=True)
+
+

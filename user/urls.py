@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UserRegistration, user_login, user_logout, login_checkin, user_info, user_info_post
+from .views import UserRegistration, user_login, user_logout, login_checkin, user_info, user_info_post, forgot_password
 
 
 app_name = "user"
@@ -11,5 +11,6 @@ urlpatterns = [
     path("account/", login_checkin, name="personal_account"),
     path("info/<int:id>/", user_info, name="info"),
     path("info/save/", user_info_post, name="info_save"),
+    path("forgot_password/", forgot_password, name="forgot_password")
 ]
 

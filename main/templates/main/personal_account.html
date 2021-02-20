@@ -12,12 +12,7 @@
                 <h5 class="mb-5 pt-4 d-block d-md-none font-size-20">Персональная информация</h5>
                 <div class="row mb-4">
                     <div class="col-md-2 mb-5 mb-lg-0">
-                        {% if request.user.avatar%}
-                        <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="avatar" name="inpFile" id="inpFile1">
-
-                        {% else %}
-                         <img src="{% static 'main/img/photo.svg' %}">
-                        {% endif %}
+                        <img src="{{ user.image_url }}" alt="avatar" name="inpFile" id="inpFile1">
                     </div>
                     <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-center">
                         <div class="row mx-0">

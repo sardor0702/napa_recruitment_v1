@@ -18,17 +18,14 @@
 </head>
 </head>
 <body>
-    <div class="">
         {% if request.path == '/' %}
             {% include 'fragments/header_home.html' %}
         {% else %}
             {% include 'fragments/header_all.html' %}
         {% endif %}
-    </div>
-    <div class="">
+
         {% block content %}{% endblock %}
-    </div>
-    <div class="">
+
         {% block footer %}
             <!-- footer -->
             <div class="bg-blue mt-lg-5">
@@ -59,7 +56,6 @@
                 </div>
             </div><!-- End of footer -->
         {% endblock %}
-    </div>
     <script src="{% static 'vendor/jquery-3.5.1.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
     <script src="{% static 'main/js/main.js' %}"></script>

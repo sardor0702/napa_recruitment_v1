@@ -6,6 +6,7 @@ import os
 from PIL import Image
 from io import BytesIO
 from django.core.files import File
+from django.conf import settings
 
 
 class UserManager(BaseUserManager):
@@ -56,7 +57,7 @@ class User(AbstractUser):
     phone = models.CharField(max_length=15, unique=True,
                              validators=[PhoneValidator()],  help_text="Пожалуйста, предоставьте свой телефон")
     mobil_phone = models.CharField(max_length=16)
-    avatar = models.ImageField(upload_to=convert_fn)
+    avatar = models.ImageField(upload_to=convert_fn, null=True, blank=True)
     company_name = models.CharField(max_length=255)
     activity_company = models.CharField(max_length=255)
 
@@ -78,6 +79,12 @@ class User(AbstractUser):
             self.avatar = File(tmp, 't.png')
         super().save(*args, **kwargs)
 
+    @property
+    def image_url(self):
+        if self.avatar:
+            return os.path.join(settings.MEDIA_URL, str(self.avatar))
+
+        return os.path.join(settings.STATIC_URL, "main/img/nophoto.png")
 
 # user = User.objects.all()
 # for i in user:
