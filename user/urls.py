@@ -12,3 +12,4 @@ urlpatterns = [
     path("info/<int:id>/", user_info, name="info"),
     path("info/save/", user_info_post, name="info_save"),
 ]
+

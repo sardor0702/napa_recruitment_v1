@@ -420,7 +420,7 @@ html{
 .container-fluid #right-1 .row .text-01{
  font-family: Noto Sans, sans-serif;
  font-weight: 700;
- font-size: 1.5rem;
+ font-size: 1.5rem !important;
  line-height: 34px;
 }
 
@@ -585,6 +585,13 @@ html{
 			border-radius: 50% !important;
 		}
 
+        #inpFile1{
+          width: 195px;
+          height: 195px;
+		  border-radius: 50% !important;
+          background-repeat: repeat-y;
+        }
+
 		input[type="file"]{
 			display: none;
 		}
@@ -598,32 +605,6 @@ html{
 		}
 
 /* responsive media query start */
-
-@media(max-width: 360px){
-  .font-size-28{
-    font-family: Noto Sans, sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-  }
-
-  .font-size-12{
-    font-family: Noto Sans, sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-  }
-
-  .font-size-20{
-    font-family: Open Sans, sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-  }
-
-  .my-110{
-    margin-top: 50px !important;
-    margin-bottom: 50px !important;
-  }
-
-}
 
 /* Sing up page responsive media query */
 
@@ -746,4 +727,37 @@ html{
   .font-size-12{
     font-size: 16px;
   }
+}
+
+@media(max-width: 360.88px){
+  .font-size-28{
+    font-family: Noto Sans, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .font-size-12{
+    font-family: Noto Sans, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  .font-size-20{
+    font-family: Open Sans, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .my-110{
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+  }
+
+  .sign_up{
+    height: 100% !important;
+  }
+  .sign_up form label{
+    font-size: 14px !important;
+  }
+
 }

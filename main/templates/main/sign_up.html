@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="container-fluid d-flex p-0 ">
+    <div class="container-fluid sign_up d-flex p-0 ">
         <div class="container-fluid d-none d-sm-none d-md-block" id="left">
             <div class="row p-0">
                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-2 offset-lg-1">
@@ -17,7 +17,7 @@
             </div><!-- End of row -->
         </div><!-- End of #left -->
 
-        <div class="container-fluid m-0" id="right-1">
+        <div class="container-fluid m-0 sign_up" id="right-1">
             <div class="row py-4 px-5 my-3 d-none d-md-block">
                 <div class="col text-right font-size-12">
                     <span>Нет аккаунта? </span><a href="{% url 'user:login' %}" class="text-danger">Войти</a>
@@ -28,52 +28,35 @@
                     <h1 class="d-block d-sm-block d-md-none title-name">NAPA</h1>
                     <h1 class="d-block d-sm-block d-md-none title-name">Recruitment</h1>
                     <hr class="d-block d-sm-block d-md-none ">
-                    <form action="{% url 'user:registration' %}" method="post">
+                    <form action="{% url 'user:registration' %}" method="post" class="form-example mt-3 mb-5">
                         {% csrf_token %}
-                        {{ form | crispy }}
-                        <button type="submit" class="btn btn-danger px-4 px-sm-5 py-2 rounded-15 mt-3 mr-2">
-                            Создать аккаунт
-                        </button>
+                        <label class="text-01 mb-4">Регистрация</label>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="text-02">Телефон <span style="color:#ff0000">*</span></label>
+                            {{ form.phone|as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                            <label for="validationCustom01" class="text-02">Логин <span style="color:#ff0000">*</span></label>
+                            {{ form.username|as_crispy_field }}
+                        </div>
+                        <div class="form-group m-0 p-0 d-flex justify-between " id="texts">
+                            <div class="col-6 p-0"><label for="exampleInputPassword1" class="text-02">Пароль <span style="color:#ff0000">*</span></label>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.password|as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                            <div class="col-12 p-0"><label for="exampleInputPassword2" class="text-02">Подтвердить Пароль <span style="color:#ff0000">*</span></label>
+                            </div>
+                            {{ form.confirm|as_crispy_field }}
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+							<button type="submit" class="btn btn-danger px-4 px-sm-5 py-2 rounded-15 mr-2">Создать аккаунт</button>
+							<a href="{% url 'user:login' %}" class="d-block d-md-none">Войти</a>
+						</div>
                     </form>
-
-{#                    {% if form.errors %}#}
-{#                        {{ form.errors }}#}
-{#                    {% endif %}#}
-{#                    <form class="form-example mt-3" action="{% url 'main_registration' %}" method="post">#}
-{#                        {% csrf_token %}#}
-{#                        <label class="text-01 mb-4">Регистрация</label>#}
-{#                        <div class="form-group">#}
-{#                            <label for="exampleInputEmail1" class="text-02">Телефон</label>#}
-{#                            <input type="text" class="form-control bg-light " placeholder="+998971234567" name="phone">#}
-{#                        </div>#}
-{#                        <div class="form-group">#}
-{#                            <label for="validationCustom01" class="text-02">Логин</label>#}
-{#                            <input type="text" class="form-control bg-light" id="validationCustom01" name="username"#}
-{#                                   required>#}
-{#                        </div>#}
-{#                        <div class="form-group m-0 p-0 d-flex justify-between " id="texts">#}
-{#                            <div class="col-6 p-0"><label for="exampleInputPassword1" class="text-02">Пароль</label>#}
-{#                            </div>#}
-{#                            <div></div>#}
-{#                        </div>#}
-{#                        <div class="form-group">#}
-{#                            <input type="password" class="form-control bg-light" id="exampleInputPassword1"#}
-{#                                   name="password1">#}
-{#                        </div>#}
-{#                        <div class="form-group">#}
-{#                            <div class="col-6 p-0"><label for="exampleInputPassword2" class="text-02">Подтвердить Пароль</label>#}
-{#                            </div>#}
-{#                            <input type="password" class="form-control bg-light" id="exampleInputPassword1"#}
-{#                                   name="password2">#}
-{#                        </div>#}
-{##}
-{#                        <div class="d-flex justify-content-between align-items-center mt-4">#}
-{#                            <button type="submit" class="btn btn-danger px-4 px-sm-5 py-2 rounded-15 mr-2">Создать#}
-{#                                аккаунт#}
-{#                            </button>#}
-{#                            <a href="{% url 'main_login' %}" class="d-block d-md-none">Войти</a>#}
-{#                        </div>#}
-{#                    </form><!-- End of form-example -->#}
                 </div><!-- End of col-10 -->
             </div><!-- End of row -->
         </div><!-- End of container-fluid -->

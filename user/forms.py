@@ -13,14 +13,14 @@ class LoginForm(forms.Form):
 
 
 class RegistrationForm(forms.Form):
-    phone = forms.CharField(max_length=14, required=True,
-                            validators=[PhoneValidator()], widget=forms.TextInput(attrs={'placeholder': '998971234567'}))
+    phone = forms.CharField(max_length=14, required=True, validators=[PhoneValidator()],
+                            widget=forms.TextInput(attrs={'placeholder': '998971234567'}), label=False)
     username = forms.CharField(max_length=20, required=True,
-                               validators=[UnicodeUsernameValidator()])
+                               validators=[UnicodeUsernameValidator()], label=False)
     password = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
-                               validators=[MinLengthValidator(6)])
+                               validators=[MinLengthValidator(6)], label=False)
     confirm = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
-                               validators=[MinLengthValidator(6)])
+                              validators=[MinLengthValidator(6)], label=False)
 
     def clean_username(self):
         if User.objects.filter(username=self.cleaned_data.get('username')).exists():
@@ -47,7 +47,7 @@ class EditForm(forms.ModelForm):
     #     "style": "background: red"
     # }))
     avatar = forms.ImageField(widget=forms.FileInput(attrs=({"name": "inpFile", "id": "inpFile"})), label=False,
-                              validators=[])
+                              required=False)
     company_name = forms.CharField(max_length=50, label=False,
                                    widget=forms.TextInput(attrs=({"class": "rounded-15"})), required=True)
     first_name = forms.CharField(max_length=50, label=False,
@@ -55,12 +55,13 @@ class EditForm(forms.ModelForm):
     last_name = forms.CharField(max_length=50, label=False,
                                 widget=forms.TextInput(attrs=({"class": "rounded-15"})), required=True)
     activity_company = forms.CharField(max_length=150, label=False,
-                                       widget=forms.TextInput(attrs=({"class": "rounded-15"})))
+                                       widget=forms.TextInput(attrs=({"class": "rounded-15"})), required=False)
     phone = forms.CharField(max_length=16, label=False,
                             widget=forms.TextInput(attrs=({"class": "rounded-15"})), validators=[PhoneValidator()],
                             required=True)
     mobil_phone = forms.CharField(max_length=16, label=False,
-                                  widget=forms.TextInput(attrs=({"class": "rounded-15"})), validators=[PhoneValidator()])
+                                  widget=forms.TextInput(attrs=({"class": "rounded-15"})),
+                                  required=False)
     email = forms.EmailField(max_length=100, label=False, widget=forms.EmailInput(attrs=({"class": "rounded-15"})) )
 
     class Meta:

@@ -16,6 +16,7 @@ def favorites(request):
 
 
 
+
     # def get_context_data(self, **kwargs):
     #     self.request.title = "hiha"
     #     return super().get_context_data(**kwargs)

@@ -13,7 +13,7 @@
 				<h5 class="pt-4 d-block d-md-none font-size-20">Персональная информация</h5>
 			</div>
 		</div>
-		<form action="{% url 'user:info_save' %}" method="post">
+		<form action="{% url 'user:info_save' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
             <div class="row mx-0 my-4 py-3">
                 <div class="col-12 d-flex flex-column flex-sm-row align-items-center" enctype="multipart/form-data">
@@ -38,7 +38,7 @@
 {#						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" required>#}
 					</div>
 					<div class="form-group mb-md-0">
-						<label for="validationDefault01">Имя <span style="color:#ff0000">*</span></label>
+						<label for="validationDefault01">Имя confirm</label>
                         {{ form.first_name|as_crispy_field }}
 {#						<input type="text" class="form-control bg-light rounded-15 py-4 mb-4" id="validationDefault01" required>#}
 					</div>

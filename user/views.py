@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
+from django.views.generic import CreateView
 
 
 class UserRegistration(View):
@@ -55,7 +56,6 @@ def user_login(request):
             form.add_error('password', "Имя пользователя и пароль неверны !")
         return render(request, 'main/sign_in.html', {
                 'form': form,
-                'content': 1
         })
     return render(request, 'main/sign_in.html', {
         'form': form
@@ -96,7 +96,7 @@ def user_info(request, id):
 @require_POST
 @login_required
 def user_info_post(request):
-    form = EditForm(data=request.POST, instance=request.user)
+    form = EditForm(data=request.POST, instance=request.user, files=request.FILES)
     if form.is_valid():
         form.save()
         messages.success(request, "Сохранено")
@@ -105,3 +105,4 @@ def user_info_post(request):
     return render(request, "main/personal_account_changing_info.html", {
         'form': form
     })
+

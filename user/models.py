@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from napa_recruitment.validators import PhoneValidator
+from datetime import datetime
+import os
+from PIL import Image
+from io import BytesIO
+from django.core.files import File
 
 
 class UserManager(BaseUserManager):
@@ -39,13 +44,19 @@ class UserManager(BaseUserManager):
         return User.objects.get(username=username)
 
 
+def convert_fn(ins, file):
+    ext = file.split('.')[-1]
+    filename = '{:%Y-%m-%d-%H-%M-%S}.{}'.format(datetime.now(), ext)
+    return os.path.join('post_pics', filename)
+
+
 class User(AbstractUser):
     objects = UserManager()
     password = models.CharField(max_length=100, help_text="Пожалуйста, укажите свой пароль")
     phone = models.CharField(max_length=15, unique=True,
                              validators=[PhoneValidator()],  help_text="Пожалуйста, предоставьте свой телефон")
     mobil_phone = models.CharField(max_length=16)
-    avatar = models.ImageField(upload_to='avatars')
+    avatar = models.ImageField(upload_to=convert_fn)
     company_name = models.CharField(max_length=255)
     activity_company = models.CharField(max_length=255)
 
@@ -55,6 +66,17 @@ class User(AbstractUser):
     @property
     def full_name(self):
         return "{} {}".format(self.last_name, self.first_name)
+
+    def save(self, *args, **kwargs):
+        if not self.avatar.closed:
+            image = Image.open(self.avatar)
+            image.thumbnail((1000, 1000), Image.ANTIALIAS)
+
+            tmp = BytesIO()
+            image.save(tmp, "PNG")
+
+            self.avatar = File(tmp, 't.png')
+        super().save(*args, **kwargs)
 
 
 # user = User.objects.all()
