@@ -6,10 +6,16 @@ from user.models import User
 class Filter(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class FilterValues(models.Model):
     filter_id = models.ForeignKey(Filter, on_delete=models.RESTRICT)
     value = models.TextField(max_length=2048)
+
+    def __str__(self):
+        return self.value+' '+str(self.filter_id)
 
 
 class Query(models.Model):

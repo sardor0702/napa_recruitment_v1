@@ -90,5 +90,6 @@ class User(AbstractUser):
 
         return os.path.join(settings.STATIC_URL, "main/img/nophoto.png")
 
+
 # user = User.objects.all()
 # for i in user:

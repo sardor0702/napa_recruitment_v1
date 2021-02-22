@@ -5,19 +5,19 @@
     <div class="container-xl my-110">
 		<div class="row mx-4 pb-md-5">
 			<div class="col-12 col-md-4 col-lg-3 col-xl-3 px-0 mb-5 mb-md-0 left-content">
-				<img src="{% static 'main/img/photo.svg' %}">
+                <img class="img-fluid" src="{{ student.image_url }}" alt="avatar" name="inpFile" id="inpFile3">
 				<div class="pt-4 d-flex flex-row align-items-center">
-					<h5 class="font-weight-bold mb-0 mr-3">Газиев Руслан</h5>
+					<h5 class="font-weight-bold mb-0 mr-3">{{ student.full_name }}</h5>
 					<i class="fa fa-star fa-fw fa-lg favourite-icon"></i>
 				</div>
 				<p class="pb-3">
-					Front-end разработчик
+					{{ student.direction }}
 				</p>
-				<p><b>{% trans 'Навыки' %}:</b> HTML, CSS, Javascript</p>
-				<p><b>{% trans 'Возраст' %}:</b> 24 года</p>
+				<p><b>{% trans 'Навыки' %}:</b> {{ student.skills }}</p>
+				<p><b>{% trans 'Возраст' %}:</b> {{ student.age }} года</p>
 				<p class="mb-2"><b>{% trans 'Обо мне' %}:</b></p>
 				<p class="pb-4">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet, felis quis fermentum mattis, magna magna ullamcorper tellus, vel maximus tortor sem a magna. Duis non pretium risus, vel ultricies ante. Nunc lectus mi, dictum vel facilisis quis, aliquet sed nulla. Aliquam ut metus tincidunt, ullamcorper neque nec, ullamcorper nibh. In sit amet bibendum magna. Vivamus semper elementum metus, sed fringilla est fermentum eu.
+					{{ student.student_about }}
 				</p>
 				<p class="text-center text-sm-left">
 					<button class="btn btn-danger rounded-15 px-4 py-2">{% trans 'Нанять сотрудника' %}</button>

@@ -53,7 +53,8 @@ class EditForm(forms.ModelForm):
     activity_company = forms.CharField(max_length=150, label=False,
                                        widget=forms.TextInput(attrs=({"class": "rounded-15"})), required=False)
     phone = forms.CharField(max_length=16, label=False,
-                            widget=forms.TextInput(attrs=({"class": "rounded-15"})), validators=[PhoneValidator()],
+                            widget=forms.TextInput(attrs=({"class": "rounded-15"})),
+                            validators=[PhoneValidator()],
                             required=True)
     mobil_phone = forms.CharField(max_length=16, label=False,
                                   widget=forms.TextInput(attrs=({"class": "rounded-15"})),

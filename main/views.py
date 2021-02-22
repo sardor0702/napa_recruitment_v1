@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 from user.models import User
 from django.utils.translation import gettext_lazy as _
 from napa_recruitment.settings import LANGUAGES
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from student.models import Student
 
 
 class Home(TemplateView):
@@ -14,19 +15,32 @@ class Home(TemplateView):
 
 
 def favorites(request):
+    request.title = (_("Избранное"))
     return render(request, 'main/favorites.html')
 
 
-def searching(request):
-    return render(request, 'main/searching.html')
+class Searching(ListView):
+    model = Student
+    template_name = "main/searching.html"
+    paginate_by = 3
+
+
+def student_card(request, id):
+    request.title = ""
+    try:
+        student = Student.objects.get(id=id)
+    except Student.DoesNotExist:
+        return redirect('searching')
+
+    return render(request, "main/student_card.html", {
+        'student': student
+    })
 
 
 
 
-    #
-    # def get_context_data(self, **kwargs):
-    #     self.request.title = "hiha"
-    #     return super().get_context_data(**kwargs)
+
+
 
 # def home(request):
 #     context = {}

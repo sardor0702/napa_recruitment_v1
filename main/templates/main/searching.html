@@ -90,74 +90,68 @@
 			<div class="col-xl-9 col-lg-9 col-md-9  justify-content-md-between d-md-table">
 				<div class="container">
 					<div class="row justify-content-center justify-content-md-start">
-						<div class="col-sm-12 col-md-12 px-0 px-md-5 py-md-4 mt-2 users text-center">
-							<div class="row px-3 mt-3 mb-4 text-sm-left">
-								<div class="col-sm-2">
-									<img src="{% static 'main/img/avatarka.svg' %}">
-								</div>
-								<div class="col-sm-4 col-md-6 pt-2 offset-sm-1 offset-md-2 offset-lg-1">
-									<h5 class="font-size-20">{% trans 'Имя Фамилия' %}</h5>
-									<p class="text-light font-size-14">Front-end {% trans 'разработчик' %}</p>
-								</div>
-							</div>
-							<div class="row px-4 px-md-3 d-flex flex-column align-items-center flex-sm-row">
-								<div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-									<img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
-								</div>
-								<div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-									<img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
-								</div>
-								<div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-									<img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
-								</div>
-							</div>
-							<div class="row px-4 px-md-3 mt-5 mb-5 mb-md-0 d-flex flex-column align-content-center flex-sm-row justify-content-sm-between">
-								<div class="col-sm-4 mb-4 mb-md-0 text-center text-sm-left">
-									<span>{% trans 'Навыки' %}</span>
-									<br>
-									<span class="text-light font-size-14">
-										HTML, CSS, JAVASCRIPT
-									</span>
-								</div>
-								<div class="col-sm-8 text-center text-sm-right">
-									<button class="btn btn-danger rounded-15 px-4 py-2">{% trans 'Подробнее' %}</button>
-								</div>
-							</div>
-						</div><!-- End of col -->
-						<div class="col-sm-12 col-md-12 px-0 px-md-5 py-md-4 mt-2 users text-center">
-							<div class="row px-3 mt-3 mb-4 text-sm-left">
-								<div class="col-sm-2">
-									<img src="{% static 'main/img/avatarka.svg' %}">
-								</div>
-								<div class="col-sm-4 col-md-6 pt-2 offset-sm-1 offset-md-2 offset-lg-1">
-									<h5 class="font-size-20">{% trans 'Имя Фамилия' %}</h5>
-									<p class="text-light font-size-14">{% trans 'Front-end разработчик' %}</p>
-								</div>
-							</div>
-							<div class="row px-4 px-md-3 d-flex flex-column align-items-center flex-sm-row">
-								<div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-									<img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
-								</div>
-								<div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-									<img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
-								</div>
-								<div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-									<img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
-								</div>
-							</div>
-							<div class="row px-4 px-md-3 mt-5 mb-5 mb-md-0 d-flex flex-column align-content-center flex-sm-row justify-content-sm-between">
-								<div class="col-sm-4 mb-4 mb-md-0 text-center text-sm-left">
-									<span>{% trans 'Навыки' %}</span>
-									<br>
-									<span class="text-light font-size-14">
-										HTML, CSS, JAVASCRIPT
-									</span>
-								</div>
-								<div class="col-sm-8 text-center text-sm-right">
-									<button class="btn btn-danger rounded-15 px-4 py-2">{% trans 'Подробнее' %}</button>
-								</div>
-							</div>
-						</div>
+                        {% for st in object_list %}
+                        <div class="col-sm-12 col-md-12 px-0 px-md-5 py-md-4 mt-2 users text-center">
+                            <div class="row px-3 mt-3 mb-4 text-sm-left">
+                                <div class="col-sm-2 px-0 ml-md-3">
+                                    <img class="img-fluid" src="{{ st.image_url }}" alt="avatar" name="inpFile" id="inpFile2">
+                                </div>
+                                <div class="col-sm-4 col-md-6 pt-2 offset-sm-1 offset-md-2 offset-lg-1">
+                                    <h5 class="font-size-20">{{ st.full_name }}</h5>
+                                    <p class="text-light font-size-14">{{ st.direction }}</p>
+                                </div>
+                            </div>
+                            <div class="row px-4 px-md-3 d-flex flex-column align-items-center flex-sm-row">
+                                <div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
+                                    <img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
+                                </div>
+                                <div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
+                                    <img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
+                                </div>
+                                <div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
+                                    <img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="row px-4 px-md-3 mt-5 mb-5 mb-md-0 d-flex flex-column align-content-center flex-sm-row justify-content-sm-between">
+                                <div class="col-sm-6 mb-4 mb-md-0 text-center text-sm-left">
+                                    <span>Навыки</span>
+                                    <br>
+                                    <span class="text-light font-size-14">
+                                        {{ st.skills }}
+                                    </span>
+                                </div>
+                                <div class="col-sm-6 text-center text-sm-right">
+                                    <a class="btn btn-danger rounded-15 px-4 py-2" href="{% url 'main:student_card' st.id%}">Подробнее</a>
+                                </div>
+                            </div>
+                        </div><!-- End of col -->
+                        {% empty %}
+                        {% endfor %}
+                        <div class="container d-flex justify-content-center align-items-center mt-4">
+                            <div class="pagination d-flex">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% for page in page_obj.paginator.page_range %}
+                                    {% if page < 7 %}
+                                        <li class="page-item current">
+                                            <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </div>
+                        </div>
 					</div>
 				</div><!-- End of container -->
 			</div><!-- End of users conter -->
