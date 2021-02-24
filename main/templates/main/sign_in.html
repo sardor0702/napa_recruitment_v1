@@ -30,7 +30,20 @@
 					<h1 class="d-block d-sm-block d-md-none title-name mb-0">NAPA</h1>
 					<h1 class="d-block d-sm-block d-md-none title-name">Recruitment</h1>
 					<hr class="d-block d-sm-block d-md-none ">
-
+{#                    <div class="row pt-3 py-md-0">#}
+{#                        <div class="col-12">#}
+{#                            {% if messages %}#}
+{#                                {% for message in messages %}#}
+{#                                    <div class="{{ message.tags }} alert-dismissable fade show font-size-10">#}
+{#                                        {{ message }}#}
+{#                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#                                        <span aria-hidden="true">&times;</span>#}
+{#                                    </button>#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+{#                            {% endif %}#}
+{#                        </div>#}
+{#                    </div>#}
 					<form class="form-example mt-3" action="{% url 'user:login' %}" method="post">
 						<label class="text-01 mb-4">Войти в акканут</label>
                         {% csrf_token %}
@@ -48,7 +61,7 @@
 						</div>
 						<div class="d-flex justify-content-between align-items-center mt-4">
 							<button type="submit" class="btn btn-danger px-4 px-sm-5 py-2 rounded-15 mr-2">{% trans 'Войти' %}</button>
-							<a href="sign_up.html" class="d-block d-md-none">{% trans 'Зарегистрируйтесь' %}</a>
+							<a href="{% url 'user:registration' %}" class="d-block d-md-none">{% trans 'Зарегистрируйтесь' %}</a>
 						</div>
 					</form>
 				</div>

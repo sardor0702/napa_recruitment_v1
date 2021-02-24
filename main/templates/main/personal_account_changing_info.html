@@ -4,69 +4,119 @@
 {% load i18n %}
 {% block content %}
     <!-- section-content -->
-	<div class="container-xl section-content my-110 px-4 pb-5">
-		<div class="row mx-0">
-			<div class="col-12">
-				<h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">{% trans 'Личный кабинет' %}</h1>
-				<h2 class="d-block d-md-none font-size-28">{% trans 'Личный кабинет' %}</h2>
+    <div class="container-xl section-content my-110 px-4 pb-5">
+        <div class="row mx-0">
+            <div class="col-12">
+                <h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">{% trans 'Личный кабинет' %}</h1>
+                <h2 class="d-block d-md-none font-size-28">{% trans 'Личный кабинет' %}</h2>
 
-				<h4 class="pt-3 d-none d-sm-none d-md-block font-size-20">{% trans 'Персональная информация' %}</h4>
-				<h5 class="pt-4 d-block d-md-none font-size-20">{% trans 'Персональная информация' %}</h5>
-			</div>
-		</div>
-		<form action="{% url 'user:info_save' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+                <h4 class="pt-3 d-none d-sm-none d-md-block font-size-20">{% trans 'Персональная информация' %}</h4>
+                <h5 class="pt-4 d-block d-md-none font-size-20">{% trans 'Персональная информация' %}</h5>
+            </div>
+        </div>
+        <form action="{% url 'user:info_save' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="row mx-0 my-4 py-3">
                 <div class="col-12 d-flex flex-column flex-sm-row align-items-center" enctype="multipart/form-data">
                     <div class="image-preview" id="imagePreview">
-						<img src="" alt="Image Preview" class="image-preview__image">
-						<span class="image-preview__default-text"><img src="{{ user.image_url }}" alt=""></span>
-					</div>
+                        <img src="" alt="Image Preview" class="image-preview__image">
+                        <span class="image-preview__default-text"><img src="{{ user.image_url }}" alt=""></span>
+                    </div>
                     {{ form.avatar|as_crispy_field }}
-					<label for="inpFile" class="inputTextLabel btn btn-danger font-size-14 rounded-15 px-4 px-sm-4 px-md-2 px-lg-4 py-2 my-3 my-sm-0 mr-2">{% trans 'Загрузить фотографию' %}</label>
+                    <label for="inpFile"
+                           class="inputTextLabel btn btn-danger font-size-14 rounded-15 px-4 px-sm-4 px-md-2 px-lg-4 py-2 my-3 my-sm-0 mr-2">{% trans 'Загрузить фотографию' %}</label>
                 </div>
-		    </div>
-			<div class="row mx-0 mb-5">
-				<div class="col-12 col-md-6">
+            </div>
+            <div class="row mx-0 mb-5">
+                <div class="col-12 col-md-6">
                     {% csrf_token %}
                     {{ form.errors }}
                     <div class="form-group mb-md-0">
-						<label for="validationDefault01">{% trans 'Наименование компании' %} <span style="color:#ff0000">*</span></label>
+                        <label for="validationDefault01">{% trans 'Наименование компании' %} <span
+                                style="color:#ff0000">*</span></label>
                         {{ form.company_name|as_crispy_field }}
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="validationDefault01">{% trans 'Имя' %} <span style="color:#ff0000">*</span></label>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <label for="validationDefault01">{% trans 'Имя' %} <span style="color:#ff0000">*</span></label>
                         {{ form.first_name|as_crispy_field }}
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="validationDefault01">{% trans 'Фамилия' %} <span style="color:#ff0000">*</span></label>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <label for="validationDefault01">{% trans 'Фамилия' %} <span
+                                style="color:#ff0000">*</span></label>
                         {{ form.last_name|as_crispy_field }}
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="validationCustom01" class="text-02">{% trans 'Деятельность компании' %}</label>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <label for="validationCustom01" class="text-02">{% trans 'Деятельность компании' %}</label>
                         {{ form.activity_company|as_crispy_field }}
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1" class="text-02">{% trans 'Рабочий номер' %} <span style="color:#ff0000">*</span></label>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <label for="exampleInputEmail1" class="text-02">{% trans 'Рабочий номер' %} <span
+                                style="color:#ff0000">*</span></label>
                         {{ form.phone|as_crispy_field }}
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1" class="text-02">{% trans 'Мобильный номер' %}</label>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <label for="exampleInputEmail1" class="text-02">{% trans 'Мобильный номер' %}</label>
                         {{ form.mobil_phone|as_crispy_field }}
-					</div>
-					<div class="form-group mb-md-0">
-						<label for="exampleInputEmail1">{% trans 'Почта' %}</label>
+                    </div>
+                    <div class="form-group mb-md-0">
+                        <label for="exampleInputEmail1">{% trans 'Почта' %}</label>
                         {{ form.email|as_crispy_field }}
-					</div>
-				</div>
+                    </div>
+                </div>
 
-			</div><!-- End of row -->
-			<div class="row mx-0">
-				<div class="col-12 d-flex justify-content-center justify-content-md-start">
-					<button class="btn btn-danger rounded-15 px-4 py-2" type="submit">{% trans 'Сохранить' %}</button>
-
-				</div>
-			</div>
-		</form>
-	</div><!-- End of section-content -->
+            </div><!-- End of row -->
+            <div class="row mx-0">
+                <!-- Modal -->
+                <div class="col-6 col-md-3 d-flex justify-content-center justify-content-md-start pr-0 pr-md-3">
+                    <button type="button" class="btn btn-danger rounded-15 px-md-3 px-sm-4 py-2" data-toggle="modal"
+                            data-target="#exampleModal">
+                        Изменить пароль
+                    </button>
+                </div>
+                <div class="col-6 col-md-3 d-flex justify-content-center justify-content-md-end">
+                    <button class="btn btn-danger rounded-15 px-3 px-sm-4 py-2"
+                            type="submit">{% trans 'Сохранить' %}</button>
+                </div>
+            </div>
+        </form>
+        <div class="modal fade" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center align-items-center">
+                        <h5 class="modal-title" id="exampleModalLabel">Изменить пароль</h5>
+                    </div>
+                    <form action="{% url 'user:change_password' %}" method="post">
+                        <div class="modal-body px-5">
+                            {% csrf_token %}
+                            {{ password_form.errors }}
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                            <div class="form-group">
+                                <label for="validationCustom01" class="text-02">Старый пароль <span
+                                        style="color:#ff0000">*</span></label>
+                                {{ password_form.old_password|as_crispy_field }}
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1" class="text-02">Новый пароль <span
+                                        style="color:#ff0000">*</span></label>
+                                {{ password_form.new_password|as_crispy_field }}
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword2" class="text-02">Подтвердить Пароль <span
+                                        style="color:#ff0000">*</span></label>
+                                {{ password_form.confirm|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center align-items-center">
+                            <button type="button" class="btn btn-secondary rounded-15" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-danger rounded-15">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!-- End of section-content -->
 {% endblock %}

@@ -81,3 +81,27 @@ class ForgotPassword(forms.Form):
                             required=True)
 
 
+class ChangePassword(forms.Form):
+    old_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+                                   required=True, validators=[MinLengthValidator(6)], label=False)
+    new_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+                                   required=True, validators=[MinLengthValidator(6)], label=False)
+    confirm = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+                              required=True, validators=[MinLengthValidator(6)], label=False)
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(ChangePassword, self).__init__(*args, **kwargs)
+
+    def clean_confirm(self):
+        if self.cleaned_data['new_password'] != self.cleaned_data['confirm']:
+            raise ValidationError("Parollar bir xil emas")
+
+        return self.cleaned_data['confirm']
+
+    def clean_old_password(self):
+        password = self.cleaned_data['old_password']
+
+        if not self.user.check_password(password):
+            raise ValidationError("Old password didn't match")
+

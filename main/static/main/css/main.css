@@ -383,17 +383,6 @@ html{
   cursor: pointer;
 }
 
-.close{
-  color: #fff !important;
-  background-color: #DF3888 !important;
-  opacity: 1 !important;
-  font-weight: 400;
-  line-height: 1;
-  padding: 14px 28px 15px 24px !important;
-  font-size: 14px;
-  font-family: Arimo, sans-serif !important;
-}
-
 /* Sgin up and sgin in styling*/
 
 #left{
@@ -796,6 +785,11 @@ input[type="file"] {
     font-family: Noto Sans, sans-serif;
     font-weight: 400;
     font-size: 12px;
+  }
+  .font-size-10{
+    font-family: Noto Sans, sans-serif;
+    font-weight: 400;
+    font-size: 10px;
   }
 
   .font-size-20{

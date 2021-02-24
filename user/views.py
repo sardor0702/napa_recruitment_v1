@@ -3,7 +3,7 @@ from .serializers import UserSerializer, RegistrationSerializer
 # from napa_recruitment.responses import ResponseSuccess, ResponseFile
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .forms import RegistrationForm, LoginForm, EditForm, ForgotPassword
+from .forms import RegistrationForm, LoginForm, EditForm, ForgotPassword, ChangePassword
 from .models import User
 from django import forms
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +11,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
 from django.views.generic import CreateView
+from django.contrib.auth import update_session_auth_hash
 
 
 class UserRegistration(View):
@@ -34,6 +35,7 @@ class UserRegistration(View):
 
             user.set_password(user.password)
             user.save()
+            messages.success(request, "Вы успешно зарегистрировались.")
             return redirect('user:login')
         return render(request, "main/sign_up.html", {
             'form': form
@@ -74,7 +76,7 @@ def login_checkin(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return redirect("main:main_home")
+    return redirect("user:login")
 
 
 @require_GET
@@ -85,11 +87,12 @@ def user_info(request, id):
         user = User.objects.get(id=id)
     except User.DoesNotExist:
         return redirect('personal_account')
-
+    password_form = ChangePassword()
     return render(request, "main/personal_account_changing_info.html",
                   {
                       'form': EditForm(instance=request.user),
-                      'user': user
+                      'user': user,
+                      'password_form': password_form
                   })
 
 
@@ -101,10 +104,25 @@ def user_info_post(request):
         form.save()
         messages.success(request, "Сохранено")
         return redirect('user:personal_account')
-
     return render(request, "main/personal_account_changing_info.html", {
         'form': form
     })
+
+
+@require_POST
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = ChangePassword(request.POST, user=request.user)
+        if form.is_valid():
+            request.user.set_password(form.cleaned_data['confirm'])
+            request.user.save()
+            update_session_auth_hash(request, request.user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('user:personal_account')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    return redirect('user:info', id=request.user.pk)
 
 
 def forgot_password(request):

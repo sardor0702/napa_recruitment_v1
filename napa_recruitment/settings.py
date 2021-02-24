@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import environ
+from django.contrib import messages
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -156,4 +157,9 @@ SETTINGS_EXPORT = [
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+MESSAGE_TAGS = {
+    messages.INFO: 'alert alert-info',
+    messages.SUCCESS: 'alert alert-success',
+}
 
