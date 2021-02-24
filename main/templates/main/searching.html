@@ -102,15 +102,11 @@
                                 </div>
                             </div>
                             <div class="row px-4 px-md-3 d-flex flex-column align-items-center flex-sm-row">
+                                {% for sp in st.projects.all %}
                                 <div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-                                    <img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
+                                    <img src="{{ sp.image_url }}" class="img-fluid">
                                 </div>
-                                <div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-                                    <img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
-                                </div>
-                                <div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-                                    <img src="{% static 'main/img/rectangle 15.svg' %}" class="img-fluid">
-                                </div>
+                                {% endfor %}
                             </div>
                             <div class="row px-4 px-md-3 mt-5 mb-5 mb-md-0 d-flex flex-column align-content-center flex-sm-row justify-content-sm-between">
                                 <div class="col-sm-6 mb-4 mb-md-0 text-center text-sm-left">

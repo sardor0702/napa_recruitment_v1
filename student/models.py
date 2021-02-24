@@ -52,7 +52,18 @@ class Student(models.Model):
 
 
 class StudentProjects(models.Model):
-    student_id = models.ForeignKey(Student, on_delete=models.RESTRICT)
+    student_id = models.ForeignKey(Student, on_delete=models.RESTRICT, related_name='projects')
+    project_name = models.CharField(max_length=255, default=None, blank=True)
     project_link = models.CharField(max_length=255)
     created_at = models.DateField()
     project_pick = models.ImageField(upload_to=convert_fn, default=None)
+
+    def __str__(self):
+        return str(self.student_id) + ' | ' + self.project_name + ' | ' + self.project_link
+
+    @property
+    def image_url(self):
+        if self.project_pick:
+            return os.path.join(settings.MEDIA_URL, str(self.project_pick))
+
+        return os.path.join(settings.STATIC_URL, "main/img/nophoto.png")

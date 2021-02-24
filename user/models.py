@@ -59,7 +59,7 @@ class User(AbstractUser):
     objects = UserManager()
     password = models.CharField(max_length=100, help_text="Пожалуйста, укажите свой пароль")
     phone = models.CharField(max_length=15, unique=True,
-                             validators=[PhoneValidator()],  help_text="Пожалуйста, предоставьте свой телефон")
+                             validators=[PhoneValidator],  help_text="Пожалуйста, предоставьте свой телефон")
     mobil_phone = models.CharField(max_length=16)
     avatar = models.ImageField(upload_to=convert_fn, null=True, blank=True)
     company_name = models.CharField(max_length=255)

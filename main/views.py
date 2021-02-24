@@ -7,7 +7,7 @@ from user.models import User
 from django.utils.translation import gettext_lazy as _
 from napa_recruitment.settings import LANGUAGES
 from django.views.generic import TemplateView, ListView
-from student.models import Student
+from student.models import Student, StudentProjects
 
 
 class Home(TemplateView):
@@ -20,9 +20,11 @@ def favorites(request):
 
 
 class Searching(ListView):
-    model = Student
     template_name = "main/searching.html"
     paginate_by = 3
+
+    def get_queryset(self):
+        return Student.objects.all()
 
 
 def student_card(request, id):
