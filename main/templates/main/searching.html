@@ -1,6 +1,6 @@
 {% extends '../layouts/layout.html' %}
-{% load static %}
-{% load i18n %}
+{% load i18n helpers static %}
+
 {% block content %}
     <div class="container-xl my-110 mb-60">
 		<!-- Filter -->
@@ -102,10 +102,10 @@
                                 </div>
                             </div>
                             <div class="row px-4 px-md-3 d-flex flex-column align-items-center flex-sm-row">
-                                {% for sp in st.projects.all %}
-                                <div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10">
-                                    <img src="{{ sp.image_url }}" class="img-fluid">
-                                </div>
+                                {% for sp in st.projects_top3 %}
+                                    <div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10 img-project-div">
+                                        <img src="{{ sp.image_url }}" class="img-fluid img-project">
+                                    </div>
                                 {% endfor %}
                             </div>
                             <div class="row px-4 px-md-3 mt-5 mb-5 mb-md-0 d-flex flex-column align-content-center flex-sm-row justify-content-sm-between">

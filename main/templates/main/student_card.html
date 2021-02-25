@@ -25,36 +25,21 @@
 			</div>
 			<div class="col-12 col-md-8 col-lg-9 col-xl-9 pl-md-5 right-content mt-2 mt-md-0 ">
 				<div class="row pl-md-5 mb-5 mb-md-0 mb-lg-5 d-flex">
-					<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-4 mb-md-3 mb-lg-0">
-						<img src="{% static 'main/img/workcase1.svg' %}" class="img-fluid">
-						<p class="project-name pt-4">
-							Верстка лендинга для компании
-						</p>
-						<a href="#">http://loremipsumlala.com</a>
-					</div><!-- End of col -->
-					<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-4 mb-md-3 mb-lg-0">
-						<img src="{% static 'main/img/workcase1.svg' %}" class="img-fluid">
-						<p class="project-name pt-4">
-							Верстка лендинга для компании
-						</p>
-						<a href="#">http://loremipsumlala.com</a>
-					</div>
-				</div>
-				<div class="row pl-md-5 mb-lg-5 d-flex">
-					<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-4 mb-md-3 mb-lg-0">
-						<img src="{% static 'main/img/workcase1.svg' %}" class="img-fluid">
-						<p class="project-name pt-4">
-							Верстка лендинга для компании
-						</p>
-						<a href="#">http://loremipsumlala.com</a>
-					</div><!-- End of col -->
-					<div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-4 mb-md-3 mb-lg-0">
-						<img src="{% static 'main/img/workcase1.svg' %}" class="img-fluid">
-						<p class="project-name pt-4">
-							Верстка лендинга для компании
-						</p>
-						<a href="#">http://loremipsumlala.com</a>
-					</div><!-- End of col -->
+                    {% for sp in student.projects.all %}
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-5 px-0 px-md-3">
+                            <div class="img-project-div1 ">
+                                <div class="overlay">
+                                </div>
+                                <div class="box">
+                                    <img src="{{ sp.image_url }}" class="img-fluid img-project1">
+                                </div>
+                            </div>
+                            <p class="project-name pt-4 text-breakt">
+                                {{ sp.project_name }}
+                            </p>
+                            <a href="{{ sp.project_link }}" class="text-break">{{ sp.project_link }}</a>
+                        </div><!-- End of col -->
+                    {% endfor %}
 				</div>
 			</div>
 		</div><!-- End of row -->

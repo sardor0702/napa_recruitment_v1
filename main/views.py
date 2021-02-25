@@ -15,7 +15,7 @@ class Home(TemplateView):
 
 
 def favorites(request):
-    request.title = (_("Избранное"))
+    request.title = _("Избранное")
     return render(request, 'main/favorites.html')
 
 

@@ -32,6 +32,10 @@ class Student(models.Model):
     def full_name(self):
         return "{} {}".format(self.last_name, self.first_name)
 
+    @property
+    def projects_top3(self):
+        return self.projects.all()[:3]
+
     def save(self, *args, **kwargs):
         if not self.student_image.closed:
             image = Image.open(self.student_image)
@@ -42,6 +46,7 @@ class Student(models.Model):
 
             self.student_image = File(tmp, 't.png')
         super().save(*args, **kwargs)
+
 
     @property
     def image_url(self):
