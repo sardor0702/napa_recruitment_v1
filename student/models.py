@@ -36,6 +36,10 @@ class Student(models.Model):
     def projects_top3(self):
         return self.projects.all()[:3]
 
+    @property
+    def projects_top4(self):
+        return self.projects.all()[:4]
+
     def save(self, *args, **kwargs):
         if not self.student_image.closed:
             image = Image.open(self.student_image)

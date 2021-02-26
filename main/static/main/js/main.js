@@ -71,4 +71,3 @@ inpFile.addEventListener("change", function(){
 });
 
 
-

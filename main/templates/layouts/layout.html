@@ -12,60 +12,58 @@
     {% else %}
         <title>Home page</title>
     {% endif %}
-    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" />
-    <link rel="stylesheet" href="{% static 'main/css/main.css' %}" />
-    <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
-    <script>
-        $(document).ready(function ()
-            {
-                $()
-            }
-        );
-    </script>
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
-        {% if request.path == '/uz/' or request.path == '/ru/' %}
-            {% include 'fragments/header_home.html' %}
-        {% else %}
-            {% include 'fragments/header_all.html' %}
-        {% endif %}
+{% if request.path == '/uz/' or request.path == '/ru/' %}
+    {% include 'fragments/header_home.html' %}
+{% else %}
+    {% include 'fragments/header_all.html' %}
+{% endif %}
 
-        {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
-        {% block footer %}
-            <!-- footer -->
-            <div class="bg-blue mt-lg-5">
-                <div class="figure-left d-none d-xl-block">
-                    <img src="{% static 'main/img/vector_left.svg' %}">
+{% block footer %}
+    <!-- footer -->
+    <div class="bg-blue mt-lg-5">
+        <div class="figure-left d-none d-xl-block">
+            <img src="{% static 'main/img/vector_left.svg' %}">
+        </div>
+        <div class="figure-left-1 d-none d-xl-block">
+            <img src="{% static 'main/img/vector_left1.svg' %}">
+        </div>
+        <div class="figures-footer d-none d-md-block">
+            <img src="{% static 'main/img/figures_footer.svg' %}">
+        </div>
+        <div class="container-xl py-29">
+            <div class="row mx-0 d-flex justify-content-between align-istems-center">
+                <a class="col-12 col-md-1 pl-0 pt-md-3 mb-5 mb-md-0 d-flex align-items-center flex-column"
+                   href="home_page.html">
+                    <img src="{% static 'main/img/napa_white.svg' %}" class="mb-1 img-fluid">
+                    <img src="{% static 'main/img/recruitment_white.svg' %}" class="img-fluid">
+                </a>
+                <div class="col-md-6 pt-md-3 mb-4 mb-md-0">
+                    <p class="text-white text-center pb-0 open-size-400">
+                        Copyright <span>&#169;</span> 2017 - 2020 Academy by NAPA TEAM. <span class="ml-1">All rights reserved</span>
+                    </p>
                 </div>
-                <div class="figure-left-1 d-none d-xl-block">
-                    <img src="{% static 'main/img/vector_left1.svg' %}">
+                <div class="col-md-2 col-12 pr-0 pt-md-3 mb-4 mb-md-0 d-flex justify-content-center justify-content-md-end">
+                    <a class="text-white open-size-400" href="tel:+998712000610">+998 71 200-06-10</a>
                 </div>
-                <div class="figures-footer d-none d-md-block">
-                    <img src="{% static 'main/img/figures_footer.svg' %}">
-                </div>
-                <div class="container-xl py-29">
-                    <div class="row mx-0 d-flex justify-content-between align-istems-center">
-                        <a class="col-12 col-md-1 pl-0 pt-md-3 mb-5 mb-md-0 d-flex align-items-center flex-column" href="home_page.html">
-                            <img src="{% static 'main/img/napa_white.svg' %}" class="mb-1 img-fluid">
-                            <img src="{% static 'main/img/recruitment_white.svg' %}" class="img-fluid">
-                        </a>
-                        <div class="col-md-6 pt-md-3 mb-4 mb-md-0">
-                            <p class="text-white text-center pb-0 open-size-400">
-                                Copyright <span>&#169;</span> 2017 - 2020 Academy by NAPA TEAM. <span class="ml-1">All rights reserved</span>
-                            </p>
-                        </div>
-                        <div class="col-md-2 col-12 pr-0 pt-md-3 mb-4 mb-md-0 d-flex justify-content-center justify-content-md-end">
-                            <a class="text-white open-size-400" href="tel:+998712000610">+998 71 200-06-10</a>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- End of footer -->
-        {% endblock %}
-    <script src="{% static 'vendor/jquery-3.5.1.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
-    <script src="{% static 'main/js/main.js' %}"></script>
-    <script src="https://kit.fontawesome.com/cb3bbb09f5.js" crossorigin="anonymous"></script>
+            </div>
+        </div>
+    </div><!-- End of footer -->
+{% endblock %}
+<script src="{% static 'vendor/jquery-3.5.1.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'main/js/main.js' %}"></script>
+<script src="https://kit.fontawesome.com/cb3bbb09f5.js" crossorigin="anonymous"></script>
+{% block extra_js %}
+
+{% endblock %}
 </body>
 </html>

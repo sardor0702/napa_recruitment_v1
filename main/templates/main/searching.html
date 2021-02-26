@@ -13,32 +13,18 @@
 						{% trans 'Фильтр' %}
 					</button>
 				</p>
-
+                {{ request.GET }}
 				<div class="py-4 be collapse d-md-block" id="collapseExample_0">
 					<span class="btn pl-0" data-toggle="collapse" href="#collapseExample">Back-End <i class="fas fa-angle-down"></i></span>
 					<br>
 					<div class="collapse" id="collapseExample">
 						<div class="card card-body ml-4 p-0 border-0">
-							<div class="form-check mb-1 d-flex align-items-center" >
-								<input class="form-check-input" type="checkbox" id="backend1" value="PHP (Laravel)">
-								<label class="form-check-label pl-2 pt-1" for="backend1">PHP (Laravel)</label>
-							</div>
-							<div class="form-check mb-1 d-flex align-items-center">
-								<input class="form-check-input" type="checkbox" id="backend2" value="PHP (YII2)">
-								<label class="form-check-label pl-2 pt-1" for="backend2">PHP (YII2)</label>
-							</div>
-							<div class="form-check mb-1 d-flex align-items-center">
-								<input class="form-check-input" type="checkbox" id="backend3" value="Java core">
-								<label class="form-check-label pl-2 pt-1" for="backend3">Java core</label>
-							</div>
-							<div class="form-check mb-1 d-flex align-items-center">
-								<input class="form-check-input" type="checkbox" id="backend4" value="Java (Spring)">
-								<label class="form-check-label pl-2 pt-1" for="backend4">Java (Spring)</label>
-							</div>
-							<div class="form-check mb-1 d-flex align-items-center" >
-								<input class="form-check-input" type="checkbox" id="backend5" value="Javafx">
-								<label class="form-check-label pl-2 pt-1" for="backend5">Javafx</label>
-							</div>
+                            {% for back in backend %}
+                                <div class="form-check mb-1 d-flex align-items-center" >
+                                    <input class="form-check-input" type="checkbox" id="backend1" value="{{ back.value }}">
+                                    <label class="form-check-label pl-2 pt-1" for="backend1">{{ back.value }}</label>
+                                </div>
+                            {% endfor %}
 						</div>
 					</div>
 
@@ -46,18 +32,12 @@
 					<br>
 					<div class="collapse" id="collapseExample1">
 						<div class="card card-body p-0 ml-4 border-0">
+                            {% for front in fontend %}
 							<div class="form-check mb-1 d-flex align-items-center" >
 								<input class="form-check-input" type="checkbox" id="frontend1" value="HTML">
-								<label class="form-check-label pl-2 pt-1" for="frontend1">HTMl</label>
+								<label class="form-check-label pl-2 pt-1" for="frontend1">{{ front.value }}</label>
 							</div>
-							<div class="form-check mb-1 d-flex align-items-center">
-								<input class="form-check-input" type="checkbox" id="frontend2" value="CSS">
-								<label class="form-check-label pl-2 pt-1" for="frontend2">CSS</label>
-							</div>
-							<div class="form-check mb-1 d-flex align-items-center">
-								<input class="form-check-input" type="checkbox" id="frontend3" value="Java Script">
-								<label class="form-check-label pl-2 pt-1" for="frontend3">Java Script</label>
-							</div>
+                            {% endfor %}
 						</div>
 					</div>
 					<span class="py-2">SMM</span>
@@ -153,4 +133,9 @@
 			</div><!-- End of users conter -->
 		</div><!-- End of row -->
 	</div><!-- End of contianer-fluid -->
+    <script>
+        alert("{{ request.GET }}");
+        $(document).ready(function (){
+        });
+    </script>
 {% endblock %}

@@ -1,46 +1,16 @@
 from django import forms
 from django.core.validators import MinLengthValidator
 # from django.contrib.auth.models import User
+from django_select2.forms import Select2Widget, Select2MultipleWidget
+
+from main.models import FilterValues
 from user.models import User
 from django.contrib.auth.hashers import make_password
 
 
-# class RegistrationForm(forms.ModelForm):
-#     password = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
-#                                validators=[MinLengthValidator(6)])
-#     confirm = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
-#                               validators=[MinLengthValidator(6)])
-    # def save(self, commit=True):
-    #     user = super(RegistrationForm, self).save(commit=False)
-    #     user.set_password(self.cleaned_data["password"])
-    #     if commit:
-    #         user.save()
-    #     return user
-
-    # class Meta:
-    #     model = User
-    #     fields = ('phone', 'username', 'password', 'confirm')
-
-
-# class LoginForms(forms.Form):
-#     username = forms.CharField(max_length=50)
-#     password = forms.CharField(widget=forms.PasswordInput)
-
-    # class Meta:
-    #     model = User
-    #     fields = ('username', 'password')
-
-
-# class UserForm(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         fields = [
-#             'company_name',
-#             'full_name',
-#             'activity_company',
-#             'phone',
-#             'mobil_phone',
-#             'email'
-#         ]
-
-
+class SearchForm(forms.Form):
+    query = forms.ModelChoiceField(
+        widget=Select2MultipleWidget(),
+        queryset=FilterValues.objects.all(),
+        initial=''
+    )

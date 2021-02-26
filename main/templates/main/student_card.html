@@ -20,16 +20,41 @@
 					{{ student.student_about }}
 				</p>
 				<p class="text-center text-sm-left">
-					<button class="btn btn-danger rounded-15 px-4 py-2">{% trans 'Нанять сотрудника' %}</button>
+{#					<button class="btn btn-danger rounded-15 px-4 py-2">{% trans 'Нанять сотрудника' %}</button>#}
+                    <!-- Button trigger modal -->
+					<button type="button" class="btn btn-danger-1 rounded-15 px-4 py-2" data-toggle="modal" data-target="#exampleModal">
+						{% trans 'Нанять сотрудника' %}
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header border-0">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body text-center">
+									<i class="fas fa-check-circle favourite-icon-modal mb-3"></i>
+									<p class="open-sans-400">
+										Ваша заявка успешно отправлена,
+										мы свяжемся с вами в скором времени!
+									</p>
+								</div>
+								<div class="modal-footer border-0">
+
+								</div>
+							</div>
+						</div>
+					</div>
 				</p>
 			</div>
 			<div class="col-12 col-md-8 col-lg-9 col-xl-9 pl-md-5 right-content mt-2 mt-md-0 ">
 				<div class="row pl-md-5 mb-5 mb-md-0 mb-lg-5 d-flex">
-                    {% for sp in student.projects.all %}
+                    {% for sp in student.projects_top4 %}
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-5 px-0 px-md-3">
                             <div class="img-project-div1 ">
-                                <div class="overlay">
-                                </div>
                                 <div class="box">
                                     <img src="{{ sp.image_url }}" class="img-fluid img-project1">
                                 </div>
@@ -39,6 +64,8 @@
                             </p>
                             <a href="{{ sp.project_link }}" class="text-break">{{ sp.project_link }}</a>
                         </div><!-- End of col -->
+                    {% empty %}
+                        <h1>No projects</h1>
                     {% endfor %}
 				</div>
 			</div>
