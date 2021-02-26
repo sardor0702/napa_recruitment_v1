@@ -10,7 +10,7 @@ from django.contrib.auth.hashers import make_password
 
 class SearchForm(forms.Form):
     query = forms.ModelChoiceField(
-        widget=Select2MultipleWidget(),
+        widget=Select2MultipleWidget(attrs={'style': 'border-radius: 20px;'}),
         queryset=FilterValues.objects.all(),
         initial=''
     )

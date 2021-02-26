@@ -29,6 +29,7 @@ def favorites(request):
 class Searching(ListView):
     template_name = "main/searching.html"
     paginate_by = 3
+    
     def get_queryset(self):
         return Student.objects.all()
 
@@ -38,9 +39,6 @@ class Searching(ListView):
         context['backend'] = FilterValues.objects.filter(filter_id_id=3)
 
         return context
-
-    # def get(self, request):
-    #     print(request.GET)
 
 
 def student_card(request, id):
