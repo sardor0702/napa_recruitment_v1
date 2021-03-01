@@ -3,55 +3,66 @@
 {% load i18n %}
 {% block content %}
     <div class="container-xl my-110">
-		<div class="row mx-4 pb-md-5">
-			<div class="col-12 col-md-4 col-lg-3 col-xl-3 px-0 mb-5 mb-md-0 left-content">
+        <div class="row mx-4 pb-md-5">
+            <div class="col-12 col-md-4 col-lg-3 col-xl-3 px-0 mb-5 mb-md-0 left-content">
                 <img class="img-fluid" src="{{ student.image_url }}" alt="avatar" name="inpFile" id="inpFile3">
-				<div class="pt-4 d-flex flex-row align-items-center">
-					<h5 class="font-weight-bold mb-0 mr-3">{{ student.full_name }}</h5>
-					<i class="fa fa-star fa-fw fa-lg favourite-icon"></i>
-				</div>
-				<p class="pb-3">
-					{{ student.direction }}
-				</p>
-				<p><b>{% trans 'Навыки' %}:</b> {{ student.skills }}</p>
-				<p><b>{% trans 'Возраст' %}:</b> {{ student.age }} года</p>
-				<p class="mb-2"><b>{% trans 'Обо мне' %}:</b></p>
-				<p class="pb-4">
-					{{ student.student_about }}
-				</p>
-				<p class="text-center text-sm-left">
-{#					<button class="btn btn-danger rounded-15 px-4 py-2">{% trans 'Нанять сотрудника' %}</button>#}
+                <div class="pt-4 d-flex flex-row align-items-center">
+                    <h5 class="font-weight-bold mb-0 mr-3">{{ student.full_name }}</h5>
+                    {% if fav.student_id %}
+                        {% if student.id == fav.student_id %}
+                            <a href="{% url 'main:save_fav' student.id %}" return false;>
+                                <i class="fa fa-star fa-fw fa-lg favourite-icon active"></i>
+                            </a>
+                        {% endif %}
+                    {% else %}
+                        <a href="{% url 'main:save_fav' student.id %}" return false;>
+                            <i class="fa fa-star fa-fw fa-lg favourite-icon "></i>
+                        </a>
+                    {% endif %}
+                </div>
+                <p class="pb-3">
+                    {{ student.direction }}
+                </p>
+                <p><b>{% trans 'Навыки' %}:</b> {{ student.skills }}</p>
+                <p><b>{% trans 'Возраст' %}:</b> {{ student.age }} года</p>
+                <p class="mb-2"><b>{% trans 'Обо мне' %}:</b></p>
+                <p class="pb-4">
+                    {{ student.student_about }}
+                </p>
+                <p class="text-center text-sm-left">
+                    {#					<button class="btn btn-danger rounded-15 px-4 py-2">{% trans 'Нанять сотрудника' %}</button>#}
                     <!-- Button trigger modal -->
-					<button type="button" class="btn btn-danger-1 rounded-15 px-4 py-2" data-toggle="modal" data-target="#exampleModal">
-						{% trans 'Нанять сотрудника' %}
-					</button>
+                    <button type="button" class="btn btn-danger-1 rounded-15 px-4 py-2" data-toggle="modal"
+                            data-target="#exampleModal">
+                        {% trans 'Нанять сотрудника' %}
+                    </button>
 
-					<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1">
-						<div class="modal-dialog modal-dialog-centered">
-							<div class="modal-content">
-								<div class="modal-header border-0">
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body text-center">
-									<i class="fas fa-check-circle favourite-icon-modal mb-3"></i>
-									<p class="open-sans-400">
-										Ваша заявка успешно отправлена,
-										мы свяжемся с вами в скором времени!
-									</p>
-								</div>
-								<div class="modal-footer border-0">
+                    <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header border-0">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <i class="fas fa-check-circle favourite-icon-modal mb-3"></i>
+                                <p class="open-sans-400">
+                                    Ваша заявка успешно отправлена,
+                                    мы свяжемся с вами в скором времени!
+                                </p>
+                            </div>
+                            <div class="modal-footer border-0">
 
-								</div>
-							</div>
-						</div>
-					</div>
-				</p>
-			</div>
-			<div class="col-12 col-md-8 col-lg-9 col-xl-9 pl-md-5 right-content mt-2 mt-md-0 ">
-				<div class="row pl-md-5 mb-5 mb-md-0 mb-lg-5 d-flex">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </p>
+            </div>
+            <div class="col-12 col-md-8 col-lg-9 col-xl-9 pl-md-5 right-content mt-2 mt-md-0 ">
+                <div class="row pl-md-5 mb-5 mb-md-0 mb-lg-5 d-flex">
                     {% for sp in student.projects_top4 %}
                         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-5 px-0 px-md-3">
                             <div class="img-project-div1 ">
@@ -67,8 +78,26 @@
                     {% empty %}
                         <h1>No projects</h1>
                     {% endfor %}
-				</div>
-			</div>
-		</div><!-- End of row -->
-	</div><!-- End of container-xl -->
+                </div>
+            </div>
+        </div><!-- End of row -->
+    </div><!-- End of container-xl -->
+{% endblock %}
+{% block extra_js %}
+{#    $(".favourite-icon").click(function(e){#}
+{#    clicked = true;#}
+{#    e.preventDefault()#}
+{#    $.get("{% url "main:save_fav" student.id %}", function(data) {#}
+{#    console.log(data);#}
+{#    });#}
+{#    return false;#}
+{#    if (clicked) {#}
+{#    $(this).toggleClass('active');#}
+{#    clicked = true;#}
+{#    }else{#}
+{#    $(this).removeClass('active');#}
+{#    clicked = false;#}
+{#    }#}
+{#    });#}
+
 {% endblock %}

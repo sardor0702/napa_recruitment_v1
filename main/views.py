@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, ListView
 from student.models import Student, StudentProjects
-from main.models import FilterValues, Filter
+from main.models import FilterValues, Filter, Favorite
 from .forms import SearchForm
 
 
@@ -41,7 +41,26 @@ def student_card(request, id):
         student = Student.objects.get(id=id)
     except Student.DoesNotExist:
         return redirect('searching')
+    k = Favorite.objects.filter(student_id=student.id)
+    t = ''
+    for i in k:
+        t = i
 
     return render(request, "main/student_card.html", {
-        'student': student
+        'student': student,
+        'fav': t
     })
+
+
+def save_fav(request, id):
+    request.title = _("save")
+    print(request.user)
+    st = Student.objects.get(id=id)
+    user = request.user
+    if Favorite.objects.filter(student=st, user=user).exists():
+        Favorite.objects.get(student=st, user=user).delete()
+    else:
+        Favorite.objects.create(student_id=st.id, user_id=user.id)
+
+    return redirect("main:student_card", id=st.id)
+

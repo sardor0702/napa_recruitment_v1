@@ -28,8 +28,12 @@ class Query(models.Model):
 
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.RESTRICT)
+    name = models.CharField(max_length=50, blank=True, null=True)
     student = models.ForeignKey('student.Student', on_delete=models.RESTRICT)
     added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.user)
 
     class Meta:
         unique_together = (('user', 'student'), )

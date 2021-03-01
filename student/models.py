@@ -6,6 +6,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files import File
 from django.conf import settings
+from django.urls import reverse
 
 
 def convert_fn(ins, file):
@@ -27,6 +28,9 @@ class Student(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+    def get_absolute_url(self):
+        return reverse('main:student_card', kwargs={'id': self.id})
 
     @property
     def full_name(self):
@@ -50,7 +54,6 @@ class Student(models.Model):
 
             self.student_image = File(tmp, 't.png')
         super().save(*args, **kwargs)
-
 
     @property
     def image_url(self):
