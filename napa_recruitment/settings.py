@@ -166,21 +166,4 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'alert alert-success',
 }
 
-# CACHES = {
-#     # … default cache config and others
-#     "select2": {
-#         "BACKEND": "django_redis.cache.RedisCache",
-#         "LOCATION": "redis://127.0.0.1:6379/2",
-#         "OPTIONS": {
-#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-#         }
-#     }
-# }
-
-# # Tell select2 which cache configuration to use:
-# SELECT2_CACHE_BACKEND = "select2"
-
-# SELECT2_JS = 'assets/js/select2.min.js'
-# SELECT2_CSS = 'assets/css/select2.css'
-# SELECT2_I18N_PATH = 'assets/js/i18n'
 

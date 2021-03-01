@@ -1,16 +1,11 @@
-from rest_framework.views import APIView
-from .serializers import UserSerializer, RegistrationSerializer
-# from napa_recruitment.responses import ResponseSuccess, ResponseFile
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from .forms import RegistrationForm, LoginForm, EditForm, ForgotPassword, ChangePassword
 from .models import User
-from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
-from django.views.generic import CreateView
 from django.contrib.auth import update_session_auth_hash
 
 
@@ -18,7 +13,7 @@ class UserRegistration(View):
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
 
-        request.title = "Sign up"
+        request.title = "Регистрация"
 
     def get(self, request):
         form = RegistrationForm()
@@ -67,7 +62,7 @@ def user_login(request):
 @login_required
 def login_checkin(request):
     request.title = "Персональный аккаунт"
-    form = LoginForm(data=request.user)  #user ma'lumotlarini jo'natvoman
+    form = LoginForm(data=request.user)  # user ma'lumotlarini jo'natvoman
     return render(request, 'main/personal_account.html', {
         'form': form
     })
@@ -118,10 +113,10 @@ def change_password(request):
             request.user.set_password(form.cleaned_data['confirm'])
             request.user.save()
             update_session_auth_hash(request, request.user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
+            messages.success(request, 'Ваш пароль успешно обновлен!')
             return redirect('user:personal_account')
         else:
-            messages.error(request, 'Please correct the error below.')
+            messages.error(request, 'Пожалуйста, исправьте ошибку ниже.')
     return redirect('user:info', id=request.user.pk)
 
 

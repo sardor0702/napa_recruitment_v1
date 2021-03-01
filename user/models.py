@@ -44,10 +44,12 @@ class UserManager(BaseUserManager):
     def get_by_natural_key(self, username):
         return User.objects.get(username=username)
 
+
 def convert_fn(ins, file):
     ext = file.split('.')[-1]
     filename = '{:%Y-%m-%d-%H-%M-%S}.{}'.format(datetime.now(), ext)
     return os.path.join('user_pick',filename)
+
 
 def convert_fn(ins, file):
     ext = file.split('.')[-1]
@@ -90,6 +92,3 @@ class User(AbstractUser):
 
         return os.path.join(settings.STATIC_URL, "main/img/nophoto.png")
 
-
-# user = User.objects.all()
-# for i in user:
