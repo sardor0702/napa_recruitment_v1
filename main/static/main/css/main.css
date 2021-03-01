@@ -208,6 +208,19 @@ html{
   border-color: #FB96C6;
 }
 
+.btn-danger-2{
+  color: #DF3888 !important;
+  background-color: #FFE0EF;
+  border-color: #FFE0EF;
+  box-shadow: 0 0 0 0.2rem #FFE0EF;
+}
+
+.active1{
+  color: #fff !important;
+  background-color: #DF3888;
+  border-color: #DF3888;
+}
+
 .btn-danger-1:focus, .btn-danger.focus {
   color: #DF3888;
   background-color: #FFE0EF;
@@ -221,6 +234,8 @@ html{
   border-color: #FFE0EF !important;
   box-shadow: 0 0 0 0.2rem rgba(223, 56, 136, 1);
 }
+
+
 
 .bg-blue{
   background: #4065AE;
