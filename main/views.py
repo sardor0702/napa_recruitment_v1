@@ -15,9 +15,11 @@ class Home(TemplateView):
         return context
 
 
-def favorites(request):
-    request.title = _("Избранное")
-    return render(request, 'main/favorites.html')
+# def favorites(request):
+#     request.title = _("Избранное")
+#     user = request.user
+#
+#     return render(request, 'main/favorites.html')
 
 
 class Searching(ListView):
@@ -31,6 +33,21 @@ class Searching(ListView):
         context = super().get_context_data(**kwargs)
         context['fontend'] = FilterValues.objects.filter(filter_id_id=4)
         context['backend'] = FilterValues.objects.filter(filter_id_id=3)
+
+        return context
+
+
+class FavoritesView(ListView):
+    template_name = "main/favorites.html"
+    paginate_by = 3
+
+    def get_queryset(self):
+        return Student.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['favorites'] = Favorite.objects.filter()
+        context['querys'] = Query.objects.all()
 
         return context
 

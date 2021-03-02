@@ -39,7 +39,7 @@ class Favorite(models.Model):
     added_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user.id) + " | " + self.student.full_name + " | " + str(self.added_at)
 
     class Meta:
         unique_together = (('user', 'student'),)
