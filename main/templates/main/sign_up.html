@@ -29,7 +29,7 @@
                     <h1 class="d-block d-sm-block d-md-none title-name">NAPA</h1>
                     <h1 class="d-block d-sm-block d-md-none title-name">Recruitment</h1>
                     <hr class="d-block d-sm-block d-md-none ">
-                    <form action="{% url 'user:registration' %}" method="post" class="form-example mt-3 mb-5">
+                    <form action="{% url 'user:registration' %}" method="post">
                         {% csrf_token %}
                         <label class="text-01 mb-4">Регистрация</label>
                         <div class="form-group">
