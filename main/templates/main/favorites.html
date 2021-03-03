@@ -15,32 +15,36 @@
                         <img src="{{ favorite.student.image_url }}" alt="avatar" name="inpFile" id="inpFile2">
                     </div>
                     <div class="col-md-3 offset-md-1 col-sm-8 offset-sm-3 col-12 d-flex align-items-center justify-content-center justify-content-md-start pl-sm-0 mt-3 mt-sm-0">
-                        <i class="fa fa-star fa-fw fa-lg favourite-icon active pb-sm-3 mr-sm-4 pt-sm-3 mr-2"></i>
+                        <i class="fa fa-star fa-fw fa-lg favourite-icon checked1 active pb-sm-3 mr-sm-4 pt-sm-3 mr-2"
+                           data-id="{{ favorite.id }}" data-target="#exampleModal"></i>
                         <p class="font-weight-bold text-break m-0 text-center">
                             {{ favorite.student.full_name }}
                         </p>
                     </div>
-                    <div class="col-md-3 offset-md-1 col-sm-4 mt-2 mt-sm-4 mt-md-0 text-center text-sm-left">
+                    <div class="col-md-3 col-sm-4 mt-2 mt-sm-4 mt-md-0 text-center text-sm-left">
                         <p class="mb-2">
                             {{ favorite.student.direction }}
                         </p>
                     </div>
-                    <div class="col-md-2 offset-md-0 col-sm-6 mt-sm-4 mt-md-0 text-center text-md-left">
+                    <div class="col-md-3 offset-md-0 col-sm-6 mt-sm-4 mt-md-0 text-center text-md-left">
                         <p>
                             {{ favorite.student.skills }}
                         </p>
                     </div>
                 </div><!-- End of row -->
             {% endif %}
-
         {% empty %}
+
+            <div class="alert alert-primary" role="alert">
+                {% trans 'Нет избранных сотрудников!' %}
+            </div>
 
         {% endfor %}
 
 
         <div class="row d-flex align-items-center mt-4">
             <div class="col pr-lg-5 mr-lg-5 text-lg-right text-sm-left text-center">
-                <a class="btn btn-danger px-4 py-2 rounded-15">{% trans 'Изменить' %}</a>
+                <a class="btn btn-danger px-4 py-2 rounded-15 save-b1" href="">{% trans 'Изменить' %}</a>
             </div><!-- End of col -->
         </div><!-- End of row -->
     </div><!-- End of container-xl -->
@@ -59,17 +63,18 @@
                         <img src="{{ q.student.image_url }}" alt="avatar" name="inpFile" id="inpFile2">
                     </div>
                     <div class="col-md-3 offset-md-1 col-sm-8 offset-sm-3 col-12 d-flex align-items-center justify-content-center justify-content-md-start pl-sm-0 mt-3 mt-sm-0">
-                        <i class="fas fa-check-circle fa-fw fa-lg favourite-icon-1 active pb-sm-3 mr-sm-4 pt-md-3 mr-2"></i>
+                        <i class="fas fa-check-circle checked fa-fw fa-lg favourite-icon-1 active pb-sm-3 mr-sm-4 pt-md-3 mr-2"
+                           data-target="#exampleModal" data-id="{{ q.id }}"></i>
                         <p class="font-weight-bold text-break m-0 text-center">
                             {{ q.student.full_name }}
                         </p>
                     </div>
-                    <div class="col-md-3 offset-md-1 col-sm-4 mt-2 mt-sm-4 mt-md-0 text-center text-sm-left">
+                    <div class="col-md-3 col-sm-4 mt-2 mt-sm-4 mt-md-0 text-center text-sm-left">
                         <p class="mb-2">
                             {{ q.student.direction }}
                         </p>
                     </div>
-                    <div class="col-md-2 offset-md-0 col-sm-6 mt-sm-4 mt-md-0 text-center text-md-left">
+                    <div class="col-md-3 offset-md-0 col-sm-6 mt-sm-4 mt-md-0 text-center text-md-left">
                         <p>
                             {{ q.student.skills }}
                         </p>
@@ -77,13 +82,92 @@
                 </div><!-- End of row -->
             {% endif %}
         {% empty %}
-
+            <div class="alert alert-primary" role="alert">
+                {% trans 'Заявой нет!' %}
+            </div>
         {% endfor %}
 
         <div class="row d-flex align-items-center mt-4">
             <div class="col pr-lg-5 mr-lg-5 text-lg-right text-sm-left text-center">
-                <a class="btn btn-danger px-4 py-2 rounded-15">{% trans 'Изменить' %}</a>
+                <a class="btn btn-danger px-4 py-2 rounded-15 save-b2" href="#">{% trans 'Изменить' %}</a>
             </div><!-- End of col -->
         </div><!-- End of row -->
     </div><!-- End of container-xl -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-minus-circle favourite-icon-modal mb-3"></i>
+                    <p class="open-sans-400">
+                        {% trans 'Вы уверены, что хотите удалить сотрудника из списка заявок' %}?
+                    </p>
+                </div>
+                <div class="modal-footer border-0 justify-content-around px-5 pb-5">
+                    <button type="button"
+                            class="btn btn-danger rounded-15 px-4 py-2 open-sans-400 delete">{% trans 'Удалить' %}</button>
+                    <button type="button" class="btn btn-danger rounded-15 px-4 py-2 open-sans-400"
+                            data-dismiss="modal">{% trans 'Оставить' %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script>
+        $(".save-b2").click(function (e) {
+            if (!$(this).prop("is-edit")) {
+                $(".checked").addClass("fa-minus-circle favourite-icon-2")
+                $(".checked").removeClass("fa-check-circle favourite-icon-1")
+                $(".checked").attr('data-toggle', 'modal');
+                $(this).html('Сохранить')
+                $(this).prop("is-edit", true);
+            } else {
+                $(".checked").removeClass("fa-minus-circle favourite-icon-2")
+                $(".checked").addClass("fa-check-circle favourite-icon-1")
+                $(".checked").removeAttr('data-toggle');
+                $(this).html('Изменить')
+                $(this).prop("is-edit", false);
+            }
+
+            e.preventDefault();
+            return false;
+        });
+
+        $(".save-b1").click(function (e) {
+            if (!$(this).prop("is-edit")) {
+                $(".checked1").addClass("fa-minus-circle favourite-icon-3")
+                $(".checked1").removeClass("fa-star favourite-icon")
+                $(".checked1").attr('data-toggle', 'modal');
+                $(this).html('Сохранить')
+                $(this).prop("is-edit", true);
+            } else {
+                $(".checked1").removeClass("fa-minus-circle favourite-icon-3")
+                $(".checked1").addClass("fa-star favourite-icon")
+                $(".checked1").removeAttr('data-toggle');
+                $(this).html('Изменить')
+                $(this).prop("is-edit", false);
+            }
+
+            e.preventDefault();
+            return false;
+        });
+
+        let modal_delete_id = 0;
+        $("#exampleModal").on("show.bs.modal", function (e) {
+            modal_delete_id = $(e.relatedTarget).data("id");
+        });
+
+        $(".delete").click(function () {
+            alert(modal_delete_id);
+        });
+
+
+    </script>
+
+
 {% endblock %}

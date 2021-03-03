@@ -31,16 +31,16 @@ $(document).on('click', '.allow-focus', function (e) {
 // 	}
 // });
 
-$(".favourite-icon-1").click(function(){
-	clicked = true;
-	if (clicked) {
-		$(this).toggleClass('active');
-		clicked = true;
-	}else{
-		$(this).removeClass('active');
-		clicked = false;
-	}
-});
+// $(".favourite-icon-1").click(function(){
+// 	clicked = true;
+// 	if (clicked) {
+// 		$(this).toggleClass('active');
+// 		clicked = true;
+// 	}else{
+// 		$(this).removeClass('active');
+// 		clicked = false;
+// 	}
+// });
 
 const inpFile = document.getElementById("inpFile");
 const previewContainer = document.getElementById("imagePreview");

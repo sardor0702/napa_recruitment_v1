@@ -4,6 +4,7 @@ from django.views.generic import TemplateView, ListView
 from student.models import Student, StudentProjects
 from main.models import FilterValues, Filter, Favorite, Query
 from .forms import SearchForm
+from django.contrib import messages
 
 
 class Home(TemplateView):
@@ -48,7 +49,8 @@ class FavoritesView(ListView):
         context = super().get_context_data(**kwargs)
         context['favorites'] = Favorite.objects.filter()
         context['querys'] = Query.objects.all()
-
+        # context['messages'] = messages.success(self.request, "asdasd")
+        # print(context['messages'])
         return context
 
 

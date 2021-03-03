@@ -90,7 +90,12 @@
                             <a href="{{ sp.project_link }}" class="text-break">{{ sp.project_link }}</a>
                         </div><!-- End of col -->
                     {% empty %}
-                        <h1>No projects</h1>
+                        <div class="container">
+
+                        </div>
+                        <div class="alert alert-primary" role="alert">
+                            {% trans 'Нет проектов, созданных этим студентом.' %}
+                        </div>
                     {% endfor %}
                 </div>
             </div>
