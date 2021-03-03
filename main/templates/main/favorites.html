@@ -163,11 +163,12 @@
         });
 
         $(".delete").click(function () {
+
             $.ajax({
-                url: '/ru/favorite_delete/'+modal_delete_id,
+                url: '/favorite_delete/'+modal_delete_id,
                 type:'get',
                 success: function (data){
-                   console.log('ok')
+
                 }
             });
         });

@@ -79,7 +79,7 @@ def user_logout(request):
 def user_info(request, id):
     request.title = "Личный кабинет"
     try:
-        user = User.objects.get(id=id)
+        user = get(id=id)
     except User.DoesNotExist:
         return redirect('personal_account')
     password_form = ChangePassword()

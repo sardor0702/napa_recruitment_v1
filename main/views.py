@@ -4,7 +4,11 @@ from django.views.generic import TemplateView, ListView
 from student.models import Student, StudentProjects
 from main.models import FilterValues, Filter, Favorite, Query
 from .forms import SearchForm
-from django.contrib import messages
+from .seraializers import FavoriteSerializer
+import json
+from django.http import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 class Home(TemplateView):
@@ -103,3 +107,20 @@ def favorite_delete(request, id):
     current_favorite = Favorite.objects.get(id=id)
     current_favorite.delete()
     return redirect('main:favorites')
+
+
+# def get_all_favorites(request, id):
+#     fav = Favorite.objects.filter(user_id=id)
+#     serializer = FavoriteSerializer(fav, many=True)
+#     print(serializer.data)
+#     return JsonResponse(serializer.data)
+
+def get(request, id):
+    print(id)
+    fav = Favorite.objects.filter(user_id=id)
+    serializer = FavoriteSerializer(fav, many=True)
+    return Response(serializer.data)
+
+
+class GetAllFavorites(APIView):
+    pass
