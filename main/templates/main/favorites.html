@@ -109,7 +109,7 @@
                 </div>
                 <div class="modal-footer border-0 justify-content-around px-5 pb-5">
                     <button type="button"
-                            class="btn btn-danger rounded-15 px-4 py-2 open-sans-400 delete">{% trans 'Удалить' %}</button>
+                            class="btn btn-danger rounded-15 px-4 py-2 open-sans-400 delete" data-dismiss="modal">{% trans 'Удалить' %}</button>
                     <button type="button" class="btn btn-danger rounded-15 px-4 py-2 open-sans-400"
                             data-dismiss="modal">{% trans 'Оставить' %}</button>
                 </div>
@@ -163,7 +163,13 @@
         });
 
         $(".delete").click(function () {
-            alert(modal_delete_id);
+            $.ajax({
+                url: '/ru/favorite_delete/'+modal_delete_id,
+                type:'get',
+                success: function (data){
+                   console.log('ok')
+                }
+            });
         });
 
 

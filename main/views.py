@@ -97,3 +97,9 @@ def save_user(request, id):
         Query.objects.create(student_id=st.id, user_id=user.id)
 
     return redirect("main:student_card", id=st.id)
+
+
+def favorite_delete(request, id):
+    current_favorite = Favorite.objects.get(id=id)
+    current_favorite.delete()
+    return redirect('main:favorites')
