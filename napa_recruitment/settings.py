@@ -125,6 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
+
 TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
@@ -149,14 +150,16 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-LANGUAGES = [
-    ('ru', "ru"),
-    ('uz', "uz")
+
+INTERNAL_IPS = [
+    '127.0.0.1'
 ]
+
 
 SETTINGS_EXPORT = [
     'LANGUAGES'
 ]
+
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
@@ -165,5 +168,3 @@ MESSAGE_TAGS = {
     messages.INFO: 'alert alert-info',
     messages.SUCCESS: 'alert alert-success',
 }
-
-

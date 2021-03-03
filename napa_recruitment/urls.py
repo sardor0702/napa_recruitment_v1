@@ -20,6 +20,9 @@ from django.conf.urls.i18n import i18n_patterns
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
+import debug_toolbar
+from django.conf.urls.i18n import i18n_patterns
+
 
 urlpatterns = [
     path('__debug__/', include(debug_toolbar.urls)),
@@ -29,6 +32,13 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('user/', include('user.urls', namespace='user')),
+    path('user/', include('user.urls', namespace='user')),
+)
+
+urlpatterns += i18n_patterns(
+    path('api/', include([
+        path('user/', include('user.urls'))
+    ])),
     path('', include('main.urls'))
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
