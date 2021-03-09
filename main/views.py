@@ -6,7 +6,7 @@ from main.models import FilterValues, Filter, Favorite, Query
 from .forms import SearchForm
 from .seraializers import FavoriteSerializer
 import json
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -36,8 +36,8 @@ class Searching(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['fontend'] = FilterValues.objects.filter(filter_id_id=4)
-        context['backend'] = FilterValues.objects.filter(filter_id_id=3)
+        context['fontend'] = FilterValues.objects.filter(filter_id=6)
+        context['backend'] = FilterValues.objects.filter(filter_id=7)
 
         return context
 
@@ -64,25 +64,23 @@ def student_card(request, id):
         student = Student.objects.get(id=id)
     except Student.DoesNotExist:
         return redirect('searching')
-    k = Favorite.objects.filter(student_id=student.id)
-    query = Query.objects.filter(student_id=student.id)
-    test_q = ''
-    t = ''
-    for i in k:
-        t = i
-    for i in query:
-        test_q = i
+
+    t = 0
+    k = Favorite.objects.filter(user_id=request.user.id, student_id=student.id).last()
+    if k:
+        t = k.id
+
+    sent_query = Query.objects.filter(user_id=request.user.id, student_id=student.id).exists()
 
     return render(request, "main/student_card.html", {
         'student': student,
         'fav': t,
-        'test_query': test_q
+        'sent_query': sent_query
     })
 
 
 def save_fav(request, id):
     request.title = _("save")
-    print(request.user)
     st = Student.objects.get(id=id)
     user = request.user
     if Favorite.objects.filter(student=st, user=user).exists():
@@ -97,7 +95,11 @@ def save_user(request, id):
     request.title = _("")
     st = Student.objects.get(id=id)
     user = request.user
-    if not Query.objects.filter(student_id=st, user=user).exists():
+    # if not Query.objects.filter(student_id=st, user=user).exists():
+    #     Query.objects.create(student_id=st.id, user_id=user.id)
+    if Query.objects.filter(student=st, user=user).exists():
+        Query.objects.get(student=st, user=user).delete()
+    else:
         Query.objects.create(student_id=st.id, user_id=user.id)
 
     return redirect("main:student_card", id=st.id)
@@ -122,5 +124,20 @@ def get(request, id):
     return Response(serializer.data)
 
 
-class GetAllFavorites(APIView):
-    pass
+def favorite_delete(request, id):
+    '''
+        Removes student info from users favorite list
+    '''
+    current_favorite = Favorite.objects.get(id=id)
+    data = list(Favorite.objects.values().filter(user_id=request.user, id=id))
+    current_favorite.delete()
+    return JsonResponse(data, safe=False)
+
+def query_delete(request, id):
+    '''
+        Removes student info from users order list
+    '''
+    current_query = Query.objects.get(id=id)
+    data = list(Query.objects.values().filter(user_id=request.user, id=id))
+    current_query.delete()
+    return JsonResponse(data, safe=False)

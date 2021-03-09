@@ -5,19 +5,23 @@ from user.models import User
 # from student.models import Student
 
 
+# class Category(models.Model):
+#     name = models.CharField(max_length=256)
+
+
 class Filter(models.Model):
+    # category = models.ForeignKey(Category, on_delete=models.RESTRICT)
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
-
 
 class FilterValues(models.Model):
     filter_id = models.ForeignKey(Filter, on_delete=models.RESTRICT)
     value = models.TextField(max_length=2048)
 
     def __str__(self):
-        return self.value + ' ' + str(self.filter_id)
+        return self.value
 
 
 class Query(models.Model):
