@@ -71,7 +71,7 @@ def send_sms(phone, text):
             'messages': [
                 {
                     'recipient': phone,
-                    'message-id': 'idnapa' + str(round(time.time() * 1000)),
+                    'message-id': 'napa_recruitment' + str(round(time.time() * 1000)),
                     'sms': {
                         'originator': 'NAPA',
                         'content': {

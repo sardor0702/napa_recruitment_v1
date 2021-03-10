@@ -82,6 +82,12 @@ class ForgotPassword(forms.Form):
                             validators=[PhoneValidator()], required=True)
 
 
+class GetCodeForm(forms.Form):
+    code = forms.IntegerField(max_value=6, label=False,
+                              widget=forms.TextInput(attrs=({"class": "rounded-15"})),
+                              required=True)
+
+
 class ChangePassword(forms.Form):
     old_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
                                    required=True, validators=[MinLengthValidator(6)], label=False)

@@ -7,9 +7,15 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth import update_session_auth_hash
+from .serializers import UserSerializer, LoginSerializer, RegistrationSerializer
+from rest_framework import permissions
+from napa_recruitment.helpers import *
+
 
 
 class UserRegistration(View):
+    permission_classes = [~permissions.IsAuthenticated]
+
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
 
@@ -29,8 +35,9 @@ class UserRegistration(View):
             user = User(**data)
 
             user.set_password(user.password)
+            send_sms_code(request, data["phone"])
             user.save()
-            messages.success(request, "Вы успешно зарегистрировались.")
+            # messages.success(request, "Вы успешно зарегистрировались.")
             return redirect('user:login')
         return render(request, "main/sign_up.html", {
             'form': form
@@ -47,7 +54,7 @@ def user_login(request):
             user = authenticate(username=form.cleaned_data["username"], password=form.cleaned_data["password"])
             if user is not None:
                 login(request, user)
-                messages.success(request, "Добро пожаловать !!!  {}".format(user.username))
+                # messages.success(request, "Добро пожаловать !!!  {}".format(user.username))
                 return redirect('user:personal_account')
 
             form.add_error('password', "Имя пользователя и пароль неверны !")
@@ -123,6 +130,12 @@ def change_password(request):
 def forgot_password(request):
     request.title = "Забыли пароль"
     form = ForgotPassword()
+    if request.method == "POST":
+        form = forgot_password(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data("phone"))
+        # if request.POST['phone']:
+            return redirect("user:get_code")
     return render(request, "main/forgot_password.html", {
         'form': form
     })
