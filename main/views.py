@@ -9,6 +9,7 @@ import json
 from django.http import JsonResponse, HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.db.models import Q
 
 
 class Home(TemplateView):
@@ -27,7 +28,7 @@ class Home(TemplateView):
 #     return render(request, 'main/favorites.html')
 
 
-class Searching(ListView):
+class Searching(FilterValues, ListView):
     template_name = "main/searching.html"
     paginate_by = 3
 
@@ -53,8 +54,6 @@ class FavoritesView(ListView):
         context = super().get_context_data(**kwargs)
         context['favorites'] = Favorite.objects.filter()
         context['querys'] = Query.objects.all()
-        # context['messages'] = messages.success(self.request, "asdasd")
-        # print(context['messages'])
         return context
 
 
@@ -141,3 +140,19 @@ def query_delete(request, id):
     data = list(Query.objects.values().filter(user_id=request.user, id=id))
     current_query.delete()
     return JsonResponse(data, safe=False)
+
+
+def filter_by_skills(request, slug):
+    # print(slug)
+    get_obj = list(Student.objects.values().filter(Q(skills__contains=slug)))
+    get_sp = list(StudentProjects.objects.values())
+    # print(Student.objects.values())
+    return JsonResponse([get_obj, get_sp], safe=False)
+
+
+
+#
+# class FilterView(ListView):
+#     def get_queryset(self):
+#         queryset = FilterValues.objects.filter(value__in=self.request.GET.getlist("value"))
+#         return queryset

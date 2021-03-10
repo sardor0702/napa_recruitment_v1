@@ -58,6 +58,7 @@ class EditForm(forms.ModelForm):
                             required=True)
     mobil_phone = forms.CharField(max_length=16, label=False,
                                   widget=forms.TextInput(attrs=({"class": "rounded-15"})),
+                                  validators=[PhoneValidator()],
                                   required=False)
     email = forms.EmailField(max_length=100, label=False, widget=forms.EmailInput(attrs=({"class": "rounded-15"})) )
 

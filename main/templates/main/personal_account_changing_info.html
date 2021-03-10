@@ -7,6 +7,13 @@
     <div class="container-xl section-content my-110 px-4 pb-5">
         <div class="row mx-0">
             <div class="col-12">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.level_tag }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-12">
                 <h1 class="mb-5 d-none d-sm-none d-md-block font-size-28">{% trans 'Личный кабинет' %}</h1>
                 <h2 class="d-block d-md-none font-size-28">{% trans 'Личный кабинет' %}</h2>
 
@@ -89,9 +96,9 @@
                         <div class="modal-body px-5">
                             {% csrf_token %}
                             {{ password_form.errors }}
-                            {% for message in messages %}
-                                {{ message }}
-                            {% endfor %}
+                            {#                            {% for message in messages %}#}
+                            {#                                {{ message }}#}
+                            {#                            {% endfor %}#}
                             <div class="form-group">
                                 <label for="validationCustom01" class="text-02">Старый пароль <span
                                         style="color:#ff0000">*</span></label>
