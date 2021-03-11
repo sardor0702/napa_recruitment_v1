@@ -35,7 +35,7 @@ class UserRegistration(View):
             user = User(**data)
 
             user.set_password(user.password)
-            send_sms_code(request, data["phone"])
+            # send_sms_code(request, data["phone"])
             user.save()
             # messages.success(request, "Вы успешно зарегистрировались.")
             return redirect('user:login')
@@ -143,7 +143,8 @@ def forgot_password(request):
                 }
                 get_code_form = GetCodeForm()
                 return render(request, "main/get_code.html", {
-                    "form": get_code_form
+                    "form": get_code_form,
+                    "request.title": "Отправить код"
                 })
     return render(request, "main/forgot_password.html", {
         'form': form,
@@ -157,7 +158,7 @@ def get_code(request):
 
 @require_POST
 def post_code(request):
-    request.title = "Отправить код"
+    # request.title = "Отправить код"
 
     data = request.session.get("recovery")
     if request.method != "POST" or data["phone"] is None:
@@ -165,8 +166,6 @@ def post_code(request):
 
     code = request.POST.get("code")
 
-    # if not validate_sms_code(phone, code):
-    #     return False
     if data["phone"] is None or not validate_sms_code(data["phone"], code):
         return False
 
