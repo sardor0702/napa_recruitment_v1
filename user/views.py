@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .forms import RegistrationForm, LoginForm, EditForm, ForgotPassword, ChangePassword
+from .forms import RegistrationForm, LoginForm, EditForm, ForgotPassword, ChangePassword, GetCodeForm
 from .models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -10,7 +10,7 @@ from django.contrib.auth import update_session_auth_hash
 from .serializers import UserSerializer, LoginSerializer, RegistrationSerializer
 from rest_framework import permissions
 from napa_recruitment.helpers import *
-
+from django.core.exceptions import ValidationError
 
 
 class UserRegistration(View):
@@ -131,13 +131,19 @@ def forgot_password(request):
     request.title = "Забыли пароль"
     form = ForgotPassword()
     if request.method == "POST":
-        form = forgot_password(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data("phone"))
-        # if request.POST['phone']:
-            return redirect("user:get_code")
+        form = ForgotPassword(request.POST)
+        if form.is_valid() and request.method == "POST":
+            print(form.cleaned_data["phone"])
+            if User.objects.filter(phone=form.cleaned_data["phone"]).exists():
+                print(True)
+                get_code_form = GetCodeForm()
+                return render(request, "main/get_code.html", {
+                    "form": get_code_form
+                })
+
+            # return render(request, "main/home_page.html")
     return render(request, "main/forgot_password.html", {
-        'form': form
+        'form': form,
     })
 
 
@@ -148,4 +154,9 @@ def get_code(request):
 
 @require_POST
 def post_code(request):
-    pass
+    request.title = "Отправить код"
+    if request.method == "GET":
+        form = GetCodeForm(request.GET)
+        if form.is_valid():
+            return render()
+

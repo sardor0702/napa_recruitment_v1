@@ -1,5 +1,6 @@
 from django import forms
 from napa_recruitment.validators import PhoneValidator
+from napa_recruitment.validators2 import PhoneValidatorTest
 from django.core.validators import MinLengthValidator, EmailValidator
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.core.exceptions import ValidationError
@@ -79,7 +80,7 @@ class EditForm(forms.ModelForm):
 class ForgotPassword(forms.Form):
     phone = forms.CharField(max_length=16, label=False,
                             widget=forms.TextInput(attrs=({"class": "rounded-15", 'placeholder': '998971234567'})),
-                            validators=[PhoneValidator()], required=True)
+                            validators=[PhoneValidator(), PhoneValidatorTest()], required=True)
 
 
 class GetCodeForm(forms.Form):

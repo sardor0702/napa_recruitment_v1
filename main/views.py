@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, ListView
@@ -10,6 +11,7 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class Home(TemplateView):
@@ -28,7 +30,7 @@ class Home(TemplateView):
 #     return render(request, 'main/favorites.html')
 
 
-class Searching(FilterValues, ListView):
+class Searching(LoginRequiredMixin, ListView):
     template_name = "main/searching.html"
     paginate_by = 3
 
