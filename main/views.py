@@ -39,10 +39,37 @@ class Searching(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        corp = self.request.GET.getlist('frontend') + self.request.GET.getlist('backend')
+        context['object_list'] = []
+        if self.request.GET.getlist('frontend') or self.request.GET.getlist('backend'):
+            for i in corp:
+                context['object_list'] += (Student.objects.filter(skills__contains=i)).distinct()
+        else:
+            context['object_list'] = self.get_queryset()
+        k = str(self.request).split('?')[1].rstrip('\'>').split('&')
+        t = ''
+        for i in k:
+            if not i.startswith('page'):
+                t += '&' + i
+        s = t.lstrip('&')
+        context['k'] = s
         context['fontend'] = FilterValues.objects.filter(filter_id=6)
         context['backend'] = FilterValues.objects.filter(filter_id=7)
 
         return context
+
+
+# class JsonFileStudentsView(ListView):
+#     def get_queryset(self):
+#         queryset = Student.objects.filter(
+#             Q(skills=self.request.GET.getlist('frontend')) |
+#             Q(skills=self.request.GET.getlist('backend'))
+#         ).distinct().values('skills')
+#         return queryset
+#
+#     def get(self, request, *args, **kwargs):
+#         queryset = list(self.get_queryset())
+#         return JsonResponse({"sts": queryset}, self=False)
 
 
 class FavoritesView(ListView):
@@ -134,6 +161,7 @@ def favorite_delete(request, id):
     current_favorite.delete()
     return JsonResponse(data, safe=False)
 
+
 def query_delete(request, id):
     '''
         Removes student info from users order list
@@ -150,8 +178,6 @@ def filter_by_skills(request, slug):
     get_sp = list(StudentProjects.objects.values())
     # print(Student.objects.values())
     return JsonResponse([get_obj, get_sp], safe=False)
-
-
 
 #
 # class FilterView(ListView):

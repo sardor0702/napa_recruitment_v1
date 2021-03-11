@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import Home, FavoritesView, Searching, student_card, save_fav, save_user, favorite_delete, \
+from .views import Home, FavoritesView, Searching, student_card, save_fav, save_user,\
     favorite_delete, query_delete, filter_by_skills
 
 app_name = "main"

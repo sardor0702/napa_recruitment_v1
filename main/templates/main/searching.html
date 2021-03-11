@@ -6,72 +6,77 @@
         <!-- Filter -->
         <div class="row mx-4 text-left">
             <div class="col-lx-3 col-lg-3 col-md-3">
-                <span class="filter d-none d-md-block">{% trans 'Фильтр' %}</span>
-                <p class="d-block d-md-none d-flex justify-content-center ">
-                    <button class="btn btn-danger filter px-5 rounded-15" type="button" data-toggle="collapse"
-                            data-target="#collapseExample_0">
-                        {% trans 'Фильтр' %}
-                    </button>
-                </p>
-                <div class="py-4 be collapse d-md-block" id="collapseExample_0">
+                <form action="{% url "main:searching" %}" name="filter">
+                    <span class="filter d-none d-md-block">{% trans 'Фильтр' %}</span>
+                    <p class="d-block d-md-none d-flex justify-content-center ">
+                        <button class="btn btn-danger filter px-5 rounded-15" type="button" data-toggle="collapse"
+                                data-target="#collapseExample_0">
+                            {% trans 'Фильтр' %}
+                        </button>
+                    </p>
+                    <div class="py-4 be collapse d-md-block" id="collapseExample_0">
                     <span class="btn pl-0" data-toggle="collapse" href="#collapseExample">Back-End <i
                             class="fas fa-angle-down"></i></span>
-                    <br>
-                    <div class="collapse" id="collapseExample">
-                        <div class="card card-body ml-4 p-0 border-0">
-                            {% for back in backend %}
-                                <div class="form-check mb-1 d-flex align-items-center">
-                                    <input class="form-check-input" type="checkbox" id="backend1"
-                                           value="{{ back.value }}">
-                                    <label class="form-check-label pl-2 pt-1" for="backend1">{{ back.value }}</label>
-                                </div>
-                            {% endfor %}
+                        <br>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body ml-4 p-0 border-0">
+                                {% for back in backend %}
+                                    <div class="form-check mb-1 d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" id="backend1"
+                                               value="{{ back.value }}" name="backend">
+                                        <label class="form-check-label pl-2 pt-1"
+                                               for="backend1">{{ back.value }}</label>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                    </div>
 
-                    <span class="btn pl-0" data-toggle="collapse" href="#collapseExample1">Front-End <i
-                            class="fas fa-angle-down"></i></span>
-                    <br>
-{#                    <form action="{% url 'filter' %}" method="get">#}
+                        <span class="btn pl-0" data-toggle="collapse" href="#collapseExample1">Front-End <i
+                                class="fas fa-angle-down"></i></span>
+                        <br>
+                        {#                    <form action="{% url 'filter' %}" method="get">#}
                         <div class="collapse" id="collapseExample1">
                             <div class="card card-body p-0 ml-4 border-0">
                                 {% for front in fontend %}
                                     <div class="form-check mb-1 d-flex align-items-center">
                                         <input class="form-check-input" type="checkbox" id="frontend1"
-                                               value="{{ front.value }}" name="{{ front.value }}">
+                                               value="{{ front.value }}" name="frontend">
                                         <label class="form-check-label pl-2 pt-1"
                                                for="frontend1">{{ front.value }}</label>
                                     </div>
                                 {% endfor %}
                             </div>
                         </div>
-{#                    <button type="submit">Submit</button>#}
-{#                    </form>#}
-                    <span class="py-2">SMM</span>
-                    <br>
-                    <span class="d-block mb-4 py-2">{% trans 'Маркетинг' %}</span>
-                    <div class="form-check mb-1 d-flex align-items-center">
-                        <input class="form-check-input" type="checkbox" id="item1" value="">
-                        <label class="form-check-label pl-2 pt-1" for="item1">{% trans 'Полный рабочий день' %}</label>
+                        {#                    <button type="submit">Submit</button>#}
+                        {#                    </form>#}
+                        <span class="py-2">SMM</span>
+                        <br>
+                        <span class="d-block mb-4 py-2">{% trans 'Маркетинг' %}</span>
+                        <div class="form-check mb-1 d-flex align-items-center">
+                            <input class="form-check-input" type="checkbox" id="item1" value="">
+                            <label class="form-check-label pl-2 pt-1"
+                                   for="item1">{% trans 'Полный рабочий день' %}</label>
+                        </div>
+                        <div class="form-check mb-1 d-flex align-items-center">
+                            <input class="form-check-input" type="checkbox" id="iten2" value="">
+                            <label class="form-check-label pl-2 pt-1"
+                                   for="item2">{% trans 'Неполный рабочий день' %}</label>
+                        </div>
+                        <div class="form-check mb-1 d-flex align-items-center mb-4">
+                            <input class="form-check-input" type="checkbox" id="item3" value="">
+                            <label class="form-check-label pl-2 pt-1" for="item3">{% trans 'Фриланс' %}</label>
+                        </div>
+                        <div class="form-check mb-1 d-flex align-items-center">
+                            <input class="form-check-input" type="checkbox" id="item4" value="">
+                            <label class="form-check-label pl-2 pt-1" for="item4">{% trans 'Работа в офисе' %}</label>
+                        </div>
+                        <div class="form-check mb-1 d-flex align-items-center">
+                            <input class="form-check-input" type="checkbox" id="iten4" value="">
+                            <label class="form-check-label pl-2 pt-1" for="item4">{% trans 'Удаленная работа' %}</label>
+                        </div>
                     </div>
-                    <div class="form-check mb-1 d-flex align-items-center">
-                        <input class="form-check-input" type="checkbox" id="iten2" value="">
-                        <label class="form-check-label pl-2 pt-1"
-                               for="item2">{% trans 'Неполный рабочий день' %}</label>
-                    </div>
-                    <div class="form-check mb-1 d-flex align-items-center mb-4">
-                        <input class="form-check-input" type="checkbox" id="item3" value="">
-                        <label class="form-check-label pl-2 pt-1" for="item3">{% trans 'Фриланс' %}</label>
-                    </div>
-                    <div class="form-check mb-1 d-flex align-items-center">
-                        <input class="form-check-input" type="checkbox" id="item4" value="">
-                        <label class="form-check-label pl-2 pt-1" for="item4">{% trans 'Работа в офисе' %}</label>
-                    </div>
-                    <div class="form-check mb-1 d-flex align-items-center">
-                        <input class="form-check-input" type="checkbox" id="iten4" value="">
-                        <label class="form-check-label pl-2 pt-1" for="item4">{% trans 'Удаленная работа' %}</label>
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-danger-1 rounded-15 px-4">Submit</button>
+                </form>
             </div><!-- End of filter -->
 
             <!-- students content -->
@@ -159,58 +164,59 @@
 {% endblock %}
 {% block extra_js %}
     <script>
-        $('.form-check-input').change(function () {
-            let page = $('.default_page').html()
-            if ($(this).prop('checked')) {
 
-                $.ajax({
-                    url: "/filter_by_skills/" + $(this).val(),
-                    type: 'get',
-                    success: function (data) {
-                        console.log(data[1])
-                        if (data) {
-                            $('.default_page').html('')
-                            for (let i = 0; i < data.length; i++) {
-                                $('.default_page').append(
-                                    '<div class="col-sm-12 col-md-12 px-0 px-md-5 py-md-4 mt-2 users text-center">' +
-                                    '<div class="row px-3 mt-3 mb-4 text-sm-left">' +
-                                    '<div class="col-sm-2 px-0 ml-md-3">' +
-                                    '<img class="img-fluid" src="/media/' + data[0][i].student_image + '" alt="avatar" name="inpFile"' +
-                                    'id="inpFile2">' +
-                                    '</div>' +
-                                    '<div class="col-sm-4 col-md-6 pt-2 offset-sm-1 offset-md-2 offset-lg-1">' +
-                                    '<h5 class="font-size-20">' + data[0][i].first_name + ' ' + data[0][i].last_name + '</h5>' +
-                                    '<p class="text-light font-size-14">' + data[0][i].direction + '</p>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '<div class="row px-4 px-md-3 d-flex flex-column align-items-center flex-sm-row">' +
-                                    '<div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10 img-project-div">' +
-                                    '<img src="/media/' + data[1][i].project_pick + '" class="img-fluid img-project" alt="kkk">' +
-                                    '</div>' +
-
-                                    '</div>' +
-                                    '<div class="row px-4 px-md-3 mt-5 mb-5 mb-md-0 d-flex flex-column align-content-center flex-sm-row justify-content-sm-between">' +
-                                    '<div class="col-sm-6 mb-4 mb-md-0 text-center text-sm-left">' +
-                                    '<span>Навыки</span>' +
-                                    '<br>' +
-                                    '<span class="text-light font-size-14"> ' + data[0][i].skills + ' </span>' +
-                                    '</div>' +
-                                    '<div class="col-sm-6 text-center text-sm-right">' +
-                                    '<a class="btn btn-danger rounded-15 px-4 py-2" href="/student_card/' + data[0][i].id + '">Подробнее</a>' +
-                                    '</div>' +
-                                    '</div>' +
-                                    '</div>'
-                                )
-                            }
-                        } else {
-
-                        }
-
-                    }
-                })
-
-            }
-        })
+        {#$('.form-check-input').change(function () {#}
+        {#    let page = $('.default_page').html()#}
+        {#    if ($(this).prop('checked')) {#}
+        {##}
+        {#        $.ajax({#}
+        {#            url: "/filter_by_skills/" + $(this).val(),#}
+        {#            type: 'get',#}
+        {#            success: function (data) {#}
+        {#                console.log(data[1])#}
+        {#                if (data) {#}
+        {#                    $('.default_page').html('')#}
+        {#                    for (let i = 0; i < data.length; i++) {#}
+        {#                        $('.default_page').append(#}
+        {#                            '<div class="col-sm-12 col-md-12 px-0 px-md-5 py-md-4 mt-2 users text-center">' +#}
+        {#                            '<div class="row px-3 mt-3 mb-4 text-sm-left">' +#}
+        {#                            '<div class="col-sm-2 px-0 ml-md-3">' +#}
+        {#                            '<img class="img-fluid" src="/media/' + data[0][i].student_image + '" alt="avatar" name="inpFile"' +#}
+        {#                            'id="inpFile2">' +#}
+        {#                            '</div>' +#}
+        {#                            '<div class="col-sm-4 col-md-6 pt-2 offset-sm-1 offset-md-2 offset-lg-1">' +#}
+        {#                            '<h5 class="font-size-20">' + data[0][i].first_name + ' ' + data[0][i].last_name + '</h5>' +#}
+        {#                            '<p class="text-light font-size-14">' + data[0][i].direction + '</p>' +#}
+        {#                            '</div>' +#}
+        {#                            '</div>' +#}
+        {#                            '<div class="row px-4 px-md-3 d-flex flex-column align-items-center flex-sm-row">' +#}
+        {#                            '<div class="px-2 mb-3 mb-md-0 col-md-4 col-sm-4 col-10 img-project-div">' +#}
+        {#                            '<img src="/media/' + data[1][i].project_pick + '" class="img-fluid img-project" alt="kkk">' +#}
+        {#                            '</div>' +#}
+        {##}
+        {#                            '</div>' +#}
+        {#                            '<div class="row px-4 px-md-3 mt-5 mb-5 mb-md-0 d-flex flex-column align-content-center flex-sm-row justify-content-sm-between">' +#}
+        {#                            '<div class="col-sm-6 mb-4 mb-md-0 text-center text-sm-left">' +#}
+        {#                            '<span>Навыки</span>' +#}
+        {#                            '<br>' +#}
+        {#                            '<span class="text-light font-size-14"> ' + data[0][i].skills + ' </span>' +#}
+        {#                            '</div>' +#}
+        {#                            '<div class="col-sm-6 text-center text-sm-right">' +#}
+        {#                            '<a class="btn btn-danger rounded-15 px-4 py-2" href="/student_card/' + data[0][i].id + '">Подробнее</a>' +#}
+        {#                            '</div>' +#}
+        {#                            '</div>' +#}
+        {#                            '</div>'#}
+        {#                        )#}
+        {#                    }#}
+        {#                } else {#}
+        {##}
+        {#                }#}
+        {##}
+        {#            }#}
+        {#        })#}
+        {##}
+        {#    }#}
+        {# })#}
 
     </script>
 {% endblock extra_js %}

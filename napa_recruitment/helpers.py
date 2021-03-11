@@ -9,7 +9,8 @@ from django.db.models import F
 
 
 def sms_code():
-    return str(123123 if settings.DEBUG else random.randint(100000, 999999))
+    return str(random.randint(100000, 999999))
+    # return str(123123 if settings.DEBUG else random.randint(100000, 999999))
 
 
 def send_sms_code(request, phone):
@@ -63,11 +64,11 @@ def validate_sms_code(phone, code):
 
 
 def send_sms(phone, text):
-    if settings.DEBUG:
-        return
+    # if settings.DEBUG:
+    #     return
 
     try:
-        requests.post("http://91.204.239.44/broker-api/send", json={
+        r = requests.post("http://91.204.239.44/broker-api/send", json={
             'messages': [
                 {
                     'recipient': phone,
@@ -82,7 +83,9 @@ def send_sms(phone, text):
                 }
             ]
         }, auth=(settings.SMS_USERNAME, settings.SMS_PASSWORD))
-    except:
+        print(r.text)
+    except Exception as e:
+        print(e)
         return False
 
     return True

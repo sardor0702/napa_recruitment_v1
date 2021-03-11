@@ -81,12 +81,35 @@ class ForgotPassword(forms.Form):
     phone = forms.CharField(max_length=16, label=False,
                             widget=forms.TextInput(attrs=({"class": "rounded-15", 'placeholder': '998971234567'})),
                             validators=[PhoneValidator(), PhoneValidatorTest()], required=True)
+    new_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+                                   required=True, validators=[MinLengthValidator(6)], label=False)
+    confirm = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+                              required=True, validators=[MinLengthValidator(6)], label=False)
+
+    def clean_confirm(self):
+        if self.cleaned_data['new_password'] != self.cleaned_data['confirm']:
+            raise ValidationError("Пароли не совпадают!")
+
+        return self.cleaned_data['confirm']
 
 
 class GetCodeForm(forms.Form):
     code = forms.IntegerField(max_value=6, label=False,
-                              widget=forms.TextInput(attrs=({"class": "rounded-15"})),
+                              widget=forms.TextInput(attrs=({"class": "rounded-15", 'placeholder': 'Введите код'})),
                               required=True)
+
+
+class NewPassword(forms.Form):
+    new_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+                                   required=True, validators=[MinLengthValidator(6)], label=False)
+    confirm = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+                              required=True, validators=[MinLengthValidator(6)], label=False)
+
+    def clean_confirm(self):
+        if self.cleaned_data['new_password'] != self.cleaned_data['confirm']:
+            raise ValidationError("Пароли не совпадают!")
+
+        return self.cleaned_data['confirm']
 
 
 class ChangePassword(forms.Form):

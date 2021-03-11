@@ -24,7 +24,7 @@
 					<h1 class="d-block d-sm-block d-md-none title-name mb-0">NAPA</h1>
 					<h1 class="d-block d-sm-block d-md-none title-name">Recruitment</h1>
 					<hr class="d-block d-sm-block d-md-none ">
-					<form class="form-example mt-3" action="{% url "user:get_code" %}">
+					<form class="form-example mt-3" action="{% url "user:post_code" %}" method="post">
                         {% csrf_token %}
 						<label class="text-01 mb-4">{% trans 'Введите код подтверждения' %}</label>
 						<div class="form-group">

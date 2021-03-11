@@ -59,7 +59,7 @@ def user_login(request):
 
             form.add_error('password', "Имя пользователя и пароль неверны !")
         return render(request, 'main/sign_in.html', {
-                'form': form,
+            'form': form,
         })
     return render(request, 'main/sign_in.html', {
         'form': form
@@ -133,15 +133,18 @@ def forgot_password(request):
     if request.method == "POST":
         form = ForgotPassword(request.POST)
         if form.is_valid() and request.method == "POST":
-            print(form.cleaned_data["phone"])
-            if User.objects.filter(phone=form.cleaned_data["phone"]).exists():
-                print(True)
+            phone = form.cleaned_data["phone"]
+            password = form.cleaned_data["new_password"]
+            if User.objects.filter(phone=phone).exists():
+                send_sms_code(request, phone)
+                request.session["recovery"] = {
+                    "phone": phone,
+                    "new_password": password
+                }
                 get_code_form = GetCodeForm()
                 return render(request, "main/get_code.html", {
                     "form": get_code_form
                 })
-
-            # return render(request, "main/home_page.html")
     return render(request, "main/forgot_password.html", {
         'form': form,
     })
@@ -155,8 +158,22 @@ def get_code(request):
 @require_POST
 def post_code(request):
     request.title = "Отправить код"
-    if request.method == "GET":
-        form = GetCodeForm(request.GET)
-        if form.is_valid():
-            return render()
+
+    data = request.session.get("recovery")
+    if request.method != "POST" or data["phone"] is None:
+        return redirect('forgot_password')
+
+    code = request.POST.get("code")
+
+    # if not validate_sms_code(phone, code):
+    #     return False
+    if data["phone"] is None or not validate_sms_code(data["phone"], code):
+        return False
+
+    user = User.objects.get(phone=data["phone"])
+    user.set_password(data["new_password"])
+    user.save()
+
+    return redirect("user:login")
+
 

@@ -1,8 +1,10 @@
 from django.core.exceptions import ValidationError
 import re
 import phonenumbers
+from django.utils.deconstruct import deconstructible
 
 
+@deconstructible
 class PhoneValidator:
     requires_context = False
 
