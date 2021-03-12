@@ -53,8 +53,8 @@ class Searching(LoginRequiredMixin, ListView):
                 t += '&' + i
         s = t.lstrip('&')
         context['k'] = s
-        context['fontend'] = FilterValues.objects.filter(filter_id=6)
-        context['backend'] = FilterValues.objects.filter(filter_id=7)
+        context['fontend'] = FilterValues.objects.filter(filter_id=4)
+        context['backend'] = FilterValues.objects.filter(filter_id=3)
 
         return context
 
