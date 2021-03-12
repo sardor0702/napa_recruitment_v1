@@ -23,7 +23,7 @@
                                 {% for back in backend %}
                                     <div class="form-check mb-1 d-flex align-items-center">
                                         <input class="form-check-input" type="checkbox" id="backend1"
-                                               value="{{ back.value }}" name="backend">
+                                               value="{{ back.id }}" name="filter" {% if back.id in selected_filters %} checked="checked"{% endif %}>
                                         <label class="form-check-label pl-2 pt-1"
                                                for="backend1">{{ back.value }}</label>
                                     </div>
@@ -37,10 +37,10 @@
                         {#                    <form action="{% url 'filter' %}" method="get">#}
                         <div class="collapse" id="collapseExample1">
                             <div class="card card-body p-0 ml-4 border-0">
-                                {% for front in fontend %}
+                                {% for front in frontend %}
                                     <div class="form-check mb-1 d-flex align-items-center">
                                         <input class="form-check-input" type="checkbox" id="frontend1"
-                                               value="{{ front.value }}" name="frontend">
+                                               value="{{ front.id }}" name="filter"{% if front.id in selected_filters %} checked="checked"{% endif %}>
                                         <label class="form-check-label pl-2 pt-1"
                                                for="frontend1">{{ front.value }}</label>
                                     </div>

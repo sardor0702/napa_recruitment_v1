@@ -10,48 +10,6 @@
             </div>
         </div><!-- End of row -->
 
-        {% for favorite in favorites %}
-            {% if request.user.id is favorite.user_id %}
-                <div class="row d-flex align-items-center load_ajax mt-5 mt-sm-4" id="f{{ favorite.id }}">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-12 text-center">
-                        <img src="{{ favorite.student.image_url }}" alt="avatar" name="inpFile" id="inpFile2">
-                    </div>
-                    <div class="col-md-3 offset-md-1 col-sm-8 offset-sm-3 col-12 d-flex align-items-center justify-content-center justify-content-md-start pl-sm-0 mt-3 mt-sm-0">
-                        <i class="fa fa-star fa-fw fa-lg favourite-icon checked1 active pb-sm-3 mr-sm-4 pt-sm-3 mr-2"
-                           data-id="{{ favorite.id }}" data-target="#exampleModal"></i>
-                        <p class="font-weight-bold text-break m-0 text-center">
-                            {{ favorite.student.full_name }}
-                        </p>
-                    </div>
-                    <div class="col-md-3 col-sm-4 mt-2 mt-sm-4 mt-md-0 text-center text-sm-left">
-                        <p class="mb-2">
-                            {{ favorite.student.direction }}
-                        </p>
-                    </div>
-                    <div class="col-md-3 offset-md-0 col-sm-6 mt-sm-4 mt-md-0 text-center text-md-left">
-                        <p>
-                            {{ favorite.student.skills }}
-                        </p>
-                    </div>
-                </div><!-- End of row -->
-            {% endif %}
-        {% empty %}
-
-            <div class="alert alert-primary" role="alert">
-                {% trans 'Нет избранных сотрудников!' %}
-            </div>
-
-        {% endfor %}
-
-
-
-        <div class="row d-flex align-items-center mt-4">
-            <div class="col pr-lg-5 mr-lg-5 text-lg-right text-sm-left text-center">
-                <a class="btn btn-danger px-4 py-2 rounded-15 save-b1" href="">{% trans 'Изменить' %}</a>
-            </div><!-- End of col -->
-        </div><!-- End of row -->
-    </div><!-- End of container-xl -->
-
     <div class="container-xl py-5 ml-lg-5 ml-xl-auto">
         <div class="row mb-5">
             <div class="col text-center text-sm-left">
@@ -60,7 +18,7 @@
         </div><!-- End of row -->
         {% for q in querys %}
             {% if request.user.id is q.user_id %}
-                <div class="row d-flex align-items-center load_ajax1 mt-5 mt-sm-4" id="q{{ q.id }}">
+                <div class="row d-flex align-items-center load_ajax1 mt-5 mt-sm-4" id="{{ q.id }}">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-12 text-center">
                         <img src="{{ q.student.image_url }}" alt="avatar" name="inpFile" id="inpFile2">
                     </div>
@@ -199,7 +157,7 @@
                     console.log(data[0].id)
                     console.log(this.url)
                     let f = data[0].id
-                    $('#f' + f + '').remove()
+                    $('#' + f + '').remove()
                 }
             });
         });
@@ -217,7 +175,8 @@
                 success: function (data) {
                     console.log(data[0].id)
                     console.log(this.url)
-                    $("#q" + data[0].id).remove()
+                    if (data[0].id == query_id)
+                        $('.load_ajax1').prop('id', data[0].id).remove()
                 }
             });
         });

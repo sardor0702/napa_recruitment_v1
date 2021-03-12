@@ -26,40 +26,46 @@
                     {{ student.student_about }}
                 </p>
                 <p class="text-center text-sm-left">
-
-                    {% if sent_query %}
-                        <button type="button"
-                                class="btn btn-danger-2 rounded-15 px-4 py-2" disabled>
-                            {% trans 'Нанять сотрудника' %}
-                        </button>
+                    {% if student.status == 1 %}
+                        <p class="font-size-14 font-weight-bold">
+                            Данный сотрудник уже нанят работодателем
+                        </p>
                     {% else %}
-                        <a href="{% url 'main:save_user' student.id %}"
-                           class="btn btn-danger-1 rounded-15 px-4 py-2 ajax-get" data-toggle="modal"
-                           data-target="#exampleModal">
-                            {% trans 'Нанять сотрудника' %}
-                        </a>
+                        {% if sent_query %}
+                            <button type="button"
+                                    class="btn btn-danger-2 rounded-15 px-4 py-2" disabled>
+                                {% trans 'Нанять сотрудника' %}
+                            </button>
+                        {% else %}
+                            <a href="{% url 'main:save_user' student.id %}"
+                               class="btn btn-danger-1 rounded-15 px-4 py-2 ajax-get" data-toggle="modal"
+                               data-target="#exampleModal">
+                                {% trans 'Нанять сотрудника' %}
+                            </a>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header border-0">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                        <i class="fas fa-check-circle favourite-icon-modal mb-3"></i>
-                                        <p class="open-sans-400">
-                                            {% trans 'Ваша заявка успешно отправлена, мы свяжемся с вами в скором времени!' %}
-                                        </p>
-                                    </div>
-                                    <div class="modal-footer border-0">
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header border-0">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                            <i class="fas fa-check-circle favourite-icon-modal mb-3"></i>
+                                            <p class="open-sans-400">
+                                                {% trans 'Ваша заявка успешно отправлена, мы свяжемся с вами в скором времени!' %}
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer border-0">
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+                        {% endif %}
                     {% endif %}
 
                 </p>

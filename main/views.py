@@ -33,28 +33,40 @@ class Home(TemplateView):
 class Searching(LoginRequiredMixin, ListView):
     template_name = "main/searching.html"
     paginate_by = 3
+    model = Student
 
     def get_queryset(self):
-        return Student.objects.all()
+        queryset = super().get_queryset()
+
+        ids = list(map(int, self.request.GET.getlist('filter', [])))
+        if len(ids) > 0:
+            queryset = queryset.filter(filters__id__in=ids)
+
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        corp = self.request.GET.getlist('frontend') + self.request.GET.getlist('backend')
-        context['object_list'] = []
-        if self.request.GET.getlist('frontend') or self.request.GET.getlist('backend'):
-            for i in corp:
-                context['object_list'] += (Student.objects.filter(skills__contains=i)).distinct()
-        else:
-            context['object_list'] = self.get_queryset()
-        k = str(self.request).split('?')[1].rstrip('\'>').split('&')
-        t = ''
-        for i in k:
-            if not i.startswith('page'):
-                t += '&' + i
-        s = t.lstrip('&')
-        context['k'] = s
-        context['fontend'] = FilterValues.objects.filter(filter_id=4)
+        # corp = self.request.GET.getlist('frontend') + self.request.GET.getlist('backend')
+        # context['object_list'] = []
+        # if self.request.GET.getlist('frontend') or self.request.GET.getlist('backend'):
+        #     for i in corp:
+        #         context['object_list'] += Student.objects.filter(skills__contains=i).distinct()
+        # else:
+        #     context['object_list'] = self.get_queryset()
+        #
+        # context['object_list'] = list(set(context['object_list']))
+
+        # k = str(self.request).split('?')[1].rstrip('\'>').split('&')
+        # t = ''
+        # for i in k:
+        #     if not i.startswith('page'):
+        #         t += '&' + i
+        # s = t.lstrip('&')
+        # context['k'] = s
+        context['frontend'] = FilterValues.objects.filter(filter_id=4)
         context['backend'] = FilterValues.objects.filter(filter_id=3)
+        context['title'] = "Searching"
+        context['selected_filters'] = list(map(int, self.request.GET.getlist('filter')))
 
         return context
 
@@ -83,6 +95,7 @@ class FavoritesView(ListView):
         context = super().get_context_data(**kwargs)
         context['favorites'] = Favorite.objects.filter()
         context['querys'] = Query.objects.all()
+        context['title'] = "Favorites"
         return context
 
 
