@@ -79,11 +79,13 @@ class EditForm(forms.ModelForm):
 
 class ForgotPassword(forms.Form):
     phone = forms.CharField(max_length=16, label=False,
-                            widget=forms.TextInput(attrs=({"class": "rounded-15", 'placeholder': '998971234567'})),
+                            widget=forms.TextInput(attrs=({"class": "rounded-15", 'placeholder': '998971234567',
+                                                           'id': 'phone_number'})),
                             validators=[PhoneValidator(), PhoneValidatorTest()], required=True)
-    new_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+    new_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15",
+                                                                                     'id': "new_password"})),
                                    required=True, validators=[MinLengthValidator(6)], label=False)
-    confirm = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+    confirm = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15", "id": "confirm"})),
                               required=True, validators=[MinLengthValidator(6)], label=False)
 
     def clean_confirm(self):
