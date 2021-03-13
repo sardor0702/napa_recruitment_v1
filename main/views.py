@@ -56,13 +56,17 @@ class Searching(LoginRequiredMixin, ListView):
         #
         # context['object_list'] = list(set(context['object_list']))
 
-        # k = str(self.request).split('?')[1].rstrip('\'>').split('&')
-        # t = ''
-        # for i in k:
-        #     if not i.startswith('page'):
-        #         t += '&' + i
-        # s = t.lstrip('&')
-        # context['k'] = s
+        k = str(self.request).split('?')[1].rstrip('\'>').split('&')
+        t = ''
+        print(k)
+        for i in k:
+            if not i.startswith('page'):
+                t += '&' + i
+        print(t)
+        s = t.lstrip('&')
+        print(s)
+        print(k)
+        context['k'] = s
         context['frontend'] = FilterValues.objects.filter(filter_id=4)
         context['backend'] = FilterValues.objects.filter(filter_id=3)
         context['title'] = "Searching"
