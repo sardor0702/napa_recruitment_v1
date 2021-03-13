@@ -28,7 +28,7 @@
                         {% csrf_token %}
 						<label class="text-01 mb-4">{% trans 'Введите код подтверждения' %}</label>
 						<div class="form-group">
-							<label class="text-02">{% trans 'Код подтверждения' %}</label>
+							<label class="text-02" for="code">{% trans 'Код подтверждения' %}</label>
                             {{ form.code|as_crispy_field }}
 						</div>
 						<button type="submit" class="btn btn-danger mt-4 px-5 py-2 rounded-15">{% trans 'Отправить код' %}</button>

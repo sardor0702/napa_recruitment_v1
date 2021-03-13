@@ -8,8 +8,8 @@ from user.models import User
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=20, required=True, label=False)
-    password = forms.CharField(max_length=50, widget=forms.PasswordInput, required=True,
+    username = forms.CharField(max_length=20, required=True, label=False, widget=forms.TextInput(attrs={'id': 'username'}))
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'id': "password"}), required=True,
                                validators=[MinLengthValidator(6)], label=False)
 
 
@@ -97,8 +97,8 @@ class ForgotPassword(forms.Form):
 
 class GetCodeForm(forms.Form):
     code = forms.IntegerField(max_value=6, label=False,
-                              widget=forms.TextInput(attrs=({"class": "rounded-15", 'placeholder': 'Введите код'})),
-                              required=True)
+                              widget=forms.TextInput(attrs=({"class": "rounded-15", 'placeholder': 'Введите код',
+                                                             'id': "code"})), required=True)
 
 
 class NewPassword(forms.Form):
@@ -115,11 +115,14 @@ class NewPassword(forms.Form):
 
 
 class ChangePassword(forms.Form):
-    old_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+    old_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15",
+                                                                                     'id': "old_password"})),
                                    required=True, validators=[MinLengthValidator(6)], label=False)
-    new_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+    new_password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15",
+                                                                                     'id': "new_password"})),
                                    required=True, validators=[MinLengthValidator(6)], label=False)
-    confirm = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15"})),
+    confirm = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs=({"class": "rounded-15",
+                                                                                'id': 'confirm'})),
                               required=True, validators=[MinLengthValidator(6)], label=False)
 
     def __init__(self, *args, **kwargs):

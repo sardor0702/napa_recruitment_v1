@@ -1,6 +1,10 @@
 from django.urls import path, include
+
+import main
 from .views import Home, FavoritesView, Searching, student_card, save_fav, save_user,\
-    favorite_delete, query_delete, filter_by_skills
+    favorite_delete, query_delete, filter_by_skills, handler404
+from django.conf.urls import url, handler404
+
 
 app_name = "main"
 
@@ -16,4 +20,7 @@ urlpatterns = [
     path('favorite_delete/<int:id>/', favorite_delete, name='favorites_delete'),
     path('query_delete/<int:id>/', query_delete, name='query_delete'),
     path('filter_by_skills/<str:slug>/', filter_by_skills, name='filter_by_skills'),
+    url(r'^$', handler404, name='error')
 ]
+
+handler404 = main.views.handler404

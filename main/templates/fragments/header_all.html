@@ -54,9 +54,9 @@
                         <div class="dropdown-menu">
                         {% for lan in settings.LANGUAGES %}
                             {% if lan.1 == 'uz'%}
-                                <a class="dropdown-item" href="/{{ lan.0 }}/{{ request.path|slice:"4:" }}"><span class="flag-icon flag-icon-uz"> </span> {{ lan.1|upper }}</a>
+                                <a class="dropdown-item" href="/{{ lan.0 }}/{{ request.path|slice:"4:" }}?{{ request.GET.urlencode }}"><span class="flag-icon flag-icon-uz"> </span> {{ lan.1|upper }}</a>
                             {% else %}
-                                <a class="dropdown-item" href="/{{ lan.0 }}/{{ request.path|slice:"4:" }}"><span class="flag-icon flag-icon-ru"> </span> {{ lan.1|upper }}</a>
+                                <a class="dropdown-item" href="/{{ lan.0 }}/{{ request.path|slice:"4:" }}?{{ request.GET.urlencode }}"><span class="flag-icon flag-icon-ru"> </span> {{ lan.1|upper }}</a>
                             {% endif %}
                         {% endfor %}
                         </div>

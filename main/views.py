@@ -23,13 +23,6 @@ class Home(TemplateView):
         return context
 
 
-# def favorites(request):
-#     request.title = _("Избранное")
-#     user = request.user
-#
-#     return render(request, 'main/favorites.html')
-
-
 class Searching(LoginRequiredMixin, ListView):
     template_name = "main/searching.html"
     paginate_by = 3
@@ -40,7 +33,7 @@ class Searching(LoginRequiredMixin, ListView):
 
         ids = list(map(int, self.request.GET.getlist('filter', [])))
         if len(ids) > 0:
-            queryset = queryset.filter(filters__id__in=ids)
+            queryset = queryset.filter(filters__id__in=ids).distinct()
 
         return queryset
 
@@ -73,19 +66,6 @@ class Searching(LoginRequiredMixin, ListView):
         context['selected_filters'] = list(map(int, self.request.GET.getlist('filter')))
 
         return context
-
-
-# class JsonFileStudentsView(ListView):
-#     def get_queryset(self):
-#         queryset = Student.objects.filter(
-#             Q(skills=self.request.GET.getlist('frontend')) |
-#             Q(skills=self.request.GET.getlist('backend'))
-#         ).distinct().values('skills')
-#         return queryset
-#
-#     def get(self, request, *args, **kwargs):
-#         queryset = list(self.get_queryset())
-#         return JsonResponse({"sts": queryset}, self=False)
 
 
 class FavoritesView(ListView):
@@ -125,7 +105,7 @@ def student_card(request, id):
 
 
 def save_fav(request, id):
-    request.title = _("save")
+    request.title = _("Сохранять")
     st = Student.objects.get(id=id)
     user = request.user
     if Favorite.objects.filter(student=st, user=user).exists():
@@ -140,8 +120,6 @@ def save_user(request, id):
     request.title = _("")
     st = Student.objects.get(id=id)
     user = request.user
-    # if not Query.objects.filter(student_id=st, user=user).exists():
-    #     Query.objects.create(student_id=st.id, user_id=user.id)
     if Query.objects.filter(student=st, user=user).exists():
         Query.objects.get(student=st, user=user).delete()
     else:
@@ -155,12 +133,6 @@ def favorite_delete(request, id):
     current_favorite.delete()
     return redirect('main:favorites')
 
-
-# def get_all_favorites(request, id):
-#     fav = Favorite.objects.filter(user_id=id)
-#     serializer = FavoriteSerializer(fav, many=True)
-#     print(serializer.data)
-#     return JsonResponse(serializer.data)
 
 def get(request, id):
     print(id)
@@ -196,8 +168,8 @@ def filter_by_skills(request, slug):
     # print(Student.objects.values())
     return JsonResponse([get_obj, get_sp], safe=False)
 
-#
-# class FilterView(ListView):
-#     def get_queryset(self):
-#         queryset = FilterValues.objects.filter(value__in=self.request.GET.getlist("value"))
-#         return queryset
+
+
+
+def handler404(request, *args, **kwargs):
+    return render(request, 'main/error_404.html')

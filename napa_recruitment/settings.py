@@ -15,6 +15,7 @@ import environ
 from django.contrib import messages
 import os
 
+
 env = environ.Env(
     DEBUG=(bool, False)
 )
@@ -31,9 +32,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 # Application definition
 
