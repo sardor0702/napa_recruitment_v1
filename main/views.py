@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, ListView
 from student.models import Student, StudentProjects
@@ -6,7 +7,7 @@ from main.models import FilterValues, Filter, Favorite, Query
 from .forms import SearchForm
 from .seraializers import FavoriteSerializer
 import json
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from rest_framework.response import Response
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -164,5 +165,7 @@ def filter_by_skills(request, slug):
     return JsonResponse([get_obj, get_sp], safe=False)
 
 
-def handler404(request, *args, **kwargs):
-    return render(request, 'main/error_404.html')
+def handler404(*args, **kwargs):
+    text = render_to_string('main/404.html')
+    return HttpResponseNotFound(text)
+

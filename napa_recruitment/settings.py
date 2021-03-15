@@ -15,7 +15,6 @@ import environ
 from django.contrib import messages
 import os
 
-
 env = environ.Env(
     DEBUG=(bool, False)
 )
@@ -34,9 +33,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-DEBUG = env('DEBUG')
-
-# ALLOWED_HOSTS = []
+DEBUG = env('DEBUG', cast=bool)
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 # Application definition
 
@@ -75,7 +73,10 @@ ROOT_URLCONF = 'napa_recruitment.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'trmplates')],
+        'DIRS': [
+            BASE_DIR / 'napa_recruitment' / 'templates',
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

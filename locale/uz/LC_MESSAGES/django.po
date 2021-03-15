@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-15 10:09+0500\n"
+"POT-Creation-Date: 2021-03-15 10:29+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: user/forms.py:29
+msgid "Это имя пользователя занято"
+msgstr ""
+
+#: user/forms.py:35
+msgid "Этот номер телефона занят"
+msgstr ""
+
+#: user/forms.py:41 user/forms.py:94 user/forms.py:113 user/forms.py:135
+msgid "Пароли не совпадают!"
+msgstr ""
+
+#: user/forms.py:101
+msgid "Введите код"
+msgstr ""
+
+#: user/forms.py:143
+msgid "Старый пароль не совпадал."
+msgstr ""
 
 #: user/serializers.py:38
 msgid "Ushbu telefon raqam allaqachon tizimdan ro'yxatdan o'tgan"

@@ -21,14 +21,15 @@ import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
 
-urlpatterns = [
-    path('__debug__/', include(debug_toolbar.urls)),
-    path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+from main import views
+handler404 = views.handler404
 
+urlpatterns = [
+                  path('__debug__/', include(debug_toolbar.urls)),
+                  path('admin/', admin.site.urls),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(
     path('user/', include('user.urls', namespace='user')),
     path('', include('main.urls'))
-)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
