@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import View
 from .forms import RegistrationForm, LoginForm, EditForm, ForgotPassword, ChangePassword, GetCodeForm
 from .models import User
@@ -19,12 +20,12 @@ class UserRegistration(View):
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
 
-        request.title = "Регистрация"
-
     def get(self, request):
         form = RegistrationForm()
+        context = _("Регистрация")
         return render(request, "main/sign_up.html", {
-            'form': form
+            'form': form,
+            "title": context
         })
 
     def post(self, request):
@@ -35,9 +36,7 @@ class UserRegistration(View):
             user = User(**data)
 
             user.set_password(user.password)
-            # send_sms_code(request, data["phone"])
             user.save()
-            # messages.success(request, "Вы успешно зарегистрировались.")
             return redirect('user:login')
         return render(request, "main/sign_up.html", {
             'form': form
@@ -45,7 +44,7 @@ class UserRegistration(View):
 
 
 def user_login(request):
-    request.title = "Авторизоваться"
+    request.title = _("Авторизоваться")
 
     form = LoginForm()
     if request.POST:
@@ -54,7 +53,6 @@ def user_login(request):
             user = authenticate(username=form.cleaned_data["username"], password=form.cleaned_data["password"])
             if user is not None:
                 login(request, user)
-                # messages.success(request, "Добро пожаловать !!!  {}".format(user.username))
                 return redirect('user:personal_account')
 
             form.add_error('password', "Имя пользователя и пароль неверны !")
@@ -68,7 +66,7 @@ def user_login(request):
 
 @login_required
 def login_checkin(request):
-    request.title = "Персональный аккаунт"
+    request.title = _("Персональный аккаунт")
     form = LoginForm(data=request.user)  # user ma'lumotlarini jo'natvoman
     return render(request, 'main/personal_account.html', {
         'form': form
@@ -84,7 +82,7 @@ def user_logout(request):
 @require_GET
 @login_required
 def user_info(request, id):
-    request.title = "Личный кабинет"
+    request.title = _("Личный кабинет")
     try:
         user = User.objects.get(id=id)
     except User.DoesNotExist:
@@ -128,7 +126,7 @@ def change_password(request):
 
 
 def forgot_password(request):
-    request.title = "Забыли пароль"
+    request.title = _("Забыли пароль")
     form = ForgotPassword()
     if request.method == "POST":
         form = ForgotPassword(request.POST)
@@ -144,7 +142,7 @@ def forgot_password(request):
                 get_code_form = GetCodeForm()
                 return render(request, "main/get_code.html", {
                     "form": get_code_form,
-                    "request.title": "Отправить код"
+                    "request.title": _("Отправить код")
                 })
     return render(request, "main/forgot_password.html", {
         'form': form,

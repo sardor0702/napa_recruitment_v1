@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, ListView
@@ -8,7 +7,6 @@ from .forms import SearchForm
 from .seraializers import FavoriteSerializer
 import json
 from django.http import JsonResponse, HttpResponse
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -62,7 +60,7 @@ class Searching(LoginRequiredMixin, ListView):
         context['k'] = s
         context['frontend'] = FilterValues.objects.filter(filter_id=4)
         context['backend'] = FilterValues.objects.filter(filter_id=3)
-        context['title'] = "Searching"
+        context['title'] = _("Поиск")
         context['selected_filters'] = list(map(int, self.request.GET.getlist('filter')))
 
         return context
@@ -79,12 +77,12 @@ class FavoritesView(ListView):
         context = super().get_context_data(**kwargs)
         context['favorites'] = Favorite.objects.filter()
         context['querys'] = Query.objects.all()
-        context['title'] = "Favorites"
+        context['title'] = _("Избранное")
         return context
 
 
 def student_card(request, id):
-    request.title = _("")
+    request.title = _("Студенческая страница")
     try:
         student = Student.objects.get(id=id)
     except Student.DoesNotExist:
@@ -117,7 +115,7 @@ def save_fav(request, id):
 
 
 def save_user(request, id):
-    request.title = _("")
+    request.title = _("Сохранить пользователя")
     st = Student.objects.get(id=id)
     user = request.user
     if Query.objects.filter(student=st, user=user).exists():
@@ -135,7 +133,6 @@ def favorite_delete(request, id):
 
 
 def get(request, id):
-    print(id)
     fav = Favorite.objects.filter(user_id=id)
     serializer = FavoriteSerializer(fav, many=True)
     return Response(serializer.data)
@@ -162,13 +159,9 @@ def query_delete(request, id):
 
 
 def filter_by_skills(request, slug):
-    # print(slug)
     get_obj = list(Student.objects.values().filter(Q(skills__contains=slug)))
     get_sp = list(StudentProjects.objects.values())
-    # print(Student.objects.values())
     return JsonResponse([get_obj, get_sp], safe=False)
-
-
 
 
 def handler404(request, *args, **kwargs):

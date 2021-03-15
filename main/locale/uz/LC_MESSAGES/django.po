@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: main/views.py:87 main/views.py:120
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 17:50+0500\n"
+"POT-Creation-Date: 2021-03-15 10:09+0500\n"
 "PO-Revision-Date: 2021-02-17 18:00+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -42,8 +41,6 @@ msgstr "Hamkorlar"
 
 #: main/templates/main/change_password.html:32
 #: main/templates/main/forgot_password.html:40
-#, fuzzy
-#| msgid "Забыли пароль?"
 msgid "Новый пароль"
 msgstr "Parolni unitdingizmi?"
 
@@ -51,8 +48,6 @@ msgstr "Parolni unitdingizmi?"
 #: main/templates/main/forgot_password.html:46
 #: main/templates/main/personal_account_changing_info.html:110
 #: main/templates/main/sign_up.html:52
-#, fuzzy
-#| msgid "Восстановить пароль"
 msgid "Подтвердить Пароль"
 msgstr "Parolni tiklash"
 
@@ -66,10 +61,8 @@ msgid "Избранные сотрудники"
 msgstr "Tanlangan xodimlar"
 
 #: main/templates/main/favorites.html:41
-#, fuzzy
-#| msgid "Избранные сотрудники"
 msgid "Нет избранных сотрудников!"
-msgstr "Tanlangan xodimlar"
+msgstr "Tanlangan xodimlar yo'q!"
 
 #: main/templates/main/favorites.html:50 main/templates/main/favorites.html:94
 #: main/templates/main/personal_account.html:64
@@ -81,8 +74,8 @@ msgid "Мои заявки"
 msgstr "Mening arizalarim"
 
 #: main/templates/main/favorites.html:88
-msgid "Заявой нет!"
-msgstr ""
+msgid "Заявока нет!"
+msgstr "Ariza yo'q!"
 
 #: main/templates/main/favorites.html:109
 #: main/templates/main/favorites.html:132
@@ -140,10 +133,8 @@ msgid "Код подтверждения"
 msgstr "Tasdiqlash kodi"
 
 #: main/templates/main/get_code.html:34
-#, fuzzy
-#| msgid "Оставить"
 msgid "Отправить код"
-msgstr "Qoldirish"
+msgstr "Kodni yuboring"
 
 #: main/templates/main/home_page.html:18
 msgid "Найдите подходящего сотрудника среди наших выпускников"
@@ -287,28 +278,20 @@ msgstr "Pochta"
 
 #: main/templates/main/personal_account_changing_info.html:80
 #: main/templates/main/personal_account_changing_info.html:93
-#, fuzzy
-#| msgid "Восстановить пароль"
 msgid "Изменить пароль"
 msgstr "Parolni tiklash"
 
 #: main/templates/main/personal_account_changing_info.html:100
-#, fuzzy
-#| msgid "Забыли пароль?"
 msgid "Старый пароль"
-msgstr "Parolni unitdingizmi?"
+msgstr "Eski parol"
 
 #: main/templates/main/personal_account_changing_info.html:105
-#, fuzzy
-#| msgid "Забыли пароль?"
 msgid "Новый пароль "
-msgstr "Parolni unitdingizmi?"
+msgstr "Yangi parol"
 
 #: main/templates/main/personal_account_changing_info.html:119
-#, fuzzy
-#| msgid "Сохранить"
 msgid "Сохранить изменения"
-msgstr "Saqlash"
+msgstr "O'zgarishlarni saqlang"
 
 #: main/templates/main/searching.html:10 main/templates/main/searching.html:14
 msgid "Фильтр"
@@ -338,7 +321,7 @@ msgstr "Ofis ishi"
 msgid "Удаленная работа"
 msgstr "Masofadan turib ishlash"
 
-#: main/templates/main/searching.html:79
+#: main/templates/main/searching.html:79 main/views.py:63
 msgid "Поиск"
 msgstr "Qidirish"
 
@@ -372,10 +355,8 @@ msgid "Нет аккаунта"
 msgstr "Hisob yo'q"
 
 #: main/templates/main/sign_up.html:34
-#, fuzzy
-#| msgid "Зарегистрируйтесь"
 msgid "Регистрация"
-msgstr "Hozir ro'yxatdan o'ting"
+msgstr "Ro'yxatdan o'tish"
 
 #: main/templates/main/sign_up.html:57
 msgid "Создать аккаунт"
@@ -387,7 +368,7 @@ msgstr "Ko'nikmalar"
 
 #: main/templates/main/student_card.html:23
 msgid "Возраст"
-msgstr "Yosh"
+msgstr "Yoshi"
 
 #: main/templates/main/student_card.html:24
 msgid "Обо мне"
@@ -407,20 +388,18 @@ msgstr ""
 msgid "Нет проектов, созданных этим студентом."
 msgstr "Ushbu talaba tomonidan yaratilgan loyihalar yo'q."
 
-#: main/views.py:108
-#, fuzzy
-#| msgid "Сохранить"
+#: main/views.py:80
+msgid "Избранное"
+msgstr "Tanlanganlar"
+
+#: main/views.py:85
+msgid "Студенческая страница"
+msgstr "Talaba sahifasi"
+
+#: main/views.py:106
 msgid "Сохранять"
 msgstr "Saqlash"
 
-#~ msgid "O NAPA Recruitment"
-#~ msgstr "O NAPA Recruitment"
-
-#~ msgid "разработчик"
-#~ msgstr "dasturchi"
-
-#~ msgid "Подробнее"
-#~ msgstr "Batafsil ma'lumot"
-
-#~ msgid "Front-end разработчик"
-#~ msgstr "Front-end dasturchi"
+#: main/views.py:118
+msgid "Сохранить пользователя"
+msgstr "Foydalanuvchini saqlash"

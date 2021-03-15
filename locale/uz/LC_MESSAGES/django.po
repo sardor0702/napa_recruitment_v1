@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 17:50+0500\n"
+"POT-Creation-Date: 2021-03-15 10:09+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,4 +20,28 @@ msgstr ""
 
 #: user/serializers.py:38
 msgid "Ushbu telefon raqam allaqachon tizimdan ro'yxatdan o'tgan"
+msgstr ""
+
+#: user/views.py:25
+msgid "Регистрация"
+msgstr ""
+
+#: user/views.py:47
+msgid "Авторизоваться"
+msgstr ""
+
+#: user/views.py:69
+msgid "Персональный аккаунт"
+msgstr ""
+
+#: user/views.py:85
+msgid "Личный кабинет"
+msgstr ""
+
+#: user/views.py:129
+msgid "Забыли пароль"
+msgstr ""
+
+#: user/views.py:145
+msgid "Отправить код"
 msgstr ""
