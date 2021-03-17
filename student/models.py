@@ -7,6 +7,7 @@ from io import BytesIO
 from django.core.files import File
 from django.conf import settings
 from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 
 def convert_fn(ins, file):
@@ -25,6 +26,11 @@ class Student(models.Model):
     student_about = models.TextField(max_length=2048, blank=True)
     student_image = models.ImageField(upload_to=convert_fn)
     status = models.IntegerField(default=0)
+
+    def admin_image(self):
+        return mark_safe('<img src="{}" width="60" />'.format(self.student_image.url))
+    admin_image.short_description = "Student image"
+    admin_image.allow_tags = True
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
@@ -69,6 +75,12 @@ class StudentProjects(models.Model):
     project_link = models.CharField(max_length=255)
     created_at = models.DateField()
     project_pick = models.ImageField(upload_to=convert_fn, default=None)
+
+
+    # def admin_pro_pick(self):
+    #     return mark_safe('<img src="{}" width="120" />'.format(self.project_pick.url))
+    # admin_pro_pick.short_description = "Project pick"
+    # admin_pro_pick.allow_tags = True
 
     def __str__(self):
         return str(self.student_id) + ' | ' + self.project_name + ' | ' + self.project_link

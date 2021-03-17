@@ -16,6 +16,7 @@ class Filter(models.Model):
     def __str__(self):
         return self.name
 
+
 class FilterValues(models.Model):
     filter_id = models.ForeignKey(Filter, on_delete=models.RESTRICT)
     value = models.TextField(max_length=2048)
@@ -29,6 +30,12 @@ class Query(models.Model):
     student = models.ForeignKey('student.Student', on_delete=models.RESTRICT)
     added_at = models.DateTimeField(auto_now_add=True)
 
+    def student_name(self):
+        return self.student.full_name
+
+    def user_name(self):
+        return self.user.username
+
     class Meta:
         unique_together = (('user', 'student'),)
 
@@ -41,6 +48,12 @@ class Favorite(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     student = models.ForeignKey('student.Student', on_delete=models.RESTRICT)
     added_at = models.DateTimeField(auto_now_add=True)
+
+    def student_name(self):
+        return self.student.full_name
+
+    def user_name(self):
+        return self.user.username
 
     def __str__(self):
         return str(self.user.id) + " | " + self.student.full_name + " | " + str(self.added_at)
