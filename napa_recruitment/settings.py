@@ -139,6 +139,8 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'static'
 
+# STATICFILES_DIRS = ("/home/sardor/PycharmProjects/project/napa_recruitment_v1/main/static",)
+
 AUTH_USER_MODEL = 'user.User'
 
 MEDIA_URL = '/media/'
