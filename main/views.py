@@ -10,7 +10,6 @@ import json
 from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from rest_framework.response import Response
 from django.db.models import Q
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class Home(TemplateView):
@@ -22,7 +21,7 @@ class Home(TemplateView):
         return context
 
 
-class Searching(LoginRequiredMixin, ListView):
+class Searching(ListView):
     template_name = "main/searching.html"
     paginate_by = 3
     model = Student
