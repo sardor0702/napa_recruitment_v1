@@ -4,7 +4,7 @@ from .models import Student, StudentProjects
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ("id", "admin_image", "first_name", "last_name", "age", "skills", "status")
+    list_display = ("id", "admin_image", "qr", "first_name", "last_name", "age", "skills", "status")
     list_display_links = ('id', "admin_image", 'first_name', 'last_name')
     search_fields = ('first_name', 'last_name', 'skills', 'age')
 

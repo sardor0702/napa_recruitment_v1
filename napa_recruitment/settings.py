@@ -32,7 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-
+SITE_DOMAIN = env('SITE_DOMAIN', default='localhost:8080')
 DEBUG = env('DEBUG', cast=bool)
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list)
 

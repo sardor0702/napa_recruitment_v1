@@ -1,3 +1,6 @@
+import base64
+
+import qrcode
 from django.db import models
 from main.models import FilterValues
 from datetime import datetime
@@ -8,6 +11,8 @@ from django.core.files import File
 from django.conf import settings
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+
+from napa_recruitment.settings import SITE_DOMAIN
 
 
 def convert_fn(ins, file):
@@ -29,6 +34,18 @@ class Student(models.Model):
 
     def admin_image(self):
         return mark_safe('<img src="{}" width="60" />'.format(self.student_image.url))
+
+    def qr(self):
+        url = f'{SITE_DOMAIN}/student_card/{self.pk}/'
+        print(url)
+        qr = qrcode.make(url)
+        buffered = BytesIO()
+        qr.save(buffered, format='PNG')
+        img_str = base64.b64encode(buffered.getvalue())
+        img_str = img_str.decode("utf-8")
+
+        return mark_safe(f'<img width="100px" src="data:image/png;base64, {img_str}"/>')
+
     admin_image.short_description = "Student image"
     admin_image.allow_tags = True
 
@@ -76,7 +93,6 @@ class StudentProjects(models.Model):
     created_at = models.DateField()
     project_pick = models.ImageField(upload_to=convert_fn, default=None)
 
-
     # def admin_pro_pick(self):
     #     return mark_safe('<img src="{}" width="120" />'.format(self.project_pick.url))
     # admin_pro_pick.short_description = "Project pick"
@@ -91,3 +107,7 @@ class StudentProjects(models.Model):
             return os.path.join(settings.MEDIA_URL, str(self.project_pick))
 
         return os.path.join(settings.STATIC_URL, "main/img/nophoto.png")
+
+    class Meta:
+        verbose_name = 'student project'
+        verbose_name_plural = 'student projects'
