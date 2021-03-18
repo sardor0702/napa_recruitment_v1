@@ -59,8 +59,8 @@ class Searching(LoginRequiredMixin, ListView):
         print(s)
         print(k)
         context['k'] = s
-        context['frontend'] = FilterValues.objects.filter(filter_id=4)
-        context['backend'] = FilterValues.objects.filter(filter_id=3)
+        context['frontend'] = FilterValues.objects.filter(filter_id=2)
+        context['backend'] = FilterValues.objects.filter(filter_id=1)
         context['title'] = _("Поиск")
         context['selected_filters'] = list(map(int, self.request.GET.getlist('filter')))
 
