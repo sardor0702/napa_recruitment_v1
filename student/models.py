@@ -22,18 +22,18 @@ def convert_fn(ins, file):
 
 
 class Student(models.Model):
-    filters = models.ManyToManyField(FilterValues)
+    filters = models.ManyToManyField(FilterValues, blank=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    direction = models.CharField(max_length=100)
-    skills = models.CharField(max_length=255)
-    age = models.IntegerField()
-    student_about = models.TextField(max_length=2048, blank=True)
-    student_image = models.ImageField(upload_to=convert_fn)
+    direction = models.CharField(max_length=100, blank=True, null=True)
+    skills = models.CharField(max_length=255, blank=True, null=True)
+    age = models.IntegerField(blank=True, null=True)
+    student_about = models.TextField(max_length=2048, blank=True, null=True)
+    student_image = models.ImageField(upload_to=convert_fn, blank=True, null=True)
     status = models.IntegerField(default=0)
 
     def admin_image(self):
-        return mark_safe('<img src="{}" width="60" />'.format(self.student_image.url))
+        return mark_safe('<img src="{}" width="60" />'.format(self.image_url))
 
     def qr(self):
         url = f'{SITE_DOMAIN}/student_card/{self.pk}/'
