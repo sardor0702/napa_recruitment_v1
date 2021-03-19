@@ -37,26 +37,14 @@ class Searching(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # corp = self.request.GET.getlist('frontend') + self.request.GET.getlist('backend')
-        # context['object_list'] = []
-        # if self.request.GET.getlist('frontend') or self.request.GET.getlist('backend'):
-        #     for i in corp:
-        #         context['object_list'] += Student.objects.filter(skills__contains=i).distinct()
-        # else:
-        #     context['object_list'] = self.get_queryset()
-        #
-        # context['object_list'] = list(set(context['object_list']))
+
 
         k = str(self.request).split('?')[1].rstrip('\'>').split('&')
         t = ''
-        print(k)
         for i in k:
             if not i.startswith('page'):
                 t += '&' + i
-        print(t)
         s = t.lstrip('&')
-        print(s)
-        print(k)
         context['k'] = s
         context['frontend'] = FilterValues.objects.filter(filter_id=2)
         context['backend'] = FilterValues.objects.filter(filter_id=1)
