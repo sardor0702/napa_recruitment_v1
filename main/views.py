@@ -23,7 +23,7 @@ class Home(TemplateView):
 
 class Searching(ListView):
     template_name = "main/searching.html"
-    paginate_by = 3
+    paginate_by = 5
     model = Student
 
     def get_queryset(self):
