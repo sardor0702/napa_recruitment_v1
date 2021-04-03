@@ -90,7 +90,7 @@ class StudentProjects(models.Model):
     student_id = models.ForeignKey(Student, on_delete=models.RESTRICT, related_name='projects')
     project_name = models.CharField(max_length=255, default=None, blank=True)
     project_link = models.CharField(max_length=255)
-    created_at = models.DateField()
+    created_at = models.DateField(blank=True, null=True)
     project_pick = models.ImageField(upload_to=convert_fn, default=None)
 
     # def admin_pro_pick(self):
