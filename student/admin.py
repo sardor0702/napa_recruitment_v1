@@ -12,7 +12,7 @@ class StudentAdmin(admin.ModelAdmin):
 @admin.register(StudentProjects)
 class StudentProjectsAdmin(admin.ModelAdmin):
     list_display = ("id", "project_name", "project_pick", "project_link", "student_id_id", "created_at")
-    list_display_links = ("id", "project_name", "project_link", "student_id_id")
+    # list_display_links = ("id", "project_name", "project_link", "student_id_id")
     list_filter = ("created_at",)
     search_fields = ("project_name",)
     autocomplete_fields = ("student_id",)

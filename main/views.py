@@ -38,7 +38,6 @@ class Searching(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-
         k = str(self.request).split('?')[1].rstrip('\'>').split('&')
         t = ''
         for i in k:
@@ -155,4 +154,3 @@ def filter_by_skills(request, slug):
 def handler404(*args, **kwargs):
     text = render_to_string('main/404.html')
     return HttpResponseNotFound(text)
-

@@ -31,7 +31,7 @@
                     {% if request.user.is_authenticated %}
                         {% if student.status == 1 %}
                             <p class="font-size-14 font-weight-bold">
-                                Данный сотрудник уже нанят работодателем
+                                {% trans 'Выпускник трудоустроен' %}
                             </p>
                         {% else %}
                             {% if sent_query %}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-15 10:29+0500\n"
+"POT-Creation-Date: 2021-04-12 15:46+0500\n"
 "PO-Revision-Date: 2021-02-17 18:00+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -297,33 +297,18 @@ msgstr "O'zgarishlarni saqlang"
 msgid "Фильтр"
 msgstr "Filtr"
 
-#: main/templates/main/searching.html:55
-msgid "Маркетинг"
-msgstr "Marketing"
-
-#: main/templates/main/searching.html:59
-msgid "Полный рабочий день"
-msgstr "To'liq ish kuni"
-
-#: main/templates/main/searching.html:64
-msgid "Неполный рабочий день"
-msgstr "Yarim kunlik ish"
-
-#: main/templates/main/searching.html:68
-msgid "Фриланс"
-msgstr "Frilans"
-
-#: main/templates/main/searching.html:72
-msgid "Работа в офисе"
-msgstr "Ofis ishi"
-
-#: main/templates/main/searching.html:76
-msgid "Удаленная работа"
-msgstr "Masofadan turib ishlash"
-
-#: main/templates/main/searching.html:79 main/views.py:63
+#: main/templates/main/searching.html:81 main/views.py:50
 msgid "Поиск"
 msgstr "Qidirish"
+
+#: main/templates/main/searching.html:111
+#: main/templates/main/student_card.html:34
+msgid "Выпускник трудоустроен"
+msgstr "Bitiruvchi ish bilan ta'minlangan"
+
+#: main/templates/main/searching.html:135
+msgid "Подробнее"
+msgstr "Batafsil ma'lumot"
 
 #: main/templates/main/sign_in.html:25
 msgid "Нет аккаунта?"
@@ -362,44 +347,62 @@ msgstr "Ro'yxatdan o'tish"
 msgid "Создать аккаунт"
 msgstr "Hisob ochish"
 
-#: main/templates/main/student_card.html:22
+#: main/templates/main/student_card.html:24
 msgid "Навыки"
 msgstr "Ko'nikmalar"
 
-#: main/templates/main/student_card.html:23
+#: main/templates/main/student_card.html:25
 msgid "Возраст"
 msgstr "Yoshi"
 
-#: main/templates/main/student_card.html:24
+#: main/templates/main/student_card.html:26
 msgid "Обо мне"
 msgstr "Men haqimda"
 
-#: main/templates/main/student_card.html:37
-#: main/templates/main/student_card.html:43
+#: main/templates/main/student_card.html:40
+#: main/templates/main/student_card.html:46
 msgid "Нанять сотрудника"
 msgstr "Xodimni yollash"
 
-#: main/templates/main/student_card.html:58
+#: main/templates/main/student_card.html:62
 msgid "Ваша заявка успешно отправлена, мы свяжемся с вами в скором времени!"
 msgstr ""
 "Arizangiz muvaffaqiyatli yuborildi, biz siz bilan tez orada bog'lanamiz!"
 
-#: main/templates/main/student_card.html:92
+#: main/templates/main/student_card.html:96
 msgid "Нет проектов, созданных этим студентом."
 msgstr "Ushbu talaba tomonidan yaratilgan loyihalar yo'q."
 
-#: main/views.py:80
+#: main/views.py:67
 msgid "Избранное"
 msgstr "Tanlanganlar"
 
-#: main/views.py:85
+#: main/views.py:72
 msgid "Студенческая страница"
 msgstr "Talaba sahifasi"
 
-#: main/views.py:106
+#: main/views.py:93
 msgid "Сохранять"
 msgstr "Saqlash"
 
-#: main/views.py:118
+#: main/views.py:105
 msgid "Сохранить пользователя"
 msgstr "Foydalanuvchini saqlash"
+
+#~ msgid "Маркетинг"
+#~ msgstr "Marketing"
+
+#~ msgid "Полный рабочий день"
+#~ msgstr "To'liq ish kuni"
+
+#~ msgid "Неполный рабочий день"
+#~ msgstr "Yarim kunlik ish"
+
+#~ msgid "Фриланс"
+#~ msgstr "Frilans"
+
+#~ msgid "Работа в офисе"
+#~ msgstr "Ofis ishi"
+
+#~ msgid "Удаленная работа"
+#~ msgstr "Masofadan turib ishlash"

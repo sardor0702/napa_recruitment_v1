@@ -11,6 +11,7 @@ from django.core.files import File
 from django.conf import settings
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from django.utils import timezone
 
 from napa_recruitment.settings import SITE_DOMAIN
 
