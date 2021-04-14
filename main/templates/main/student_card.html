@@ -102,7 +102,6 @@
     </div><!-- End of container-xl -->
 {% endblock %}
 {% block extra_js %}
-
     <script>
 
         $(".ajax-get").on("click", function () {
@@ -113,22 +112,5 @@
         });
 
     </script>
-
-
-    {#    $(".favourite-icon").click(function(e){#}
-    {#    clicked = true;#}
-    {#    e.preventDefault()#}
-    {#    $.get("{% url "main:save_fav" student.id %}", function(data) {#}
-    {#    console.log(data);#}
-    {#    });#}
-    {#    return false;#}
-    {#    if (clicked) {#}
-    {#    $(this).toggleClass('active');#}
-    {#    clicked = true;#}
-    {#    }else{#}
-    {#    $(this).removeClass('active');#}
-    {#    clicked = false;#}
-    {#    }#}
-    {#    });#}
 
 {% endblock %}
