@@ -20,27 +20,6 @@ $(document).on('click', '.allow-focus', function (e) {
   e.stopPropagation();
 });
 
-$(".favourite-icon").click(function(){
-	clicked = true;
-	if (clicked) {
-		$(this).toggleClass('active');
-		clicked = true;
-	}else{
-		$(this).removeClass('active');
-		clicked = false;
-	}
-});
-
-$(".favourite-icon-1").click(function(){
-	clicked = true;
-	if (clicked) {
-		$(this).toggleClass('active');
-		clicked = true;
-	}else{
-		$(this).removeClass('active');
-		clicked = false;
-	}
-});
 
 const inpFile = document.getElementById("inpFile");
 const previewContainer = document.getElementById("imagePreview");
@@ -70,11 +49,5 @@ inpFile.addEventListener("change", function(){
 	}
 });
 
-
-$(document).ready(function (){
-            $('.js-example-basic-multiple').select2({
-                placeholder: 'Select languages ...',
-            });
-        });
 
 
