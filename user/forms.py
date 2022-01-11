@@ -36,7 +36,7 @@ class RegistrationForm(forms.Form):
 
     def clean_confirm(self):
         if self.cleaned_data['password'] != self.cleaned_data['confirm']:
-                raise ValidationError("Пароли не совпадают!")
+            raise ValidationError("Пароли не совпадают!")
 
         return self.cleaned_data['confirm']
 

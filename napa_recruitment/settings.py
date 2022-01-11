@@ -160,6 +160,11 @@ SETTINGS_EXPORT = [
     'LANGUAGES'
 ]
 
+LANGUAGES = [
+    ('ru', "ru"),
+    ('uz', "uz")
+]
+
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
