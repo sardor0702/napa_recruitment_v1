@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-22 11:50+0500\n"
+"POT-Creation-Date: 2021-04-12 15:46+0500\n"
 "PO-Revision-Date: 2021-02-17 18:00+0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -39,40 +39,57 @@ msgstr "Bizning talabalar"
 msgid "Партнеры"
 msgstr "Hamkorlar"
 
-#: main/templates/main/favorites.html:8 main/templates/main/favorites1.html:8
-#: main/templates/main/favorites2.html:8
+#: main/templates/main/change_password.html:32
+#: main/templates/main/forgot_password.html:40
+msgid "Новый пароль"
+msgstr "Parolni unitdingizmi?"
+
+#: main/templates/main/change_password.html:37
+#: main/templates/main/forgot_password.html:46
+#: main/templates/main/personal_account_changing_info.html:110
+#: main/templates/main/sign_up.html:52
+msgid "Подтвердить Пароль"
+msgstr "Parolni tiklash"
+
+#: main/templates/main/change_password.html:45
+#: main/templates/main/personal_account_changing_info.html:85
+msgid "Сохранить"
+msgstr "Saqlash"
+
+#: main/templates/main/favorites.html:9
 msgid "Избранные сотрудники"
 msgstr "Tanlangan xodimlar"
 
-#: main/templates/main/favorites.html:82 main/templates/main/favorites.html:166
-#: main/templates/main/favorites1.html:82
+#: main/templates/main/favorites.html:41
+msgid "Нет избранных сотрудников!"
+msgstr "Tanlangan xodimlar yo'q!"
+
+#: main/templates/main/favorites.html:50 main/templates/main/favorites.html:94
 #: main/templates/main/personal_account.html:64
 msgid "Изменить"
 msgstr "Tahrirlash"
 
-#: main/templates/main/favorites.html:91 main/templates/main/favorites1.html:91
-#: main/templates/main/favorites2.html:91
+#: main/templates/main/favorites.html:58
 msgid "Мои заявки"
 msgstr "Mening arizalarim"
 
-#: main/templates/main/favorites1.html:166
-#: main/templates/main/favorites2.html:166
-#: main/templates/main/personal_account_changing_info.html:66
-msgid "Сохранить"
-msgstr "Saqlash"
+#: main/templates/main/favorites.html:88
+msgid "Заявока нет!"
+msgstr "Ariza yo'q!"
 
-#: main/templates/main/favorites1.html:181
-#: main/templates/main/favorites2.html:181
+#: main/templates/main/favorites.html:109
+#: main/templates/main/favorites.html:132
 msgid "Вы уверены, что хотите удалить сотрудника из списка заявок"
 msgstr "Xodimni arizalar ro'yxatidan olib tashlashga aminmisiz"
 
-#: main/templates/main/favorites1.html:185
-#: main/templates/main/favorites2.html:185
+#: main/templates/main/favorites.html:115
+#: main/templates/main/favorites.html:137
 msgid "Удалить"
 msgstr "O'chirish"
 
-#: main/templates/main/favorites1.html:186
-#: main/templates/main/favorites2.html:186
+#: main/templates/main/favorites.html:117
+#: main/templates/main/favorites.html:139
+#: main/templates/main/personal_account_changing_info.html:117
 msgid "Оставить"
 msgstr "Qoldirish"
 
@@ -85,6 +102,7 @@ msgid "Recruitment"
 msgstr "Recruitment"
 
 #: main/templates/main/forgot_password.html:29
+#: main/templates/main/sign_in.html:43
 msgid "Забыли пароль?"
 msgstr "Parolni unitdingizmi?"
 
@@ -98,35 +116,39 @@ msgstr ""
 
 #: main/templates/main/forgot_password.html:34
 #: main/templates/main/personal_account.html:46
+#: main/templates/main/sign_up.html:36
 msgid "Телефон"
 msgstr "Telefon"
 
-#: main/templates/main/forgot_password.html:37
-#: main/templates/main/get_code.html:33
+#: main/templates/main/forgot_password.html:53
 msgid "Восстановить пароль"
 msgstr "Parolni tiklash"
 
-#: main/templates/main/get_code.html:28
+#: main/templates/main/get_code.html:29
 msgid "Введите код подтверждения"
 msgstr "Tasdiqlovchi kodni kiriting"
 
-#: main/templates/main/get_code.html:30
+#: main/templates/main/get_code.html:31
 msgid "Код подтверждения"
 msgstr "Tasdiqlash kodi"
 
-#: main/templates/main/home_page.html:11
+#: main/templates/main/get_code.html:34
+msgid "Отправить код"
+msgstr "Kodni yuboring"
+
+#: main/templates/main/home_page.html:18
 msgid "Найдите подходящего сотрудника среди наших выпускников"
 msgstr "Bitiruvchilarimiz orasidan kerakli xodimni toping"
 
-#: main/templates/main/home_page.html:18
+#: main/templates/main/home_page.html:26
 msgid "Введите ключевые слова, пример: HTML"
 msgstr "Kalit so'zlarni kiriting, misol: HTML"
 
-#: main/templates/main/home_page.html:21
+#: main/templates/main/home_page.html:30
 msgid "Искать"
 msgstr "Qidirish"
 
-#: main/templates/main/home_page.html:40
+#: main/templates/main/home_page.html:49
 msgid ""
 "Мы компания по предоставлению рекрутинговых услуг. Мы не просто занимаемся "
 "поиском качественных, квалифицированных специалистов, мы их обучаем и "
@@ -138,35 +160,35 @@ msgstr ""
 "IT akademiyamizda (Bobir Akilkhanov nomidagi tech akademiyasi) o'qitamiz va "
 "tarbiyalaymiz."
 
-#: main/templates/main/home_page.html:43
+#: main/templates/main/home_page.html:52
 msgid "Мы ищем и находим для вас лучших специалистов!"
 msgstr "Siz uchun eng yaxshi mutaxassislarni qidiramiz va topamiz!"
 
-#: main/templates/main/home_page.html:54
+#: main/templates/main/home_page.html:63
 msgid "Доступные должности"
 msgstr "Mavjud o'rinlar"
 
-#: main/templates/main/home_page.html:60
+#: main/templates/main/home_page.html:69
 msgid "Back-End разработчик"
 msgstr "Back-End dasturchisi"
 
-#: main/templates/main/home_page.html:64
+#: main/templates/main/home_page.html:73
 msgid "Front-End разработчик"
 msgstr "Front-End dasturchisi"
 
-#: main/templates/main/home_page.html:68
+#: main/templates/main/home_page.html:77
 msgid "HR-менеджер"
 msgstr "Kadrlar menejeri"
 
-#: main/templates/main/home_page.html:72
+#: main/templates/main/home_page.html:82
 msgid "Digital-маркетолог"
 msgstr "Raqamli sotuvchi"
 
-#: main/templates/main/home_page.html:81
+#: main/templates/main/home_page.html:91
 msgid "О наших студентах"
 msgstr "Bizning o'quvchilarimiz haqida"
 
-#: main/templates/main/home_page.html:83
+#: main/templates/main/home_page.html:93
 #, python-format
 msgid ""
 "Наши студенты - начинающие специалисты в сфере IT (Python, PHP, Java, SMM, "
@@ -181,26 +203,26 @@ msgstr ""
 "O'quv dasturi 70% amaliyot va 30% nazariyadan, shuningdek 3 oylik real "
 "loyihalar bilan ishlashdan iborat."
 
-#: main/templates/main/home_page.html:119
+#: main/templates/main/home_page.html:129
 msgid "Наши партнеры"
 msgstr "Hamkorlarimiz"
 
 #: main/templates/main/personal_account.html:10
 #: main/templates/main/personal_account.html:11
-#: main/templates/main/personal_account_changing_info.html:10
-#: main/templates/main/personal_account_changing_info.html:11
+#: main/templates/main/personal_account_changing_info.html:17
+#: main/templates/main/personal_account_changing_info.html:18
 msgid "Личный кабинет"
 msgstr "Shaxsiy kabinet"
 
 #: main/templates/main/personal_account.html:13
 #: main/templates/main/personal_account.html:14
-#: main/templates/main/personal_account_changing_info.html:13
-#: main/templates/main/personal_account_changing_info.html:14
+#: main/templates/main/personal_account_changing_info.html:20
+#: main/templates/main/personal_account_changing_info.html:21
 msgid "Персональная информация"
 msgstr "Shaxsiy ma'lumot"
 
 #: main/templates/main/personal_account.html:22
-#: main/templates/main/personal_account_changing_info.html:34
+#: main/templates/main/personal_account_changing_info.html:42
 msgid "Наименование компании"
 msgstr "Kopmaniya nomi"
 
@@ -218,7 +240,7 @@ msgid "Ф.И.О. ответственного лица"
 msgstr "F.I.Sh to'liq ma'lumot"
 
 #: main/templates/main/personal_account.html:38
-#: main/templates/main/personal_account_changing_info.html:46
+#: main/templates/main/personal_account_changing_info.html:56
 msgid "Деятельность компании"
 msgstr "Kompaniya faoliyati"
 
@@ -230,67 +252,86 @@ msgstr "Mobil"
 msgid "Почтa"
 msgstr "Pochta"
 
-#: main/templates/main/personal_account_changing_info.html:26
+#: main/templates/main/personal_account_changing_info.html:34
 msgid "Загрузить фотографию"
 msgstr "Suratni yuklash"
 
-#: main/templates/main/personal_account_changing_info.html:38
+#: main/templates/main/personal_account_changing_info.html:47
 msgid "Имя"
 msgstr "Ismi"
 
-#: main/templates/main/personal_account_changing_info.html:42
+#: main/templates/main/personal_account_changing_info.html:51
 msgid "Фамилия"
 msgstr "Familiya"
 
-#: main/templates/main/personal_account_changing_info.html:50
+#: main/templates/main/personal_account_changing_info.html:60
 msgid "Рабочий номер"
 msgstr "Ish raqami"
 
-#: main/templates/main/personal_account_changing_info.html:54
+#: main/templates/main/personal_account_changing_info.html:65
 msgid "Мобильный номер"
 msgstr "Mobil telefon raqami"
 
-#: main/templates/main/personal_account_changing_info.html:58
+#: main/templates/main/personal_account_changing_info.html:69
 msgid "Почта"
 msgstr "Pochta"
 
-#: main/templates/main/searching.html:9 main/templates/main/searching.html:13
+#: main/templates/main/personal_account_changing_info.html:80
+#: main/templates/main/personal_account_changing_info.html:93
+msgid "Изменить пароль"
+msgstr "Parolni tiklash"
+
+#: main/templates/main/personal_account_changing_info.html:100
+msgid "Старый пароль"
+msgstr "Eski parol"
+
+#: main/templates/main/personal_account_changing_info.html:105
+msgid "Новый пароль "
+msgstr "Yangi parol"
+
+#: main/templates/main/personal_account_changing_info.html:119
+msgid "Сохранить изменения"
+msgstr "O'zgarishlarni saqlang"
+
+#: main/templates/main/searching.html:10 main/templates/main/searching.html:14
 msgid "Фильтр"
 msgstr "Filtr"
 
-#: main/templates/main/searching.html:65
-msgid "Маркетинг"
-msgstr "Marketing"
+#: main/templates/main/searching.html:81 main/views.py:50
+msgid "Поиск"
+msgstr "Qidirish"
 
-#: main/templates/main/searching.html:68
-msgid "Полный рабочий день"
-msgstr "To'liq ish kuni"
+#: main/templates/main/searching.html:111
+#: main/templates/main/student_card.html:34
+msgid "Выпускник трудоустроен"
+msgstr "Bitiruvchi ish bilan ta'minlangan"
 
-#: main/templates/main/searching.html:72
-msgid "Неполный рабочий день"
-msgstr "Yarim kunlik ish"
-
-#: main/templates/main/searching.html:76
-msgid "Фриланс"
-msgstr "Frilans"
-
-#: main/templates/main/searching.html:80
-msgid "Работа в офисе"
-msgstr "Ofis ishi"
-
-#: main/templates/main/searching.html:84
-msgid "Удаленная работа"
-msgstr "Masofadan turib ishlash"
+#: main/templates/main/searching.html:135
+msgid "Подробнее"
+msgstr "Batafsil ma'lumot"
 
 #: main/templates/main/sign_in.html:25
 msgid "Нет аккаунта?"
 msgstr "Hisobingiz yo'qmi?"
 
-#: main/templates/main/sign_in.html:25 main/templates/main/sign_in.html:51
+#: main/templates/main/sign_in.html:25 main/templates/main/sign_in.html:50
 msgid "Зарегистрируйтесь"
 msgstr "Hozir ro'yxatdan o'ting"
 
-#: main/templates/main/sign_in.html:50 main/templates/main/sign_up.html:24
+#: main/templates/main/sign_in.html:34
+msgid "Войти в акканут"
+msgstr "Hisobingizga kiring"
+
+#: main/templates/main/sign_in.html:37 main/templates/main/sign_up.html:40
+msgid "Логин"
+msgstr "Tizimga kirish"
+
+#: main/templates/main/sign_in.html:41 main/templates/main/sign_up.html:44
+msgid "Пароль"
+msgstr "Parol"
+
+#: main/templates/main/sign_in.html:49 main/templates/main/sign_up.html:24
+#: main/templates/main/sign_up.html:58
 msgid "Войти"
 msgstr "Kirish"
 
@@ -298,36 +339,70 @@ msgstr "Kirish"
 msgid "Нет аккаунта"
 msgstr "Hisob yo'q"
 
-#: main/templates/main/student_card.html:16
+#: main/templates/main/sign_up.html:34
+msgid "Регистрация"
+msgstr "Ro'yxatdan o'tish"
+
+#: main/templates/main/sign_up.html:57
+msgid "Создать аккаунт"
+msgstr "Hisob ochish"
+
+#: main/templates/main/student_card.html:24
 msgid "Навыки"
 msgstr "Ko'nikmalar"
 
-#: main/templates/main/student_card.html:17
+#: main/templates/main/student_card.html:25
 msgid "Возраст"
-msgstr "Yosh"
+msgstr "Yoshi"
 
-#: main/templates/main/student_card.html:18
+#: main/templates/main/student_card.html:26
 msgid "Обо мне"
 msgstr "Men haqimda"
 
-#: main/templates/main/student_card.html:23
+#: main/templates/main/student_card.html:40
+#: main/templates/main/student_card.html:46
 msgid "Нанять сотрудника"
 msgstr "Xodimni yollash"
 
-#~ msgid "O NAPA Recruitment"
-#~ msgstr "O NAPA Recruitment"
+#: main/templates/main/student_card.html:62
+msgid "Ваша заявка успешно отправлена, мы свяжемся с вами в скором времени!"
+msgstr ""
+"Arizangiz muvaffaqiyatli yuborildi, biz siz bilan tez orada bog'lanamiz!"
 
-#~ msgid "разработчик"
-#~ msgstr "dasturchi"
+#: main/templates/main/student_card.html:96
+msgid "Нет проектов, созданных этим студентом."
+msgstr "Ushbu talaba tomonidan yaratilgan loyihalar yo'q."
 
-#~ msgid "Подробнее"
-#~ msgstr "Batafsil ma'lumot"
+#: main/views.py:67
+msgid "Избранное"
+msgstr "Tanlanganlar"
 
-#~ msgid "Front-end разработчик"
-#~ msgstr "Front-end dasturchi"
+#: main/views.py:72
+msgid "Студенческая страница"
+msgstr "Talaba sahifasi"
 
-#~ msgid "Войти в акканут"
-#~ msgstr "Hisobingizga kiring"
+#: main/views.py:93
+msgid "Сохранять"
+msgstr "Saqlash"
 
-#~ msgid "Создать аккаунт"
-#~ msgstr "Hisob ochish"
+#: main/views.py:105
+msgid "Сохранить пользователя"
+msgstr "Foydalanuvchini saqlash"
+
+#~ msgid "Маркетинг"
+#~ msgstr "Marketing"
+
+#~ msgid "Полный рабочий день"
+#~ msgstr "To'liq ish kuni"
+
+#~ msgid "Неполный рабочий день"
+#~ msgstr "Yarim kunlik ish"
+
+#~ msgid "Фриланс"
+#~ msgstr "Frilans"
+
+#~ msgid "Работа в офисе"
+#~ msgstr "Ofis ishi"
+
+#~ msgid "Удаленная работа"
+#~ msgstr "Masofadan turib ishlash"

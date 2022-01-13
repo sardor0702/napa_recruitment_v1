@@ -699,6 +699,11 @@ input[type="file"] {
     font-weight: 400;
     font-size: 12px;
   }
+  .font-size-forgot-pas-14{
+    font-family: Noto Sans, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+  }
 
   .font-size-20{
     font-family: Open Sans, sans-serif;
