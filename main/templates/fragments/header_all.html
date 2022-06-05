@@ -5,7 +5,7 @@
 <!-- Navbar -->
 <div class="container-xl px-4">
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent navbar-fixed-top navbar-toggleable-sm navbar-inverse pt-3">
-        <a class="navbar-brand d-flex flex-column" href="{% url 'main:main_home'%}">
+        <a class="navbar-brand d-flex flex-column" href="{% url 'main:main_home' %}">
             <img src="{% static 'main/img/napa1.svg' %}" class="mb-1">
             <img src="{% static 'main/img/recruitment1.svg' %}">
         </a>
@@ -16,17 +16,17 @@
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <div class="offset"></div>
             <ul class="navbar-nav pt-5 pt-md-0">
-                <li class="nav-item ml-0 ml-sm-0" >
-                    <a class="nav-link text-secondary" href="{% url 'main:main_home'%}">{% trans 'Главная' %}</a>
+                <li class="nav-item ml-0 ml-sm-0">
+                    <a class="nav-link text-secondary" href="{% url 'main:main_home' %}">{% trans 'Главная' %}</a>
                 </li>
                 <li class="nav-item ml-0 ml-sm-0 ml-md-5">
-                    <a class="nav-link text-secondary" href="{% url 'main:main_home'%}">{% trans 'О нас' %}</a>
+                    <a class="nav-link text-secondary" href="{% url 'main:main_home' %}">{% trans 'О нас' %}</a>
                 </li>
                 <li class="nav-item ml-0 ml-sm-0 ml-md-5">
-                    <a class="nav-link text-secondary" href="{% url 'main:main_home'%}">{% trans 'Наши студенты' %}</a>
+                    <a class="nav-link text-secondary" href="{% url 'main:main_home' %}">{% trans 'Наши студенты' %}</a>
                 </li>
                 <li class="nav-item mx-0 mx-sm-0 ml-md-5">
-                    <a class="nav-link text-secondary" href="{% url 'main:main_home'%}">{% trans 'Партнеры' %}</a>
+                    <a class="nav-link text-secondary" href="{% url 'main:main_home' %}">{% trans 'Партнеры' %}</a>
                 </li>
                 <li class="nav-item invisible">
                     <a class="nav-link text-secondary" href="">Партнеры</a>
@@ -34,32 +34,39 @@
 
             </ul>
             <ul class="navbar-nav flex-row d-flex justify-content-around ml-0 ml-md-5">
-                <li class="nav-item">
-                    <a class="nav-link text-secondary" href="{% url 'main:favorites' %}">
-                        <img src="{% static 'main/img/star.svg' %}">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-secondary" href="{% url 'user:personal_account' %}">
-                        <img src="{% static 'main/img/personall account.svg' %}">
-                    </a>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="{% url 'main:favorites' %}">
+                            <img src="{% static 'main/img/star.svg' %}">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="{% url 'user:personal_account' %}">
+                            <img src="{% static 'main/img/personall account.svg' %}">
+                        </a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link text-secondary" href="{% url 'user:logout' %}">
                         <img src="{% static 'main/img/sign_in.svg' %}">
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-uppercase" id="dropdown09" data-toggle="dropdown">{{ LC }}</a>
-                        <div class="dropdown-menu">
+                    <a class="nav-link dropdown-toggle text-uppercase" id="dropdown09"
+                       data-toggle="dropdown">{{ LC }}</a>
+                    <div class="dropdown-menu">
                         {% for lan in settings.LANGUAGES %}
-                            {% if lan.1 == 'uz'%}
-                                <a class="dropdown-item" href="/{{ lan.0 }}/{{ request.path|slice:"4:" }}"><span class="flag-icon flag-icon-uz"> </span> {{ lan.1|upper }}</a>
+                            {% if lan.1 == 'uz' %}
+                                <a class="dropdown-item"
+                                   href="/{{ lan.0 }}/{{ request.path|slice:"4:" }}?{{ request.GET.urlencode }}"><span
+                                        class="flag-icon flag-icon-uz"> </span> {{ lan.1|upper }}</a>
                             {% else %}
-                                <a class="dropdown-item" href="/{{ lan.0 }}/{{ request.path|slice:"4:" }}"><span class="flag-icon flag-icon-ru"> </span> {{ lan.1|upper }}</a>
+                                <a class="dropdown-item"
+                                   href="/{{ lan.0 }}/{{ request.path|slice:"4:" }}?{{ request.GET.urlencode }}"><span
+                                        class="flag-icon flag-icon-ru"> </span> {{ lan.1|upper }}</a>
                             {% endif %}
                         {% endfor %}
-                        </div>
+                    </div>
                 </li>
             </ul>
         </div><!-- End of collapse -->

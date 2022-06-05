@@ -1,8 +1,10 @@
 from django.core.exceptions import ValidationError
 import re
 import phonenumbers
+from django.utils.deconstruct import deconstructible
 
 
+@deconstructible
 class PhoneValidator:
     requires_context = False
 
@@ -27,4 +29,3 @@ class PhoneValidator:
     def __call__(self, value):
         if not PhoneValidator.validate(value):
             raise ValidationError("Введенное значение не является номером телефона.")
-

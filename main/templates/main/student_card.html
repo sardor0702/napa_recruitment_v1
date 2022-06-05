@@ -8,16 +8,14 @@
                 <img class="img-fluid" src="{{ student.image_url }}" alt="avatar" name="inpFile" id="inpFile3">
                 <div class="pt-4 d-flex flex-row align-items-center">
                     <h5 class="font-weight-bold mb-0 mr-3">{{ student.full_name }}</h5>
-                    {% if fav.student_id %}
-                        {% if student.id == fav.student_id %}
+                    {% if request.user.is_authenticated %}
+                        {% if fav %}
+                            <i class="fa fa-star fa-fw fa-lg favourite-icon active"></i>
+                        {% else %}
                             <a href="{% url 'main:save_fav' student.id %}" return false;>
-                                <i class="fa fa-star fa-fw fa-lg favourite-icon active"></i>
+                                <i class="fa fa-star fa-fw fa-lg favourite-icon "></i>
                             </a>
                         {% endif %}
-                    {% else %}
-                        <a href="{% url 'main:save_fav' student.id %}" return false;>
-                            <i class="fa fa-star fa-fw fa-lg favourite-icon "></i>
-                        </a>
                     {% endif %}
                 </div>
                 <p class="pb-3">
@@ -30,49 +28,50 @@
                     {{ student.student_about }}
                 </p>
                 <p class="text-center text-sm-left">
-                    <!-- Button trigger modal -->
-{#                            <a href="{% url 'main:save_user' student.id %}"#}
-{#                               class="btn btn-danger-1 rounded-15 px-4 py-2" data-toggle="modal"#}
-{#                               data-target="#exampleModal">#}
-{#                                {% trans 'Нанять сотрудника' %}#}
-{#                            </a>#}
-                    {% if test_query.student_id %}
-                        {% if student.id == test_query.student_id %}
-                            <button type="button"
-                               class="btn btn-danger-2 rounded-15 px-4 py-2" disabled>
-                                {% trans 'Нанять сотрудника' %}
-                            </button>
-                        {% endif %}
-                    {% else %}
-                        <a href="{% url 'main:save_user' student.id %}"
-                               class="btn btn-danger-1 rounded-15 px-4 py-2 ajax-get" data-toggle="modal"
-                           data-target="#exampleModal">
-                                {% trans 'Нанять сотрудника' %}
-                        </a>
+                    {% if request.user.is_authenticated %}
+                        {% if student.status == 1 %}
+                            <p class="font-size-14 font-weight-bold">
+                                {% trans 'Выпускник трудоустроен' %}
+                            </p>
+                        {% else %}
+                            {% if sent_query %}
+                                <button type="button"
+                                        class="btn btn-danger-2 rounded-15 px-4 py-2" disabled>
+                                    {% trans 'Нанять сотрудника' %}
+                                </button>
+                            {% else %}
+                                <a href="{% url 'main:save_user' student.id %}"
+                                   class="btn btn-danger-1 rounded-15 px-4 py-2 ajax-get" data-toggle="modal"
+                                   data-target="#exampleModal">
+                                    {% trans 'Нанять сотрудника' %}
+                                </a>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header border-0">
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body text-center">
-                                            <i class="fas fa-check-circle favourite-icon-modal mb-3"></i>
-                                            <p class="open-sans-400">
-                                                Ваша заявка успешно отправлена,
-                                                мы свяжемся с вами в скором времени!
-                                            </p>
-                                        </div>
-                                        <div class="modal-footer border-0">
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header border-0">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <i class="fas fa-check-circle favourite-icon-modal mb-3"></i>
+                                                <p class="open-sans-400">
+                                                    {% trans 'Ваша заявка успешно отправлена, мы свяжемся с вами в скором времени!' %}
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer border-0">
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-            {% endif %}
+
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
                 </p>
             </div>
             <div class="col-12 col-md-8 col-lg-9 col-xl-9 pl-md-5 right-content mt-2 mt-md-0 ">
@@ -103,31 +102,15 @@
     </div><!-- End of container-xl -->
 {% endblock %}
 {% block extra_js %}
-<script>
+    <script>
 
-    $(".ajax-get").on("click", function(){
-        let _this = $(this);
-        $.get($(this).attr("href"), function(){
-            _this.attr("href", "#").prop("disabled", true);
+        $(".ajax-get").on("click", function () {
+            let _this = $(this);
+            $.get($(this).attr("href"), function () {
+                _this.attr("href", "#").prop("disabled", true);
+            });
         });
-    });
-</script>
 
-
-    {#    $(".favourite-icon").click(function(e){#}
-    {#    clicked = true;#}
-    {#    e.preventDefault()#}
-    {#    $.get("{% url "main:save_fav" student.id %}", function(data) {#}
-    {#    console.log(data);#}
-    {#    });#}
-    {#    return false;#}
-    {#    if (clicked) {#}
-    {#    $(this).toggleClass('active');#}
-    {#    clicked = true;#}
-    {#    }else{#}
-    {#    $(this).removeClass('active');#}
-    {#    clicked = false;#}
-    {#    }#}
-    {#    });#}
+    </script>
 
 {% endblock %}

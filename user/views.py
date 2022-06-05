@@ -1,24 +1,31 @@
 from django.shortcuts import render, redirect
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import View
-from .forms import RegistrationForm, LoginForm, EditForm, ForgotPassword, ChangePassword
+from .forms import RegistrationForm, LoginForm, EditForm, ForgotPassword, ChangePassword, GetCodeForm
 from .models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth import update_session_auth_hash
+from .serializers import UserSerializer, LoginSerializer, RegistrationSerializer
+from rest_framework import permissions
+from napa_recruitment.helpers import *
+from django.core.exceptions import ValidationError
 
 
 class UserRegistration(View):
+    permission_classes = [~permissions.IsAuthenticated]
+
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)
 
-        request.title = "Регистрация"
-
     def get(self, request):
         form = RegistrationForm()
+        context = _("Регистрация")
         return render(request, "main/sign_up.html", {
-            'form': form
+            'form': form,
+            "title": context
         })
 
     def post(self, request):
@@ -30,7 +37,6 @@ class UserRegistration(View):
 
             user.set_password(user.password)
             user.save()
-            messages.success(request, "Вы успешно зарегистрировались.")
             return redirect('user:login')
         return render(request, "main/sign_up.html", {
             'form': form
@@ -38,7 +44,7 @@ class UserRegistration(View):
 
 
 def user_login(request):
-    request.title = "Авторизоваться"
+    request.title = _("Авторизоваться")
 
     form = LoginForm()
     if request.POST:
@@ -47,12 +53,11 @@ def user_login(request):
             user = authenticate(username=form.cleaned_data["username"], password=form.cleaned_data["password"])
             if user is not None:
                 login(request, user)
-                messages.success(request, "Добро пожаловать !!!  {}".format(user.username))
                 return redirect('user:personal_account')
 
             form.add_error('password', "Имя пользователя и пароль неверны !")
         return render(request, 'main/sign_in.html', {
-                'form': form,
+            'form': form,
         })
     return render(request, 'main/sign_in.html', {
         'form': form
@@ -61,7 +66,7 @@ def user_login(request):
 
 @login_required
 def login_checkin(request):
-    request.title = "Персональный аккаунт"
+    request.title = _("Персональный аккаунт")
     form = LoginForm(data=request.user)  # user ma'lumotlarini jo'natvoman
     return render(request, 'main/personal_account.html', {
         'form': form
@@ -77,9 +82,9 @@ def user_logout(request):
 @require_GET
 @login_required
 def user_info(request, id):
-    request.title = "Личный кабинет"
+    request.title = _("Личный кабинет")
     try:
-        user = get(id=id)
+        user = User.objects.get(id=id)
     except User.DoesNotExist:
         return redirect('personal_account')
     password_form = ChangePassword()
@@ -116,15 +121,31 @@ def change_password(request):
             messages.success(request, 'Ваш пароль успешно обновлен!')
             return redirect('user:personal_account')
         else:
-            messages.error(request, 'Пожалуйста, исправьте ошибку ниже.')
+            messages.error(request, 'Пароль не обновлен.')
     return redirect('user:info', id=request.user.pk)
 
 
 def forgot_password(request):
-    request.title = "Забыли пароль"
+    request.title = _("Забыли пароль")
     form = ForgotPassword()
+    if request.method == "POST":
+        form = ForgotPassword(request.POST)
+        if form.is_valid() and request.method == "POST":
+            phone = form.cleaned_data["phone"]
+            password = form.cleaned_data["new_password"]
+            if User.objects.filter(phone=phone).exists():
+                send_sms_code(request, phone)
+                request.session["recovery"] = {
+                    "phone": phone,
+                    "new_password": password
+                }
+                get_code_form = GetCodeForm()
+                return render(request, "main/get_code.html", {
+                    "form": get_code_form,
+                    "request.title": _("Отправить код")
+                })
     return render(request, "main/forgot_password.html", {
-        'form': form
+        'form': form,
     })
 
 
@@ -135,4 +156,21 @@ def get_code(request):
 
 @require_POST
 def post_code(request):
-    pass
+    # request.title = "Отправить код"
+
+    data = request.session.get("recovery")
+    if request.method != "POST" or data["phone"] is None:
+        return redirect('forgot_password')
+
+    code = request.POST.get("code")
+
+    if data["phone"] is None or not validate_sms_code(data["phone"], code):
+        return False
+
+    user = User.objects.get(phone=data["phone"])
+    user.set_password(data["new_password"])
+    user.save()
+
+    return redirect("user:login")
+
+

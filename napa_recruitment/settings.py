@@ -24,7 +24,6 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -32,10 +31,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
-
+SITE_DOMAIN = env('SITE_DOMAIN', default='localhost:8080')
+DEBUG = env('DEBUG', cast=bool)
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list)
 
 # Application definition
 
@@ -74,7 +73,10 @@ ROOT_URLCONF = 'napa_recruitment.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'trmplates')],
+        'DIRS': [
+            BASE_DIR / 'napa_recruitment' / 'templates',
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,14 +94,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'napa_recruitment.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': env.db()
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -119,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -134,13 +133,14 @@ USE_L10N = True
 
 USE_TZ = False
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'static'
+
+# STATICFILES_DIRS = [BASE_DIR, "static"]
 
 AUTH_USER_MODEL = 'user.User'
 
@@ -150,9 +150,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
+LANGUAGES = [
+    ('ru', "ru"),
+    ('uz', "uz")
 
-INTERNAL_IPS = [
-    '127.0.0.1'
 ]
 
 
@@ -168,3 +169,8 @@ MESSAGE_TAGS = {
     messages.INFO: 'alert alert-info',
     messages.SUCCESS: 'alert alert-success',
 }
+
+
+SMS_USERNAME = env('SMS_USERNAME')
+SMS_PASSWORD = env('SMS_PASSWORD')
+
