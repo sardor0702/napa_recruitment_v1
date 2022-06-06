@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang=" ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Home page</title>
+    {% endif %}
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
+</head>
+</head>
+<body>
+
+        {% if request.path == '/' %}
+            {% include 'fragments/header_home.html' %}
+        {% else %}
+            {% include 'fragments/header_all.html' %}
+        {% endif %}
+
+
+        {% block filter %}
+            <div class="container-xl my-110 mb-60">
+                <!-- Filter -->
+                <div class="row mx-4 text-left">
+                    <div class="col-lx-3 col-lg-3 col-md-3">
+                        <span class="filter d-none d-md-block">Фильтр</span>
+
+                        <p class="d-block d-md-none d-flex justify-content-center ">
+                            <button class="btn btn-danger filter px-5 rounded-15" type="button" data-toggle="collapse" data-target="#collapseExample_0">
+                                Фильтр
+                            </button>
+                        </p>
+
+                        <div class="py-4 be collapse d-md-block" id="collapseExample_0">
+                            <span class="btn pl-0" data-toggle="collapse" href="#collapseExample">Back-End <i class="fas fa-angle-down"></i></span>
+                            <br>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body ml-4 p-0 border-0">
+                                    <div class="form-check mb-1 d-flex align-items-center" >
+                                        <input class="form-check-input" type="checkbox" id="backend1" value="PHP (Laravel)">
+                                        <label class="form-check-label pl-2 pt-1" for="backend1">PHP (Laravel)</label>
+                                    </div>
+                                    <div class="form-check mb-1 d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" id="backend2" value="PHP (YII2)">
+                                        <label class="form-check-label pl-2 pt-1" for="backend2">PHP (YII2)</label>
+                                    </div>
+                                    <div class="form-check mb-1 d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" id="backend3" value="Java core">
+                                        <label class="form-check-label pl-2 pt-1" for="backend3">Java core</label>
+                                    </div>
+                                    <div class="form-check mb-1 d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" id="backend4" value="Java (Spring)">
+                                        <label class="form-check-label pl-2 pt-1" for="backend4">Java (Spring)</label>
+                                    </div>
+                                    <div class="form-check mb-1 d-flex align-items-center" >
+                                        <input class="form-check-input" type="checkbox" id="backend5" value="Javafx">
+                                        <label class="form-check-label pl-2 pt-1" for="backend5">Javafx</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="btn pl-0" data-toggle="collapse" href="#collapseExample1">Front-End <i class="fas fa-angle-down"></i></span>
+                            <br>
+                            <div class="collapse" id="collapseExample1">
+                                <div class="card card-body p-0 ml-4 border-0">
+                                    <div class="form-check mb-1 d-flex align-items-center" >
+                                        <input class="form-check-input" type="checkbox" id="frontend1" value="HTML">
+                                        <label class="form-check-label pl-2 pt-1" for="frontend1">HTMl</label>
+                                    </div>
+                                    <div class="form-check mb-1 d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" id="frontend2" value="CSS">
+                                        <label class="form-check-label pl-2 pt-1" for="frontend2">CSS</label>
+                                    </div>
+                                    <div class="form-check mb-1 d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" id="frontend3" value="Java Script">
+                                        <label class="form-check-label pl-2 pt-1" for="frontend3">Java Script</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="py-2">SMM</span>
+                            <br>
+                            <span class="d-block mb-4 py-2">Маркетинг</span>
+                            <div class="form-check mb-1 d-flex align-items-center" >
+                                <input class="form-check-input" type="checkbox" id="item1" value="">
+                                <label class="form-check-label pl-2 pt-1" for="item1">Полный рабочий день</label>
+                            </div>
+                            <div class="form-check mb-1 d-flex align-items-center">
+                                <input class="form-check-input" type="checkbox" id="iten2" value="">
+                                <label class="form-check-label pl-2 pt-1" for="item2">Неполный рабочий день</label>
+                            </div>
+                            <div class="form-check mb-1 d-flex align-items-center mb-4">
+                                <input class="form-check-input" type="checkbox" id="item3" value="">
+                                <label class="form-check-label pl-2 pt-1" for="item3">Фриланс</label>
+                            </div>
+                            <div class="form-check mb-1 d-flex align-items-center" >
+                                <input class="form-check-input" type="checkbox" id="item4" value="">
+                                <label class="form-check-label pl-2 pt-1" for="item4">Работа в офисе</label>
+                            </div>
+                            <div class="form-check mb-1 d-flex align-items-center">
+                                <input class="form-check-input" type="checkbox" id="iten4" value="">
+                                <label class="form-check-label pl-2 pt-1" for="item4">Удаленная работа</label>
+                            </div>
+                        </div>
+                    </div><!-- End of filter -->
+
+                    <!-- students content -->
+                    <div class="col-xl-9 col-lg-9 col-md-9  justify-content-md-between d-md-table">
+                        <div class="container">
+                            <div class="row justify-content-center justify-content-md-start">
+
+                                {% block content %}
+
+                                {% endblock %}
+
+                            </div><!-- End of row -->
+                        </div><!-- End of container -->
+                    </div><!-- End of users conter -->
+                </div><!-- End of row -->
+            </div><!-- End of contianer-fluid -->
+        {% endblock %}
+
+        {% block footer %}
+            <!-- footer -->
+            <div class="bg-blue mt-lg-5">
+                <div class="figure-left d-none d-xl-block">
+                    <img src="{% static 'main/img/vector_left.svg' %}">
+                </div>
+                <div class="figure-left-1 d-none d-xl-block">
+                    <img src="{% static 'main/img/vector_left1.svg' %}">
+                </div>
+                <div class="figures-footer d-none d-md-block">
+                    <img src="{% static 'main/img/figures_footer.svg' %}">
+                </div>
+                <div class="container-xl py-29">
+                    <div class="row mx-0 d-flex justify-content-between align-istems-center">
+                        <a class="col-12 col-md-1 pl-0 pt-md-3 mb-5 mb-md-0 d-flex align-items-center flex-column" href="home_page.html">
+                            <img src="{% static 'main/img/napa_white.svg' %}" class="mb-1 img-fluid">
+                            <img src="{% static 'main/img/recruitment_white.svg' %}" class="img-fluid">
+                        </a>
+                        <div class="col-md-6 pt-md-3 mb-4 mb-md-0">
+                            <p class="text-white text-center pb-0 open-size-400">
+                                Copyright <span>&#169;</span> 2017 - 2020 Academy by NAPA TEAM. <span class="ml-1">All rights reserved</span>
+                            </p>
+                        </div>
+                        <div class="col-md-2 col-12 pr-0 pt-md-3 mb-4 mb-md-0 d-flex justify-content-center justify-content-md-end">
+                            <a class="text-white open-size-400" href="tel:+998712000610">+998 71 200-06-10</a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- End of footer -->
+        {% endblock %}
+
+    <script src="{% static 'vendor/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'main/js/main.js' %}"></script>
+    <script src="https://kit.fontawesome.com/cb3bbb09f5.js" crossorigin="anonymous"></script>
+</body>
+</html>

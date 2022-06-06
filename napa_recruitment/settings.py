@@ -149,16 +149,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+SETTINGS_EXPORT = [
+    'LANGUAGES'
+]
 
 LANGUAGES = [
     ('ru', "ru"),
     ('uz', "uz")
-
-]
-
-
-SETTINGS_EXPORT = [
-    'LANGUAGES'
 ]
 
 INTERNAL_IPS = [
