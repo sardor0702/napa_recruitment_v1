@@ -414,10 +414,10 @@ html{
 }
 
 .container-fluid #left .img-vektor{
- height: 100vh;
- display: flex;
- justify-content: center;
-
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #right,
@@ -698,6 +698,11 @@ input[type="file"] {
     font-family: Noto Sans, sans-serif;
     font-weight: 400;
     font-size: 12px;
+  }
+  .font-size-forgot-pas-14{
+    font-family: Noto Sans, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
   }
 
   .font-size-20{
