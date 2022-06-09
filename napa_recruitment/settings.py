@@ -48,8 +48,6 @@ INSTALLED_APPS = [
     'main',
     'user',
     'student',
-    'rest_framework',
-    'rest_framework.authtoken',
     'crispy_forms',
     'debug_toolbar',
     'django_select2',
