@@ -133,10 +133,10 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 # STATICFILES_DIRS = [BASE_DIR, "static"]
 
-AUTH_USER_MODEL = 'user.User'
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTH_USER_MODEL = 'user.User'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
