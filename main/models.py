@@ -2,15 +2,7 @@ from django.db import models
 from user.models import User
 
 
-# from student.models import Student
-
-
-# class Category(models.Model):
-#     name = models.CharField(max_length=256)
-
-
 class Filter(models.Model):
-    # category = models.ForeignKey(Category, on_delete=models.RESTRICT)
     name = models.CharField(max_length=100)
 
     def __str__(self):

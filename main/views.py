@@ -124,6 +124,7 @@ def get(request, id):
     serializer = FavoriteSerializer(fav, many=True)
     return Response(serializer.data)
 
+
 def favorite_delete(request, id):
     '''
         Removes student info from users favorite list
