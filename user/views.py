@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth import update_session_auth_hash
-from .serializers import UserSerializer, LoginSerializer, RegistrationSerializer
 from rest_framework import permissions
 from napa_recruitment.helpers import *
 from django.core.exceptions import ValidationError
