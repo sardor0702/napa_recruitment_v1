@@ -14,7 +14,7 @@ from django.core.exceptions import ValidationError
 
 
 class UserRegistration(View):
-    permission_classes = [~permissions.IsAuthenticated]
+    # permission_classes = [~permissions.IsAuthenticated]
 
     def setup(self, request, *args, **kwargs):
         super().setup(request, *args, **kwargs)

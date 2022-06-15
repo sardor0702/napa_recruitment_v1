@@ -25,6 +25,7 @@ class Searching(ListView):
     template_name = "main/searching.html"
     paginate_by = 5
     model = Student
+    ordering = ['-id']
 
     def get_queryset(self):
         queryset = super().get_queryset()
